@@ -145,99 +145,127 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(typeAndErase, 120);
 
     // ==============================================
-    // CARROSSEL COM DRAG - VERSÃO DEFINITIVA
+    // CARROSSEL COM DRAG - VERSÃO FINAL CORRIGIDA
     // ==============================================
     
     const carousel = document.getElementById('carousel');
+    const slides = document.querySelectorAll('.project');
+    
     let isDragging = false;
-    let startPos = 0;
+    let startX = 0;
     let currentTranslate = 0;
     let prevTranslate = 0;
     let currentIndex = 0;
-    const slides = document.querySelectorAll('.project');
     const totalSlides = slides.length;
 
+    // Configuração inicial
     carousel.style.cursor = 'grab';
-
-    // Eventos de Mouse
-    carousel.addEventListener('mousedown', dragStart);
-    carousel.addEventListener('mouseup', dragEnd);
-    carousel.addEventListener('mouseleave', dragEnd);
-    carousel.addEventListener('mousemove', drag);
-
-    // Eventos de Touch
-    carousel.addEventListener('touchstart', dragStart);
-    carousel.addEventListener('touchend', dragEnd);
-    carousel.addEventListener('touchmove', drag);
-
-    // Previne comportamento padrão de arrastar imagens
+    
+    // Previne comportamento padrão
     carousel.addEventListener('dragstart', (e) => e.preventDefault());
-
-    function dragStart(event) {
+    
+    // ============ EVENTOS DE MOUSE ============
+    carousel.addEventListener('mousedown', (e) => {
         isDragging = true;
-        startPos = getPositionX(event);
+        startX = e.clientX;
         carousel.style.cursor = 'grabbing';
-        carousel.style.transition = 'none';
-    }
+        carousel.style.transition = 'none'; // Remove transição durante drag
+    });
 
-    function drag(event) {
+    carousel.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         
-        event.preventDefault();
-        const currentPosition = getPositionX(event);
-        const diff = currentPosition - startPos;
+        e.preventDefault();
+        const currentX = e.clientX;
+        const diff = currentX - startX;
         currentTranslate = prevTranslate + diff;
         
-        setSliderPosition();
-    }
+        // Aplica o movimento em tempo real
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    });
 
-    function dragEnd() {
+    carousel.addEventListener('mouseup', () => {
+        finishDrag();
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        if (isDragging) {
+            finishDrag();
+        }
+    });
+
+    // ============ EVENTOS DE TOUCH (Mobile) ============
+    carousel.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = e.touches[0].clientX;
+        carousel.style.transition = 'none';
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const currentX = e.touches[0].clientX;
+        const diff = currentX - startX;
+        currentTranslate = prevTranslate + diff;
+        
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    });
+
+    carousel.addEventListener('touchend', () => {
+        finishDrag();
+    });
+
+    // ============ FUNÇÃO PARA FINALIZAR DRAG ============
+    function finishDrag() {
         if (!isDragging) return;
         
         isDragging = false;
         carousel.style.cursor = 'grab';
         
+        // Calcula o movimento feito
         const movedBy = currentTranslate - prevTranslate;
+        const slideWidth = carousel.offsetWidth;
         
-        // Determina direção e mudança de slide
-        if (movedBy < -100 && currentIndex < totalSlides - 1) {
+        // Define threshold (30% da largura do slide)
+        const threshold = slideWidth * 0.3;
+        
+        // Determina se deve mudar de slide
+        if (movedBy < -threshold && currentIndex < totalSlides - 1) {
             currentIndex++;
-        } else if (movedBy > 100 && currentIndex > 0) {
+        } else if (movedBy > threshold && currentIndex > 0) {
             currentIndex--;
         }
         
-        setPositionByIndex();
+        // Move para o slide correto
+        goToSlide(currentIndex);
     }
 
-    function getPositionX(event) {
-        return event.type.includes('mouse') 
-            ? event.pageX 
-            : event.touches[0].clientX;
-    }
-
-    function setSliderPosition() {
+    // ============ FUNÇÃO PARA IR A UM SLIDE ============
+    function goToSlide(index) {
+        currentIndex = index;
+        const slideWidth = carousel.offsetWidth;
+        
+        // Calcula a posição correta
+        currentTranslate = -currentIndex * slideWidth;
+        prevTranslate = currentTranslate;
+        
+        // Aplica transição suave
+        carousel.style.transition = 'transform 0.3s ease-out';
         carousel.style.transform = `translateX(${currentTranslate}px)`;
     }
 
-    function setPositionByIndex() {
-        const slideWidth = carousel.offsetWidth;
-        currentTranslate = currentIndex * -slideWidth;
-        prevTranslate = currentTranslate;
-        carousel.style.transition = 'transform 0.5s ease-in-out';
-        setSliderPosition();
-    }
-
-    // Função global para botões de navegação
+    // ============ FUNÇÃO GLOBAL PARA BOTÕES ============
     window.moveToSlide = function(index) {
+        // Atualiza TODAS as variáveis necessárias
         currentIndex = index;
-        setPositionByIndex();
+        goToSlide(index);
     }
 
-    // Atualiza ao redimensionar
+    // ============ ATUALIZA AO REDIMENSIONAR ============
     window.addEventListener('resize', () => {
-        setPositionByIndex();
+        goToSlide(currentIndex);
     });
 
-    // Inicializa posição
-    setPositionByIndex();
+    // ============ INICIALIZA ============
+    goToSlide(0);
 });
