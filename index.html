@@ -543,11 +543,7 @@
     <!-- *************************Contact Section************************* -->
     <section class="contact" id="contact">
       <h2 class="title">Fale <span>Comigo</span></h2>
-      <form
-        id="contactForm"
-        class="start-animation"
-        onsubmit="sendEmail(event)"
-      >
+      <form id="contactForm" class="start-animation">
         <div class="input-box">
           <input
             type="text"
@@ -587,126 +583,8 @@
       <i class="bx bx-up-arrow-alt"></i>
     </a>
 
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="assets/scripts/script.js"></script>
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-    <script>
-      (function () {
-        emailjs.init("etN9nKcU-6xqOc7nd");
-      })();
-
-      let isSubmitting = false;
-
-      async function sendEmail(event) {
-        event.preventDefault();
-
-        if (isSubmitting) return;
-
-        isSubmitting = true;
-
-        const form = document.getElementById("contactForm");
-        const submitButton = form.querySelector("button[type='submit']");
-        submitButton.disabled = true;
-
-        const data = {
-          from_name: form.querySelector("#user_name").value,
-          to_name: "Destinatário",
-          email: form.querySelector("#user_email").value,
-          subject: form.querySelector("#user_subject").value,
-          message: form.querySelector("#contact__message").value,
-        };
-
-        try {
-          await emailjs.send("service_ixngxn3", "template_bovu75u", data);
-          form.reset();
-          document.getElementById("successMessage").style.display = "block";
-          setTimeout(() => {
-            document.getElementById("successMessage").style.display = "none";
-          }, 5000);
-        } catch (error) {
-          console.error("Erro ao enviar o e-mail:", error);
-          document.getElementById("errorMessage").style.display = "block";
-          setTimeout(() => {
-            document.getElementById("errorMessage").style.display = "none";
-          }, 5000);
-        } finally {
-          submitButton.disabled = false;
-          isSubmitting = false;
-        }
-      }
-
-      // Drag functionality for carousel
-      const carousel = document.getElementById('carousel');
-      let isDragging = false;
-      let startPos = 0;
-      let currentTranslate = 0;
-      let prevTranslate = 0;
-      let animationID = 0;
-      let currentIndex = 0;
-
-      carousel.addEventListener('mousedown', dragStart);
-      carousel.addEventListener('touchstart', dragStart);
-      carousel.addEventListener('mouseup', dragEnd);
-      carousel.addEventListener('touchend', dragEnd);
-      carousel.addEventListener('mousemove', drag);
-      carousel.addEventListener('touchmove', drag);
-      carousel.addEventListener('mouseleave', dragEnd);
-
-      function dragStart(event) {
-        isDragging = true;
-        startPos = getPositionX(event);
-        animationID = requestAnimationFrame(animation);
-        carousel.style.cursor = 'grabbing';
-      }
-
-      function drag(event) {
-        if (isDragging) {
-          const currentPosition = getPositionX(event);
-          currentTranslate = prevTranslate + currentPosition - startPos;
-        }
-      }
-
-      function dragEnd() {
-        isDragging = false;
-        cancelAnimationFrame(animationID);
-        
-        const movedBy = currentTranslate - prevTranslate;
-        
-        if (movedBy < -100 && currentIndex < 4) currentIndex += 1;
-        if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
-        
-        setPositionByIndex();
-        carousel.style.cursor = 'grab';
-      }
-
-      function getPositionX(event) {
-        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
-      }
-
-      function animation() {
-        setSliderPosition();
-        if (isDragging) requestAnimationFrame(animation);
-      }
-
-      function setSliderPosition() {
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
-      }
-
-      function setPositionByIndex() {
-        currentTranslate = currentIndex * -carousel.offsetWidth;
-        prevTranslate = currentTranslate;
-        setSliderPosition();
-      }
-
-      function moveToSlide(index) {
-        currentIndex = index;
-        setPositionByIndex();
-      }
-
-      carousel.style.cursor = 'grab';
-    </script>
   </body>
 </html>
