@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,500&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -8,14 +9,18 @@
     border: none; 
     color: #fff;
 }
+
 body{
     background: #250101;
     height: 100vh;
 }
+
 html{
     font-size: 62.5%;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
+
 .header{
     position: fixed;
     left: 0;
@@ -27,10 +32,12 @@ html{
     align-items: center;
     z-index: 100;
 }
+
 .sticky{
     border-bottom: 2px solid rgba(255,255,255,.1);
     background: #0f0a0a;
 }
+
 .logo{
     font-size: 2.9rem;
     font-weight: 600;
@@ -40,6 +47,7 @@ html{
     opacity: 0;
     animation: RightSlide 1s ease forwards;
 }
+
 @keyframes  RightSlide{
     0%{
         transform: translateX(-100%);
@@ -56,6 +64,7 @@ html{
     font-size: 2.5rem;
     display: none;
 }
+
 .navbar a{
     display: inline-block;
     font-size: 1.7rem;
@@ -69,6 +78,7 @@ html{
     animation: TopSlide 1s ease forwards;
     animation-delay: calc(.2s * var(--vlr));
 }
+
 @keyframes  TopSlide{
     0%{
         transform: translateY(-100px);
@@ -79,22 +89,27 @@ html{
         opacity: 1;
     }
 }
+
 .navbar a:hover,.navbar a.active{
     color: #ff2600;
 }
+
 section{
     padding: 10rem 9% 2rem;
     min-height: 100vh;
 }
+
 .about,.education,.contact,.skills{
     overflow: hidden;
 }
+
 .home {
   display: flex;
-  align-items: center; /* Alinha verticalmente no centro */
-  justify-content: center; /* Alinha horizontalmente à esquerda */
+  align-items: center;
+  justify-content: center;
   padding: 20px;
 }
+
 body {
   font-family: Arial, sans-serif;
 }
@@ -106,7 +121,7 @@ body {
 
 .content-wrapper {
   display: flex;
-  flex-direction: column; /* Alinha a imagem acima do texto */
+  flex-direction: column;
   align-items: center;
   box-shadow: 5px;
   transform: translateY(-100px);
@@ -120,19 +135,19 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top: 20px; /* Espaçamento entre a imagem e o texto */
+  margin-top: 20px;
 }
 
 .text-animation {
-  margin-top: 20px; /* Ajuste o espaçamento entre o h1 e a animação */
+  margin-top: 20px;
 }
 
 img {
-  max-width: 100%; /* Faz com que a imagem ocupe 100% da largura disponível */
-  height: auto; /* Garante que a imagem mantenha a proporção */
-  border-radius: 50%; /* Caso queira a imagem redonda */
-  max-width: 500px; /* Limita o tamanho máximo da imagem */
-  margin-bottom: 20px; /* Espaçamento entre a imagem e o texto */
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+  max-width: 500px;
+  margin-bottom: 20px;
 }
 
 .text-content {
@@ -148,7 +163,7 @@ img {
   font-size: 3.2rem;
   font-weight: 700;
   color: transparent;
-  -webkit-text-stroke: 0.7px #ff2600; /* Cor da borda do texto */
+  -webkit-text-stroke: 0.7px #ff2600;
   background: linear-gradient(#ff2600, #ff2600);
   background-repeat: no-repeat;
   -webkit-background-clip: text;
@@ -160,44 +175,42 @@ img {
   animation-delay: 1s, 1s;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .content-wrapper {
-    flex-direction: column; /* Empilha os elementos (imagem e texto) */
-    align-items: center; /* Centraliza o conteúdo */
+    flex-direction: column;
+    align-items: center;
   }
 
   img {
-    width: 80%; /* Ajusta a largura da imagem em dispositivos móveis */
-    max-width: 400px; /* Limita o tamanho máximo da imagem */
-    margin-bottom: 20px; /* Espaçamento entre a imagem e o texto */
+    width: 80%;
+    max-width: 400px;
+    margin-bottom: 20px;
   }
 
   .text-content {
-    font-size: 25px; /* Ajusta o tamanho da fonte em telas menores */
+    font-size: 25px;
   }
 
   .text-animation h2 {
-    font-size: 2rem; /* Reduz o tamanho da fonte do h2 em telas menores */
+    font-size: 2rem;
   }
 }
 
 @media (max-width: 450px) {
   .text-content {
-    font-size: 20px; /* Ajusta ainda mais o tamanho da fonte em telas muito pequenas */
+    font-size: 20px;
   }
 
   .text-animation h2 {
-    font-size: 1.6rem; /* Reduz ainda mais o tamanho da fonte do h2 */
+    font-size: 1.6rem;
   }
 
   img {
-    width: 90%; /* Ajusta a largura da imagem em telas ainda menores */
-    max-width: 350px; /* Limita o tamanho máximo da imagem */
+    width: 90%;
+    max-width: 350px;
   }
 }
 
-/* Animações */
 @keyframes textSlide {
   0% {
       background-position: -33rem 0;
@@ -224,6 +237,7 @@ img {
       opacity: 1;
   }
 }
+
 .text-animation::before{
     content: "";
     position: absolute;
@@ -237,6 +251,7 @@ img {
     TopSlide 1s ease forwards;
     animation-delay: 1s,1s;
 }
+
 @keyframes CursorSlide {
     0%,10%,100%{
         width: 0;
@@ -249,8 +264,8 @@ img {
     {
         opacity: 0;
     }
-
 }
+
 .text-content p{
     font-size: 1.4rem;
     margin: 1rem 0;
@@ -259,6 +274,7 @@ img {
     animation: leftSlide 1s ease forwards;
     animation-delay: 1.4s;
 }
+
 @keyframes leftSlide{
     0%{
         transform: translateX(100px);
@@ -269,6 +285,7 @@ img {
         opacity: 1;
     }
 }
+
 .btn-section{
     width: 32.5rem;
     height: 5rem;
@@ -278,6 +295,7 @@ img {
     margin: 2rem 0;
     position: relative;
 }
+
 .btn-section::before{
     content: "";
     position: absolute;
@@ -290,6 +308,7 @@ img {
     animation: Slide 1s ease forwards;
     animation-delay: 1.6s;
 }
+
 @keyframes Slide{
     0%{
         width: 100%;
@@ -298,7 +317,8 @@ img {
         width: 0;
     }
 }
- .btn{
+
+.btn{
     height: 100%;
     width: 15rem;
     color: #fff;
@@ -315,6 +335,7 @@ img {
     overflow: hidden;
     z-index: 1;
 }
+
 .btn::before{
     content: "";
     position: absolute;
@@ -326,24 +347,27 @@ img {
     z-index: -1;
     transition: .5s ease;
 }
+
 .btn:hover::before{
     top: 0;
 }
+
 .social-media {
     margin: 2rem 0;
-    border: 0;;
+    border: 0;
 }
 
 .social-media a {
   text-decoration: none;
 }
+
 .social-media i {
   display: inline-block;
   font-size: 2.5rem;
   background: rgba(255, 255, 255, .1);
-  border: 0; /* Remover a borda */
+  border: 0;
   padding: 0.8rem;
-  margin: 0; /* Remover margens entre os ícones */
+  margin: 0;
   border-radius: 50%;
   color: #fff;
   cursor: pointer;
@@ -354,6 +378,7 @@ img {
   transform: translateY(100px);
   opacity: 0;
 }
+
 @keyframes Bottom{
     0%{
         transform: translateY(100px);
@@ -364,6 +389,7 @@ img {
     opacity: 1;
     }
 }
+
 .social-media i::after{
     content: "";
     position: absolute;
@@ -379,6 +405,7 @@ img {
 i:hover::after{
     top: 0;
 }
+
 .home img{
     width: 30vw;
     background: rgba(255,255,255,.1);
@@ -389,6 +416,7 @@ i:hover::after{
     scale: 0;
     animation-delay: 1s;
 }
+
 @keyframes Scale{
     0%{
         scale: 0;
@@ -398,7 +426,6 @@ i:hover::after{
     }
 }
 
-/* 🔥 Responsividade Apenas para .home 🔥 */
 @media (max-width: 1024px) {
   .home {
     flex-direction: column;
@@ -493,6 +520,7 @@ i:hover::after{
     padding-bottom: 6rem;
     gap: 2rem;
 }
+
 .title{
     font-size: 5rem;
     margin-bottom: 3rem;
@@ -501,10 +529,10 @@ i:hover::after{
     transform: translateY(-100px);
     opacity: 0;
 }
+
 section.start-animation .title{
     animation: top 1s ease forwards;
 }
-
 
 @keyframes top{
     0%{
@@ -516,38 +544,40 @@ section.start-animation .title{
         opacity: 1;
     }
 }
+
 .title span{
     color: #ff2600;
 }
+
 .about img {
   width: 25rem;
-  height: auto; /* Ajusta a altura automaticamente para manter a proporção */
+  height: auto;
   background: rgba(255, 255, 255, .1);
   border: .2rem solid rgba(255, 255, 255, .3);
   border-radius: 50%;
   filter: drop-shadow(0 0 8rem #ff2600);
   scale: 0;
-  object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+  object-fit: cover;
 }
 
-/* Responsividade para telas médias (tablets) */
 @media screen and (max-width: 768px) {
-.about img {
-    width: 20rem; /* Ajusta a largura para telas menores */
-    height: auto; /* Altura se ajusta automaticamente */
-}
+  .about img {
+    width: 20rem;
+    height: auto;
+  }
 }
 
-/* Responsividade para telas pequenas (smartphones) */
 @media screen and (max-width: 480px) {
-.about img {
-    width: 15rem; /* Ajusta ainda mais para telas pequenas */
-    height: auto; /* Mantém a proporção */
+  .about img {
+    width: 15rem;
+    height: auto;
+  }
 }
-}
+
 section.start-animation .aboutImg{
     animation: scaleout 1s ease forwards;
 }
+
 @keyframes scaleout{
     0%{
        scale: 0;
@@ -556,17 +586,21 @@ section.start-animation .aboutImg{
      scale: 1;
     }
 }
+
 .text-content2{
     text-align: center;
 }
+
 .text-content2 h2{
     font-size: 2.6rem;
     transform: translatex(-100px);
     opacity: 0;
 }
+
 section.start-animation .text-content2 h2{
     animation: Right 1s ease forwards;
 }
+
 @keyframes Right{
     0%{
         transform: translatex(-100px);
@@ -577,15 +611,18 @@ section.start-animation .text-content2 h2{
         opacity: 1;
     }
 }
+
 .text-content2 p{
     font-size: 1.5rem;
     margin: 2rem 0 3rem;
     transform: translatex(100px);
     opacity: 0;
 }
+
 section.start-animation .text-content2 p{
     animation: Left 1s ease forwards;
 }
+
 @keyframes Left{
     0%{
         transform: translatex(100px);
@@ -596,6 +633,7 @@ section.start-animation .text-content2 p{
         opacity: 1;
     }
 }
+
 .text-content2 .btn{
     padding: .9rem .5rem;
     transform: translateY(100px);
@@ -605,6 +643,7 @@ section.start-animation .text-content2 p{
 section.start-animation .text-content2 .btn{
     animation: Bottoms 1s ease forwards;
 }
+
 @keyframes Bottoms{
     0%{
         transform: translateY(100px);
@@ -629,6 +668,12 @@ section.start-animation .text-content2 .btn{
 .carousel {
   display: flex;
   transition: transform 0.5s ease-in-out;
+  cursor: grab;
+  user-select: none;
+}
+
+.carousel:active {
+  cursor: grabbing;
 }
 
 .project {
@@ -645,62 +690,76 @@ section.start-animation .text-content2 .btn{
 }
 
 .project-box {
-  background-color: #ff2600;
-  padding: 20px;
-  border-radius: 15px;
+  background: linear-gradient(135deg, #ff2600 0%, #ff5733 100%);
+  padding: 25px;
+  border-radius: 20px;
   text-align: center;
   width: 100%;
-  max-width: 350px;
+  max-width: 400px;
   box-sizing: border-box;
-  transition: transform 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(255, 38, 0, 0.3);
 }
 
 .project-box:hover {
-  transform: scale(1.05);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(255, 38, 0, 0.5);
 }
 
 .project-img {
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   height: auto;
   border-radius: 15px;
   background-color: white;
-  padding: 5px;
-  transition: all 0.3s ease;
+  padding: 8px;
+  transition: all 0.4s ease;
   cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 .project-img:hover {
-  max-width: 350px;
-  border-radius: 25px;
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 .project-description {
-  color: rgb(83, 82, 82);
-  margin-bottom: 15px;
+  color: #ffffff;
+  margin: 20px 0;
   font-size: 16px;
   text-align: center;
+  line-height: 1.6;
+}
+
+.project-description h3 {
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 2.2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .technologies {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 12px;
+  margin: 20px 0;
 }
 
 .tech-logo {
-  width: 40px;
+  width: 45px;
   height: auto;
-  padding: 5px;
-  border-radius: 8px;
+  padding: 6px;
+  border-radius: 10px;
   background-color: white;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
 }
 
 .tech-logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Botões do Projeto */
@@ -708,53 +767,66 @@ section.start-animation .text-content2 .btn{
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-top: 10px;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .github-button, .site-button, .youtube-button {
   display: inline-flex;
   align-items: center;
   text-decoration: none;
-  padding: 8px 16px;
-  border-radius: 5px;
+  padding: 10px 18px;
+  border-radius: 8px;
   font-weight: bold;
   font-size: 14px;
-  transition: background-color 0.3s;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .github-button {
-  background-color: #333;
+  background-color: #24292f;
   color: white;
 }
 
 .github-button:hover {
-  background-color: #24292f;
+  background-color: #1a1f24;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(36, 41, 47, 0.4);
 }
 
 .site-button {
   background-color: white;
-  color: black;
-  border: 2px solid black;
+  color: #ff2600;
+  border: 2px solid #ff2600;
 }
 
 .site-button:hover {
-  background-color: #8d8b8b;
+  background-color: #ff2600;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 38, 0, 0.4);
 }
 
 .youtube-button {
-  background-color: #000000;
+  background-color: #FF0000;
   color: white;
 }
 
 .youtube-button:hover {
-  background-color: #5e0303;
+  background-color: #CC0000;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 0, 0, 0.4);
 }
 
 .github-logo-small, .www-logo-small, .youtube-logo-small {
-  width: 18px;
+  width: 20px;
   height: auto;
   margin-right: 8px;
+  filter: brightness(0) invert(1);
+}
+
+.site-button .www-logo-small {
+  filter: none;
 }
 
 /* Navegação */
@@ -762,22 +834,26 @@ section.start-animation .text-content2 .btn{
   margin-top: 30px;
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 .navigation button {
   background-color: #ff2600;
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 12px 18px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s;
+  border-radius: 8px;
+  transition: all 0.3s ease;
   font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(255, 38, 0, 0.3);
 }
 
 .navigation button:hover {
   background-color: #ff5733;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(255, 38, 0, 0.5);
 }
 
 /* 🔥 Responsividade 🔥 */
@@ -789,6 +865,7 @@ section.start-animation .text-content2 .btn{
   .project-box {
     width: 90%;
     max-width: 400px;
+    padding: 20px;
   }
 
   .project-img {
@@ -796,61 +873,63 @@ section.start-animation .text-content2 .btn{
   }
 
   .tech-logo {
-    width: 35px;
+    width: 38px;
   }
 
   .github-button, .site-button, .youtube-button {
-    font-size: 12px;
-    padding: 7px 14px;
+    font-size: 13px;
+    padding: 8px 15px;
   }
 }
 
 @media (max-width: 480px) {
   .project-box {
     width: 95%;
-    padding: 15px;
+    padding: 18px;
   }
 
   .project-img {
-    max-width: 200px;
+    max-width: 220px;
   }
 
   .tech-logo {
-    width: 30px;
+    width: 32px;
   }
 
   .github-button, .site-button, .youtube-button {
-    font-size: 11px;
-    padding: 6px 12px;
+    font-size: 12px;
+    padding: 7px 13px;
   }
 
   .github-logo-small, .www-logo-small, .youtube-logo-small {
-    width: 15px;
+    width: 16px;
+  }
+
+  .navigation button {
+    padding: 10px 14px;
+    font-size: 14px;
   }
 }
 
-/* skill-content */
+/* ============================================
+   SKILLS SECTION - MODERNIZADA
+   ============================================ */
+
 .skills {
-  padding: 50px 20px;
+  padding: 80px 20px;
   text-align: center;
-  position: relative;
+  background: rgb(19, 2, 2);
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  max-width: 200rem;
-  margin: 1rem auto 3rem auto;
-  transform: translateY(-100px);
-  opacity: 0;
-  animation: TopSlide 1s ease forwards;
-  animation-delay: 2s;
 }
 
 .skills .title {
   font-size: 5rem;
   font-weight: 600;
-  margin-bottom: 200px;
+  margin-bottom: 60px;
   text-align: center;
   transform: translateY(-50px);
   opacity: 0;
@@ -861,45 +940,141 @@ section.start-animation .text-content2 .btn{
   color: #ff2600;
 }
 
-/* 🔥 Responsividade 🔥 */
-@media (max-width: 1024px) {
-  .skills {
-    height: auto;
-    padding: 40px 20px;
-  }
+.skills-container {
+  max-width: 1400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin: 0 auto;
+}
 
-  .skills .title {
-    font-size: 4rem;
-    margin-bottom: 150px;
+.skills-category {
+  width: 100%;
+}
+
+.category-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 15px;
+}
+
+.category-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, #ff2600, #ff5733);
+  border-radius: 2px;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding: 0 20px;
+}
+
+.skill-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.skill-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 38, 0, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.skill-card:hover::before {
+  left: 100%;
+}
+
+.skill-card:hover {
+  transform: translateY(-15px) scale(1.05);
+  border-color: #ff2600;
+  box-shadow: 0 15px 40px rgba(255, 38, 0, 0.4);
+  background: rgba(255, 38, 0, 0.1);
+}
+
+.skill-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 5px 15px rgba(255, 38, 0, 0.3));
+}
+
+.skill-card:hover .skill-icon {
+  transform: scale(1.2) rotate(10deg);
+}
+
+.skill-card h4 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0;
+}
+
+/* Soft Skills Específicas */
+.skill-card.soft-skill i {
+  font-size: 6rem;
+  color: #ff2600;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.skill-card.soft-skill:hover i {
+  transform: scale(1.2);
+  color: #ff5733;
+}
+
+/* Animações escalonadas */
+.skill-card:nth-child(1) { animation-delay: 0.1s; }
+.skill-card:nth-child(2) { animation-delay: 0.2s; }
+.skill-card:nth-child(3) { animation-delay: 0.3s; }
+.skill-card:nth-child(4) { animation-delay: 0.4s; }
+.skill-card:nth-child(5) { animation-delay: 0.5s; }
+.skill-card:nth-child(6) { animation-delay: 0.6s; }
+.skill-card:nth-child(7) { animation-delay: 0.7s; }
+.skill-card:nth-child(8) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (max-width: 768px) {
-  .skills {
-    height: auto;
-    padding: 30px 15px;
-  }
-
-  .skills .title {
-    font-size: 3rem;
-    margin-bottom: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .skills {
-    height: auto;
-    padding: 20px 10px;
-  }
-
-  .skills .title {
-    font-size: 2.5rem;
-    margin-bottom: 80px;
-  }
-}
-
-
-/* Animação do título */
 @keyframes top {
   0% {
     transform: translateY(-100px);
@@ -911,113 +1086,80 @@ section.start-animation .text-content2 .btn{
   }
 }
 
-.skills .title span {
-  color: #f50606;
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 25px;
+  }
 }
 
-/* Skills Wrapper */
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 0 15px;
-}
-
-.skill-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-/* Skill Box */
-.skill-box {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-  opacity: 0;
-  animation: TopSlide 1s ease forwards;
-  animation-delay: 2s
-}
-
-.skill-box .single-skill {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.skill-logo-container {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.skill-logo {
-  width: 40px;
-  height: 40px;
-}
-
-.topic {
-  font-size: 16px;
-  font-weight: bold;
-  color: #555;
-}
-
-/* Progress Bars */
-.bar-side {
-  height: 10px;
-  background-color: #ddd;
-  border-radius: 5px;
-  overflow: hidden;
-  margin-bottom: auto;
-}
-
-.bar {
-  height: 100%;
-  transition: width 0.5s ease-in-out;
-  border-radius: 5px;
-}
-
-.bar-1 {
-  width: 90%; /* HTML e Java */
-  background-color: #e98809;
-}
-
-.bar-2 {
-  width: 80%; /* CSS */
-  background-color: #0212f3;
-}
-
-.bar-3 {
-  width: 70%; /* JavaScript */
-  background-color: #ebc90d;
-}
-
-.bar-4 {
-  width: 95%; /* Python */
-  background-color: #ebc90d;
-}
-
-.bar-5 {
-  width: 90%; /* Spring */
-  background-color: #08f114;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .skill-box {
-    max-width: 100%;
+@media (max-width: 768px) {
+  .skills .title {
+    font-size: 3.5rem;
+    margin-bottom: 40px;
   }
 
+  .category-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-card {
+    padding: 30px 15px;
+  }
+
+  .skill-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .skill-card.soft-skill i {
+    font-size: 5rem;
+  }
+
+  .skill-card h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
   .skills .title {
-    font-size: 28px;
+    font-size: 2.8rem;
+  }
+
+  .category-title {
+    font-size: 2rem;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .skill-card {
+    padding: 25px 10px;
+  }
+
+  .skill-icon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .skill-card.soft-skill i {
+    font-size: 4rem;
+  }
+
+  .skill-card h4 {
+    font-size: 1.3rem;
   }
 }
 
@@ -1044,7 +1186,7 @@ section.contact {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem; /* Adiciona espaçamento entre os campos */
+  gap: 1rem;
   margin-bottom: 1.5rem;
   max-width: 600px;
 }
@@ -1077,8 +1219,8 @@ section.start-animation textarea {
 }
 
 .input-box input {
-  width: 100%; /* Faz o campo ocupar toda a largura disponível */
-  max-width: 600px; /* Limita o máximo de largura para 600px */
+  width: 100%;
+  max-width: 600px;
 }
 
 input::placeholder,
@@ -1135,7 +1277,6 @@ textarea {
   box-shadow: 0 0 10px #ff2600, 0 0 30px #ff2600;
 }
 
-/* Animação dos campos de input */
 @keyframes Right {
   to {
     opacity: 1;
@@ -1157,7 +1298,6 @@ textarea {
   }
 }
 
-/* Exibição da mensagem de sucesso */
 #successMessage {
   display: none;
   color: #ff2600;
@@ -1173,10 +1313,10 @@ textarea {
   transform: translateY(0) !important;
   animation: Bottom 10s ease forwards;
   animation-delay: 2s;
-  width: auto; /* Faz o botão ajustar seu tamanho automaticamente */
-  max-width: 100%; /* Impede que o botão ultrapasse a largura da tela */
-  padding: 1rem 2rem; /* Ajusta o padding do botão */
-  box-sizing: border-box; /* Garante que o padding não afete a largura total */
+  width: auto;
+  max-width: 100%;
+  padding: 1rem 2rem;
+  box-sizing: border-box;
 }
 
 @keyframes Bottom {
@@ -1192,22 +1332,21 @@ textarea {
 
 @media(max-width: 768px) {
   .btn.show-btn {
-    padding: 1rem 1.5rem; /* Ajusta o padding em telas menores */
-    font-size: 1.2rem; /* Ajusta o tamanho da fonte */
-    width: 90%; /* Faz o botão ocupar 90% da largura disponível */
-    max-width: 400px; /* Limita a largura do botão */
+    padding: 1rem 1.5rem;
+    font-size: 1.2rem;
+    width: 90%;
+    max-width: 400px;
   }
 }
 
 @media(max-width: 450px) {
   .btn.show-btn {
-    font-size: 1rem; /* Ajusta o tamanho da fonte para telas muito pequenas */
-    width: 80%; /* Faz o botão ocupar 80% da largura disponível */
+    font-size: 1rem;
+    width: 80%;
   }
 }
 
 /* footer */
-
 footer{
     background: #080707;
     padding: 2rem 9%;
@@ -1216,9 +1355,11 @@ footer{
     align-items: center;
     flex-wrap: wrap;
 }
+
 footer p{
     font-size: 1.6rem;
 }
+
 footer i{
     display: inline-flex;
     justify-content: center;
@@ -1236,6 +1377,7 @@ footer i{
         font-size: 55;
     }
 }
+
 @media(max-width:991px){
     .header{
         padding: 2rem 9%;
@@ -1250,6 +1392,7 @@ footer i{
         padding: 2rem 3%;
     }
 }
+
 @media(max-width:768px){
     #menu{
         display: block;
@@ -1296,6 +1439,7 @@ footer i{
         height: 20rem;
     }
 }
+
 @media(max-width:450px){
     html{
         font-size: 50%;
@@ -1381,16 +1525,16 @@ footer i{
 }
 
 .highlighted-link:hover {
-  color: #ff2a00; /* cor de destaque ao passar o mouse */
-  transform: scale(1.1); /* efeito de aumento suave */
+  color: #ff2a00;
+  transform: scale(1.1);
 }
 
 @keyframes smoothColorChange {
   0% {
-    color: #ff2600; /* cor inicial */
+    color: #ff2600;
   }
   100% {
-    color: #ff2a00; /* cor final */
+    color: #ff2a00;
   }
 }
 
@@ -1408,7 +1552,7 @@ footer i{
 }
 
 #typing-text {
-  border-right: 2px solid #ffffff; /* Efeito de cursor */
+  border-right: 2px solid #ffffff;
   padding-right: 5px;
   display: inline-block;
   white-space: nowrap;
@@ -1418,29 +1562,28 @@ footer i{
   margin-top: 20px;
 }
 
-/* Responsividade para #typing-text */
 @media (max-width: 1024px) {
   #typing-text {
-    font-size: 28px;  /* Ajusta o tamanho da fonte para telas menores */
+    font-size: 28px;
     padding-right: 4px;
   }
 }
 
 @media (max-width: 768px) {
   #typing-text {
-    font-size: 24px;  /* Ajusta o tamanho da fonte para telas médias */
+    font-size: 24px;
     padding-right: 3px;
   }
 }
 
 @media (max-width: 450px) {
   #typing-text {
-    font-size: 18px;  /* Ajusta o tamanho da fonte para telas pequenas */
+    font-size: 18px;
     padding-right: 2px;
   }
 }
 
 .highlight {
-  color: #ff2600; /* Altere para a cor desejada */
+  color: #ff2600;
   font-weight: bold;
 }
