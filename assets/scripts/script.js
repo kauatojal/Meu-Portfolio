@@ -60,19 +60,18 @@ document.addEventListener('DOMContentLoaded', function () {
     // Selecionando o formulário e a mensagem de sucesso
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
-    const errorMessage = document.getElementById('errorMessage');  // Novo elemento de mensagem de erro
+    const errorMessage = document.getElementById('errorMessage');
 
     // Função para validar email
     function validateEmail(email) {
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA0-9]{2,6}$/;
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,6}$/;
         return emailPattern.test(email);
     }
 
     // Função para enviar o formulário via EmailJS
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); // Impede o comportamento padrão do formulário (recarregar a página)
+        event.preventDefault();
 
-        // Coletando os dados do formulário
         const userName = document.getElementById('user_name').value;
         const userEmail = document.getElementById('user_email').value;
         const userSubject = document.getElementById('user_subject').value;
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // Validação de email
         if (!validateEmail(userEmail)) {
             alert("Por favor, insira um email válido.");
-            return; // Impede o envio do formulário se o email for inválido
+            return;
         }
 
         // Enviando o email via EmailJS
@@ -93,19 +92,38 @@ document.addEventListener('DOMContentLoaded', function () {
         })
             .then(function (response) {
                 console.log('Success!', response);
-                successMessage.style.display = 'block'; // Exibe a mensagem de sucesso
-                errorMessage.style.display = 'none';  // Esconde a mensagem de erro
-                form.reset(); // Limpa o formulário após o envio
+                successMessage.style.display = 'block';
+                errorMessage.style.display = 'none';
+                form.reset();
+                
+                // Esconde a mensagem após 5 segundos
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
             })
             .catch(function (error) {
                 console.error('Error:', error);
-                errorMessage.style.display = 'block';  // Exibe a mensagem de erro
-                successMessage.style.display = 'none'; // Esconde a mensagem de sucesso
+                errorMessage.style.display = 'block';
+                successMessage.style.display = 'none';
+                
+                // Esconde a mensagem após 5 segundos
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 5000);
             });
     });
 
+    // Animação de texto digitando
     const textElement = document.getElementById('typing-text');
-    const texts = ["Desenvolvedor de Software", "Desenvolvedor Full-Stack", "Web Designer", "Universitário", "Flamenguista", "Gamer", "Entusiasta dos E-Sports"];
+    const texts = [
+        "Desenvolvedor de Software", 
+        "Desenvolvedor Full-Stack", 
+        "Web Designer", 
+        "Universitário", 
+        "Flamenguista", 
+        "Gamer", 
+        "Entusiasta dos E-Sports"
+    ];
     let currentTextIndex = 0;
     let index = 0;
     let isTyping = true;
@@ -132,23 +150,86 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     setInterval(typeAndErase, 120);
+
+    // ==============================================
+    // CARROSSEL COM DRAG - FUNCIONALIDADE COMPLETA
+    // ==============================================
+    
+    const carousel = document.getElementById('carousel');
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+    let currentIndex = 0;
+
+    // Event Listeners para Drag
+    carousel.addEventListener('mousedown', dragStart);
+    carousel.addEventListener('touchstart', dragStart);
+    carousel.addEventListener('mouseup', dragEnd);
+    carousel.addEventListener('touchend', dragEnd);
+    carousel.addEventListener('mousemove', drag);
+    carousel.addEventListener('touchmove', drag);
+    carousel.addEventListener('mouseleave', dragEnd);
+
+    function dragStart(event) {
+        isDragging = true;
+        startPos = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+        carousel.style.cursor = 'grabbing';
+    }
+
+    function drag(event) {
+        if (isDragging) {
+            const currentPosition = getPositionX(event);
+            currentTranslate = prevTranslate + currentPosition - startPos;
+        }
+    }
+
+    function dragEnd() {
+        isDragging = false;
+        cancelAnimationFrame(animationID);
+        
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Navega para o próximo ou anterior se arrastou o suficiente
+        if (movedBy < -100 && currentIndex < 4) currentIndex += 1;
+        if (movedBy > 100 && currentIndex > 0) currentIndex -= 1;
+        
+        setPositionByIndex();
+        carousel.style.cursor = 'grab';
+    }
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+
+    function animation() {
+        setSliderPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
+
+    function setSliderPosition() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function setPositionByIndex() {
+        currentTranslate = currentIndex * -carousel.offsetWidth;
+        prevTranslate = currentTranslate;
+        setSliderPosition();
+    }
+
+    // Função global para navegação por botões
+    window.moveToSlide = function(index) {
+        currentIndex = index;
+        setPositionByIndex();
+    }
+
+    // Define cursor inicial
+    carousel.style.cursor = 'grab';
+
+    // Atualiza posição ao redimensionar a janela
+    window.addEventListener('resize', () => {
+        setPositionByIndex();
+    });
 });
-
-let currentSlide = 0;
-
-function moveSlide(direction) {
-    const slides = document.querySelectorAll('.column');
-    const totalSlides = slides.length;
-    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-
-    const carousel = document.querySelector('.carousel');
-    carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
-}
-const carousel = document.querySelector('.carousel');
-const projects = document.querySelectorAll('.project');
-
-function moveToSlide(index) {
-    const width = projects[0].clientWidth;
-    // Ajuste a transformação do carrossel para deslizar até o slide correto
-    carousel.style.transform = `translateX(-${index * width}px)`;
-}
