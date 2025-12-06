@@ -145,117 +145,99 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(typeAndErase, 120);
 
     // ==============================================
-    // CARROSSEL COM DRAG - VERSÃO CORRIGIDA
+    // CARROSSEL COM DRAG - VERSÃO DEFINITIVA
     // ==============================================
     
     const carousel = document.getElementById('carousel');
-    const projects = document.querySelectorAll('.project');
     let isDragging = false;
-    let startX = 0;
-    let scrollLeft = 0;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
     let currentIndex = 0;
+    const slides = document.querySelectorAll('.project');
+    const totalSlides = slides.length;
 
-    // Define cursor inicial
     carousel.style.cursor = 'grab';
 
-    // Mouse Down - Início do drag
-    carousel.addEventListener('mousedown', (e) => {
+    // Eventos de Mouse
+    carousel.addEventListener('mousedown', dragStart);
+    carousel.addEventListener('mouseup', dragEnd);
+    carousel.addEventListener('mouseleave', dragEnd);
+    carousel.addEventListener('mousemove', drag);
+
+    // Eventos de Touch
+    carousel.addEventListener('touchstart', dragStart);
+    carousel.addEventListener('touchend', dragEnd);
+    carousel.addEventListener('touchmove', drag);
+
+    // Previne comportamento padrão de arrastar imagens
+    carousel.addEventListener('dragstart', (e) => e.preventDefault());
+
+    function dragStart(event) {
         isDragging = true;
+        startPos = getPositionX(event);
         carousel.style.cursor = 'grabbing';
-        startX = e.pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
-        carousel.style.transition = 'none'; // Remove transição durante drag
-    });
-
-    // Mouse Leave - Cancela drag se sair
-    carousel.addEventListener('mouseleave', () => {
-        if (isDragging) {
-            isDragging = false;
-            carousel.style.cursor = 'grab';
-            carousel.style.transition = 'transform 0.5s ease-in-out';
-            snapToNearestSlide();
-        }
-    });
-
-    // Mouse Up - Fim do drag
-    carousel.addEventListener('mouseup', () => {
-        if (isDragging) {
-            isDragging = false;
-            carousel.style.cursor = 'grab';
-            carousel.style.transition = 'transform 0.5s ease-in-out';
-            snapToNearestSlide();
-        }
-    });
-
-    // Mouse Move - Durante o drag
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        e.preventDefault();
-        const x = e.pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2; // Multiplica por 2 para mais sensibilidade
-        const newTransform = scrollLeft - walk;
-        carousel.style.transform = `translateX(${newTransform}px)`;
-    });
-
-    // Touch Events para mobile
-    carousel.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].pageX - carousel.offsetLeft;
-        scrollLeft = carousel.scrollLeft;
         carousel.style.transition = 'none';
-    });
+    }
 
-    carousel.addEventListener('touchend', () => {
-        if (isDragging) {
-            isDragging = false;
-            carousel.style.transition = 'transform 0.5s ease-in-out';
-            snapToNearestSlide();
-        }
-    });
-
-    carousel.addEventListener('touchmove', (e) => {
+    function drag(event) {
         if (!isDragging) return;
-        const x = e.touches[0].pageX - carousel.offsetLeft;
-        const walk = (x - startX) * 2;
-        const newTransform = scrollLeft - walk;
-        carousel.style.transform = `translateX(${newTransform}px)`;
-    });
-
-    // Função para ajustar ao slide mais próximo
-    function snapToNearestSlide() {
-        const containerWidth = carousel.offsetWidth;
-        const currentTransform = getTranslateX();
-        const nearestIndex = Math.round(Math.abs(currentTransform) / containerWidth);
         
-        // Limita o índice entre 0 e 4
-        currentIndex = Math.max(0, Math.min(nearestIndex, 4));
+        event.preventDefault();
+        const currentPosition = getPositionX(event);
+        const diff = currentPosition - startPos;
+        currentTranslate = prevTranslate + diff;
         
-        moveToSlide(currentIndex);
+        setSliderPosition();
     }
 
-    // Pega o valor atual de translateX
-    function getTranslateX() {
-        const style = window.getComputedStyle(carousel);
-        const matrix = style.transform || style.webkitTransform || style.mozTransform;
+    function dragEnd() {
+        if (!isDragging) return;
         
-        if (matrix === 'none' || typeof matrix === 'undefined') {
-            return 0;
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+        
+        const movedBy = currentTranslate - prevTranslate;
+        
+        // Determina direção e mudança de slide
+        if (movedBy < -100 && currentIndex < totalSlides - 1) {
+            currentIndex++;
+        } else if (movedBy > 100 && currentIndex > 0) {
+            currentIndex--;
         }
         
-        const matrixValues = matrix.match(/matrix.*\((.+)\)/)[1].split(', ');
-        return parseFloat(matrixValues[4]);
+        setPositionByIndex();
     }
 
-    // Função global para navegação por botões
+    function getPositionX(event) {
+        return event.type.includes('mouse') 
+            ? event.pageX 
+            : event.touches[0].clientX;
+    }
+
+    function setSliderPosition() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function setPositionByIndex() {
+        const slideWidth = carousel.offsetWidth;
+        currentTranslate = currentIndex * -slideWidth;
+        prevTranslate = currentTranslate;
+        carousel.style.transition = 'transform 0.5s ease-in-out';
+        setSliderPosition();
+    }
+
+    // Função global para botões de navegação
     window.moveToSlide = function(index) {
         currentIndex = index;
-        const containerWidth = carousel.offsetWidth;
-        carousel.style.transition = 'transform 0.5s ease-in-out';
-        carousel.style.transform = `translateX(-${currentIndex * containerWidth}px)`;
+        setPositionByIndex();
     }
 
-    // Atualiza posição ao redimensionar
+    // Atualiza ao redimensionar
     window.addEventListener('resize', () => {
-        moveToSlide(currentIndex);
+        setPositionByIndex();
     });
+
+    // Inicializa posição
+    setPositionByIndex();
 });

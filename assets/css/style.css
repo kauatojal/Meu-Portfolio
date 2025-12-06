@@ -658,11 +658,11 @@ section.start-animation .text-content2 .btn{
 /* projects section */
 .carousel-container {
   position: relative;
-  width: 90%;
+  width: 100%;
   max-width: 900px;
   margin: auto;
   text-align: center;
-  overflow: hidden;
+  overflow: hidden; /* IMPORTANTE! */
 }
 
 .carousel {
@@ -670,6 +670,7 @@ section.start-animation .text-content2 .btn{
   transition: transform 0.5s ease-in-out;
   cursor: grab;
   user-select: none;
+  width: 100%;
 }
 
 .carousel:active {
@@ -677,16 +678,14 @@ section.start-animation .text-content2 .btn{
 }
 
 .project {
-  flex: 0 0 100%;
+  flex: 0 0 100%; /* IMPORTANTE - cada slide ocupa 100% */
+  min-width: 100%; /* IMPORTANTE */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 20px;
-  opacity: 0;
-  transform: translateY(-30px);
-  animation: TopSlide 1s ease forwards;
-  animation-delay: calc(.2s * var(--vlr));
+  box-sizing: border-box;
 }
 
 .project-box {
