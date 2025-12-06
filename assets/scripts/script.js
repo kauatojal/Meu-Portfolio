@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // ============================================
+    // NAVBAR E MENU
+    // ============================================
     const menubar = document.querySelector('#menu');
     const Navbar = document.querySelector('.navbar');
     menubar.onclick = () => {
@@ -6,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
         Navbar.classList.toggle('active');
     }
 
+    // ============================================
+    // SCROLL E NAVEGAÇÃO
+    // ============================================
     const section = document.querySelectorAll('section');
     const navlink = document.querySelectorAll('header nav a');
     window.onscroll = () => {
@@ -28,12 +34,12 @@ document.addEventListener('DOMContentLoaded', function () {
         Navbar.classList.remove('active');
     }
 
+    // ============================================
+    // BOTÃO VOLTAR AO TOPO
+    // ============================================
     document.getElementById('backToTop').addEventListener('click', function (e) {
         e.preventDefault();
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     window.addEventListener('scroll', function () {
@@ -54,7 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Inicializando o EmailJS
+    // ============================================
+    // EMAILJS - FORMULÁRIO DE CONTATO
+    // ============================================
     emailjs.init("etN9nKcU-6xqOc7nd");
 
     const form = document.getElementById('contactForm');
@@ -90,23 +98,19 @@ document.addEventListener('DOMContentLoaded', function () {
                 successMessage.style.display = 'block';
                 errorMessage.style.display = 'none';
                 form.reset();
-                
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
+                setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
             })
             .catch(function (error) {
                 console.error('Error:', error);
                 errorMessage.style.display = 'block';
                 successMessage.style.display = 'none';
-                
-                setTimeout(() => {
-                    errorMessage.style.display = 'none';
-                }, 5000);
+                setTimeout(() => { errorMessage.style.display = 'none'; }, 5000);
             });
     });
 
-    // Animação de texto
+    // ============================================
+    // ANIMAÇÃO DE TEXTO DIGITANDO
+    // ============================================
     const textElement = document.getElementById('typing-text');
     const texts = [
         "Desenvolvedor de Software", 
@@ -123,7 +127,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function typeAndErase() {
         const currentText = texts[currentTextIndex];
-
         if (isTyping) {
             if (index < currentText.length) {
                 textElement.textContent += currentText.charAt(index);
@@ -144,128 +147,134 @@ document.addEventListener('DOMContentLoaded', function () {
 
     setInterval(typeAndErase, 120);
 
-    // ==============================================
-    // CARROSSEL COM DRAG - VERSÃO FINAL CORRIGIDA
-    // ==============================================
+    // ============================================
+    // CARROSSEL COM DRAG - IMPLEMENTAÇÃO LIMPA
+    // ============================================
     
     const carousel = document.getElementById('carousel');
-    const slides = document.querySelectorAll('.project');
     
-    let isDragging = false;
-    let startX = 0;
-    let currentTranslate = 0;
-    let prevTranslate = 0;
-    let currentIndex = 0;
-    const totalSlides = slides.length;
-
-    // Configuração inicial
+    // Estado do carrossel
+    let slideAtual = 0;
+    const totalDeSlides = 5;
+    
+    // Controle de drag
+    let estouArrastando = false;
+    let posicaoInicialDoMouse = 0;
+    let movimentoAtual = 0;
+    
+    // Estilo inicial
     carousel.style.cursor = 'grab';
+    carousel.style.willChange = 'transform';
     
-    // Previne comportamento padrão
-    carousel.addEventListener('dragstart', (e) => e.preventDefault());
+    // ========== PREVENIR COMPORTAMENTOS INDESEJADOS ==========
+    carousel.addEventListener('dragstart', e => e.preventDefault());
+    carousel.addEventListener('selectstart', e => e.preventDefault());
     
-    // ============ EVENTOS DE MOUSE ============
-    carousel.addEventListener('mousedown', (e) => {
-        isDragging = true;
-        startX = e.clientX;
+    // ========== MOUSE: COMEÇAR A ARRASTAR ==========
+    carousel.addEventListener('mousedown', function(evento) {
+        estouArrastando = true;
+        posicaoInicialDoMouse = evento.clientX;
         carousel.style.cursor = 'grabbing';
-        carousel.style.transition = 'none'; // Remove transição durante drag
-    });
-
-    carousel.addEventListener('mousemove', (e) => {
-        if (!isDragging) return;
-        
-        e.preventDefault();
-        const currentX = e.clientX;
-        const diff = currentX - startX;
-        currentTranslate = prevTranslate + diff;
-        
-        // Aplica o movimento em tempo real
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
-    });
-
-    carousel.addEventListener('mouseup', () => {
-        finishDrag();
-    });
-
-    carousel.addEventListener('mouseleave', () => {
-        if (isDragging) {
-            finishDrag();
-        }
-    });
-
-    // ============ EVENTOS DE TOUCH (Mobile) ============
-    carousel.addEventListener('touchstart', (e) => {
-        isDragging = true;
-        startX = e.touches[0].clientX;
         carousel.style.transition = 'none';
     });
-
-    carousel.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
+    
+    // ========== MOUSE: ARRASTAR (SÓ SE ESTIVER PRESSIONADO) ==========
+    window.addEventListener('mousemove', function(evento) {
+        // SÓ EXECUTA SE ESTIVER REALMENTE ARRASTANDO!
+        if (!estouArrastando) return;
         
-        const currentX = e.touches[0].clientX;
-        const diff = currentX - startX;
-        currentTranslate = prevTranslate + diff;
+        const posicaoAtualDoMouse = evento.clientX;
+        const diferencaDeMovimento = posicaoAtualDoMouse - posicaoInicialDoMouse;
         
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
+        const larguraDoSlide = carousel.offsetWidth;
+        const posicaoBaseDoSlide = -slideAtual * larguraDoSlide;
+        movimentoAtual = posicaoBaseDoSlide + diferencaDeMovimento;
+        
+        carousel.style.transform = `translateX(${movimentoAtual}px)`;
     });
-
-    carousel.addEventListener('touchend', () => {
-        finishDrag();
-    });
-
-    // ============ FUNÇÃO PARA FINALIZAR DRAG ============
-    function finishDrag() {
-        if (!isDragging) return;
+    
+    // ========== MOUSE: SOLTAR ==========
+    window.addEventListener('mouseup', function(evento) {
+        // SÓ EXECUTA SE ESTAVA ARRASTANDO!
+        if (!estouArrastando) return;
         
-        isDragging = false;
+        estouArrastando = false;
         carousel.style.cursor = 'grab';
         
-        // Calcula o movimento feito
-        const movedBy = currentTranslate - prevTranslate;
-        const slideWidth = carousel.offsetWidth;
+        const posicaoFinalDoMouse = evento.clientX;
+        const diferencaTotal = posicaoFinalDoMouse - posicaoInicialDoMouse;
+        const larguraDoSlide = carousel.offsetWidth;
         
-        // Define threshold (30% da largura do slide)
-        const threshold = slideWidth * 0.3;
-        
-        // Determina se deve mudar de slide
-        if (movedBy < -threshold && currentIndex < totalSlides - 1) {
-            currentIndex++;
-        } else if (movedBy > threshold && currentIndex > 0) {
-            currentIndex--;
+        // Mudou mais de 25% da tela? Então muda de slide
+        if (diferencaTotal < -(larguraDoSlide * 0.25) && slideAtual < totalDeSlides - 1) {
+            slideAtual++;
+        } else if (diferencaTotal > (larguraDoSlide * 0.25) && slideAtual > 0) {
+            slideAtual--;
         }
         
-        // Move para o slide correto
-        goToSlide(currentIndex);
-    }
-
-    // ============ FUNÇÃO PARA IR A UM SLIDE ============
-    function goToSlide(index) {
-        currentIndex = index;
-        const slideWidth = carousel.offsetWidth;
-        
-        // Calcula a posição correta
-        currentTranslate = -currentIndex * slideWidth;
-        prevTranslate = currentTranslate;
-        
-        // Aplica transição suave
-        carousel.style.transition = 'transform 0.3s ease-out';
-        carousel.style.transform = `translateX(${currentTranslate}px)`;
-    }
-
-    // ============ FUNÇÃO GLOBAL PARA BOTÕES ============
-    window.moveToSlide = function(index) {
-        // Atualiza TODAS as variáveis necessárias
-        currentIndex = index;
-        goToSlide(index);
-    }
-
-    // ============ ATUALIZA AO REDIMENSIONAR ============
-    window.addEventListener('resize', () => {
-        goToSlide(currentIndex);
+        irParaSlide(slideAtual);
     });
-
-    // ============ INICIALIZA ============
-    goToSlide(0);
+    
+    // ========== TOUCH (MOBILE): COMEÇAR ==========
+    carousel.addEventListener('touchstart', function(evento) {
+        estouArrastando = true;
+        posicaoInicialDoMouse = evento.touches[0].clientX;
+        carousel.style.transition = 'none';
+    });
+    
+    // ========== TOUCH (MOBILE): ARRASTAR ==========
+    window.addEventListener('touchmove', function(evento) {
+        if (!estouArrastando) return;
+        
+        const posicaoAtualDoMouse = evento.touches[0].clientX;
+        const diferencaDeMovimento = posicaoAtualDoMouse - posicaoInicialDoMouse;
+        
+        const larguraDoSlide = carousel.offsetWidth;
+        const posicaoBaseDoSlide = -slideAtual * larguraDoSlide;
+        movimentoAtual = posicaoBaseDoSlide + diferencaDeMovimento;
+        
+        carousel.style.transform = `translateX(${movimentoAtual}px)`;
+    });
+    
+    // ========== TOUCH (MOBILE): SOLTAR ==========
+    window.addEventListener('touchend', function(evento) {
+        if (!estouArrastando) return;
+        
+        estouArrastando = false;
+        
+        const larguraDoSlide = carousel.offsetWidth;
+        const posicaoEsperada = -slideAtual * larguraDoSlide;
+        const diferenca = movimentoAtual - posicaoEsperada;
+        
+        if (diferenca < -(larguraDoSlide * 0.25) && slideAtual < totalDeSlides - 1) {
+            slideAtual++;
+        } else if (diferenca > (larguraDoSlide * 0.25) && slideAtual > 0) {
+            slideAtual--;
+        }
+        
+        irParaSlide(slideAtual);
+    });
+    
+    // ========== FUNÇÃO PARA IR A UM SLIDE ESPECÍFICO ==========
+    function irParaSlide(numeroDoSlide) {
+        slideAtual = numeroDoSlide;
+        const larguraDoSlide = carousel.offsetWidth;
+        movimentoAtual = -slideAtual * larguraDoSlide;
+        
+        carousel.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        carousel.style.transform = `translateX(${movimentoAtual}px)`;
+    }
+    
+    // ========== FUNÇÃO GLOBAL PARA OS BOTÕES NUMÉRICOS ==========
+    window.moveToSlide = function(indice) {
+        irParaSlide(indice);
+    }
+    
+    // ========== ATUALIZAR AO REDIMENSIONAR JANELA ==========
+    window.addEventListener('resize', function() {
+        irParaSlide(slideAtual);
+    });
+    
+    // ========== INICIALIZAR NA POSIÇÃO CORRETA ==========
+    irParaSlide(0);
 });
