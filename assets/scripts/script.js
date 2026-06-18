@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
         "Desenvolvedor de Software", 
         "Desenvolvedor Full-Stack", 
         "Web Designer", 
-        "Bacharelado em ADS", 
+        "Formado em ADS", 
         "Flamenguista", 
         "Gamer", 
         "Entusiasta dos E-Sports"
