@@ -1,5 +1,36 @@
 document.addEventListener('DOMContentLoaded', function () {
     // ============================================
+    // TEMA CLARO / ESCURO
+    // ============================================
+    const themeToggle = document.querySelector('#theme-toggle');
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null;
+    const savedTheme = localStorage.getItem('portfolio-theme');
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+
+    function applyTheme(theme) {
+        const isLight = theme === 'light';
+        document.body.dataset.theme = theme;
+        localStorage.setItem('portfolio-theme', theme);
+
+        if (themeIcon) {
+            themeIcon.className = `bx ${isLight ? 'bx-moon' : 'bx-sun'}`;
+        }
+
+        if (themeToggle) {
+            const nextTheme = isLight ? 'escuro' : 'claro';
+            themeToggle.setAttribute('aria-label', `Ativar modo ${nextTheme}`);
+            themeToggle.setAttribute('title', `Ativar modo ${nextTheme}`);
+        }
+    }
+
+    applyTheme(savedTheme || (prefersLight ? 'light' : 'dark'));
+
+    themeToggle?.addEventListener('click', () => {
+        const nextTheme = document.body.dataset.theme === 'light' ? 'dark' : 'light';
+        applyTheme(nextTheme);
+    });
+
+    // ============================================
     // NAVBAR E MENU
     // ============================================
     const menubar = document.querySelector('#menu');
@@ -33,6 +64,59 @@ document.addEventListener('DOMContentLoaded', function () {
         menubar.classList.remove('bx-x');
         Navbar.classList.remove('active');
     }
+
+    // ============================================
+    // SCROLL REVEAL PREMIUM — EXECUTA UMA ÚNICA VEZ
+    // ============================================
+    const revealGroups = [
+        ['.about .title, .about .aboutImg', 'reveal-zoom'],
+        ['.about .text-content2 p', 'reveal-left'],
+        ['.projects .title, .navigation', 'reveal-up'],
+        ['.project-box', 'reveal-zoom'],
+        ['.skills .title, .category-title', 'reveal-right'],
+        ['.skill-card', 'reveal-up'],
+        ['.contact .title, #contact .btn', 'reveal-right'],
+        ['#contact input, #contact textarea', 'reveal-up'],
+        ['footer', 'reveal-up']
+    ];
+
+    const revealObserver = 'IntersectionObserver' in window
+        ? new IntersectionObserver((entries, observer) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            });
+        }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' })
+        : null;
+
+    revealGroups.forEach(([selector, animationClass]) => {
+        document.querySelectorAll(selector).forEach((element, index) => {
+            element.classList.add('reveal-on-view', animationClass);
+            if (element.classList.contains('skill-card')) {
+                element.style.setProperty('--reveal-delay', `${Math.min(index, 7) * 70}ms`);
+            }
+            if (revealObserver) revealObserver.observe(element);
+            else element.classList.add('is-visible');
+        });
+    });
+
+    // ============================================
+    // MICROINTERAÇÃO RIPPLE
+    // ============================================
+    const rippleTargets = document.querySelectorAll('button, .btn, .btn-curriculo, .github-button, .site-button, .youtube-button, .social-media a');
+
+    rippleTargets.forEach((target) => {
+        target.addEventListener('pointerdown', (event) => {
+            const rect = target.getBoundingClientRect();
+            const ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = `${event.clientX - rect.left}px`;
+            ripple.style.top = `${event.clientY - rect.top}px`;
+            target.appendChild(ripple);
+            ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+        });
+    });
 
     // ============================================
     // BOTÃO VOLTAR AO TOPO
@@ -261,8 +345,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const larguraDoSlide = carousel.offsetWidth;
         movimentoAtual = -slideAtual * larguraDoSlide;
         
-        carousel.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-        carousel.style.transform = `translateX(${movimentoAtual}px)`;
+        carousel.style.transition = 'transform 0.62s cubic-bezier(0.22, 1, 0.36, 1)';
+        carousel.style.transform = `translate3d(${movimentoAtual}px, 0, 0)`;
+
+        document.querySelectorAll('.navigation button').forEach((button, indice) => {
+            const active = indice === slideAtual;
+            button.classList.toggle('active', active);
+            button.setAttribute('aria-current', active ? 'true' : 'false');
+        });
     }
     
     // ========== FUNÇÃO GLOBAL PARA OS BOTÕES NUMÉRICOS ==========
