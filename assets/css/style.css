@@ -2651,3 +2651,15 @@ body[data-theme="light"] .navigation button,
 body[data-theme="light"] .back-to-top {
   background-color: #007f86 !important;
 }
+
+
+/* O assunto acompanha a largura total da descrição em telas maiores. */
+.contact #user_subject {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+  .contact #user_subject {
+    grid-column: auto;
+  }
+}
