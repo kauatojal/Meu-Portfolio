@@ -1,5 +1,118 @@
 document.addEventListener('DOMContentLoaded', function () {
     // ============================================
+    // IDIOMA PT-BR / EN
+    // ============================================
+    const languageSelect = document.querySelector('#language-select');
+    const languageFlag = document.querySelector('.language-flag');
+    const languageLabel = document.querySelector('#language-label');
+    const translations = {
+        pt: {
+            meta: { title: 'Kauã Tojal - Portfólio' },
+            language: { label: 'Idioma' },
+            nav: { home: 'Home', about: 'Sobre Mim', projects: 'Projetos', skills: 'Skills', contact: 'Fale Comigo' },
+            hero: { greeting: 'Olá, me chamo' },
+            actions: { downloadCv: 'Download CV', frontend: 'Front-end', backend: 'Back-end', viewSite: 'Ver Site', viewRepository: 'Ver Repositório', watchDemo: 'Ver Funcionamento' },
+            sections: { aboutPrefix: 'Sobre', aboutSuffix: 'Mim', projectsPrefix: 'Meus', projectsSuffix: 'Projetos', skillsPrefix: 'Minhas', skillsSuffix: 'Skills', contactPrefix: 'Fale', contactSuffix: 'Comigo' },
+            about: {
+                paragraph1: 'Converto requisitos em aplicações web robustas e entregues com rapidez. Tenho mais de quatro anos desenvolvendo soluções Full Stack, criando aplicações escaláveis, integrações e interfaces modernas.',
+                paragraph2: 'Meu trabalho começa entendendo o problema, projetando a melhor solução e entregando código limpo, performático e preparado para crescer. Ao longo da minha experiência, desenvolvi aplicações React, APIs com Spring Boot, sistemas de gerenciamento e integrações REST que melhoraram a produtividade, reduziram tempo de processamento e aumentaram a geração de resultados.',
+                paragraph3Prefix: 'Tenho paixão por arquitetura, experiência do usuário e boas práticas de desenvolvimento, sempre buscando entregar software confiável e de alta qualidade. Se quiser transformar uma ideia em um produto moderno e bem desenvolvido, entre em',
+                contactLink: 'contato'
+            },
+            projects: {
+                flap: { title: 'Flap - Gerenciamento de Tarefas', description: 'Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.' },
+                inove: { title: 'Inove Imobiliária', description: 'Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.' },
+                fsph: { title: 'Fundação de Saúde Parreiras Horta', description: 'Desenvolvi um sistema de gerenciamento de não conformidades para a Fundação de Saúde Parreiras Horta, utilizando Java com Spring Boot e Hibernate, visando automatizar o acompanhamento e a resolução de problemas, garantindo maior eficiência e conformidade nos processos internos.' },
+                quonsumo: { title: 'Quonsumo: O Jogo Energético', description: 'Desenvolvi um modelo de machine learning para classificar consumidores de energia como residenciais ou comerciais a cada 2 horas, utilizando Python e scikit-learn. O projeto visa otimizar a distribuição de energia com base em padrões de consumo.' },
+                portfolio: { title: 'Meu Portfólio', description: 'Desenvolvi meu currículo e portfólio na forma de um site, utilizando HTML, CSS e JavaScript, para apresentar de maneira interativa minhas experiências, projetos, habilidades e contatos. O projeto visa facilitar o acesso às minhas informações profissionais e promover minha visibilidade no mercado.' },
+                navigationLabel: 'Navegação dos projetos'
+            },
+            skills: { hardTitle: 'HARD SKILLS', softTitle: 'SOFT SKILLS', teamwork: 'Trabalho em Equipe', problemSolving: 'Resolução de Problemas', communication: 'Comunicação', timeManagement: 'Gestão de Tempo', adaptability: 'Adaptabilidade', creativity: 'Criatividade', resultsFocus: 'Foco em Resultados', continuousLearning: 'Aprendizado Contínuo' },
+            contact: { name: 'Nome Completo', email: 'Email', subject: 'Assunto', message: 'Descrição', submit: 'Enviar Mensagem', success: 'Mensagem enviada com sucesso!', error: 'Ocorreu um erro ao enviar seu formulário. Tente novamente mais tarde.' },
+            footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
+        },
+        en: {
+            meta: { title: 'Kauã Tojal - Portfolio' },
+            language: { label: 'Language' },
+            nav: { home: 'Home', about: 'About Me', projects: 'Projects', skills: 'Skills', contact: 'Contact Me' },
+            hero: { greeting: 'Hi, I am' },
+            actions: { downloadCv: 'Download Resume', frontend: 'Front-end', backend: 'Back-end', viewSite: 'View Site', viewRepository: 'View Repository', watchDemo: 'Watch Demo' },
+            sections: { aboutPrefix: 'About', aboutSuffix: 'Me', projectsPrefix: 'My', projectsSuffix: 'Projects', skillsPrefix: 'My', skillsSuffix: 'Skills', contactPrefix: 'Contact', contactSuffix: 'Me' },
+            about: {
+                paragraph1: 'I turn requirements into robust web applications delivered with speed. With more than four years of experience building Full Stack solutions, I create scalable applications, integrations, and modern interfaces.',
+                paragraph2: 'My work starts by understanding the problem, designing the best solution, and delivering clean, high-performance code built to grow. Throughout my experience, I have developed React applications, Spring Boot APIs, management systems, and REST integrations that improved productivity, reduced processing time, and increased results.',
+                paragraph3Prefix: 'I am passionate about architecture, user experience, and development best practices, always aiming to deliver reliable, high-quality software. If you want to turn an idea into a modern, well-built product, get in',
+                contactLink: 'touch'
+            },
+            projects: {
+                flap: { title: 'Flap - Task Management', description: 'I developed a Trello-style task management application using React and JavaScript, with drag-and-drop (@hello-pangea/dnd), JWT authentication, role-based access control, and integration with a Spring Boot REST API. I implemented complex components including modals, filters, an annual calendar, client management, and priorities using Context API and React Router.' },
+                inove: { title: 'Inove Real Estate', description: 'I developed the institutional website and a complete property management system for the international real estate company Inove in Portugal, using HTML, CSS, JavaScript, Axios, Java with Spring Boot, and Hibernate. I created a RESTful API for real-time data integration, implemented responsive design with advanced search filters, property registration, editing and viewing, and used MySQL to ensure performance and scalability.' },
+                fsph: { title: 'Parreiras Horta Health Foundation', description: 'I developed a non-compliance management system for the Parreiras Horta Health Foundation using Java, Spring Boot, and Hibernate. The solution automated issue tracking and resolution, improving efficiency and compliance across internal processes.' },
+                quonsumo: { title: 'Quonsumo: The Energy Game', description: 'I developed a machine learning model to classify energy consumers as residential or commercial every two hours using Python and scikit-learn. The project aims to optimize energy distribution based on consumption patterns.' },
+                portfolio: { title: 'My Portfolio', description: 'I developed my resume and portfolio as a website using HTML, CSS, and JavaScript to present my experience, projects, skills, and contact information interactively. The project makes my professional information easier to access and strengthens my visibility in the market.' },
+                navigationLabel: 'Project navigation'
+            },
+            skills: { hardTitle: 'HARD SKILLS', softTitle: 'SOFT SKILLS', teamwork: 'Teamwork', problemSolving: 'Problem Solving', communication: 'Communication', timeManagement: 'Time Management', adaptability: 'Adaptability', creativity: 'Creativity', resultsFocus: 'Results Focus', continuousLearning: 'Continuous Learning' },
+            contact: { name: 'Full Name', email: 'Email', subject: 'Subject', message: 'Message', submit: 'Send Message', success: 'Message sent successfully!', error: 'There was an error sending your message. Please try again later.' },
+            footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
+        }
+    };
+
+    function getTranslation(language, key) {
+        return key.split('.').reduce((value, part) => value && value[part], translations[language]) || key;
+    }
+
+    function applyLanguage(language) {
+        const selectedLanguage = language === 'en' ? 'en' : 'pt';
+        const isEnglish = selectedLanguage === 'en';
+        document.documentElement.lang = isEnglish ? 'en' : 'pt-BR';
+        document.documentElement.dataset.language = selectedLanguage;
+        localStorage.setItem('portfolio-language', selectedLanguage);
+
+        document.querySelectorAll('[data-i18n]').forEach((element) => {
+            element.textContent = getTranslation(selectedLanguage, element.dataset.i18n);
+        });
+        document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+            element.setAttribute('placeholder', getTranslation(selectedLanguage, element.dataset.i18nPlaceholder));
+        });
+        document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
+            element.setAttribute('aria-label', getTranslation(selectedLanguage, element.dataset.i18nAria));
+        });
+
+        document.title = getTranslation(selectedLanguage, 'meta.title');
+        if (languageSelect) languageSelect.value = selectedLanguage;
+        if (languageFlag) languageFlag.textContent = isEnglish ? '🇺🇸' : '🇧🇷';
+        if (languageLabel) languageLabel.textContent = getTranslation(selectedLanguage, 'language.label');
+
+        const currentThemeToggle = document.querySelector('#theme-toggle');
+        if (currentThemeToggle) {
+            const isLight = document.body.dataset.theme === 'light';
+            const nextTheme = isLight
+                ? (isEnglish ? 'dark mode' : 'modo escuro')
+                : (isEnglish ? 'light mode' : 'modo claro');
+            currentThemeToggle.setAttribute('aria-label', `${isEnglish ? 'Enable' : 'Ativar'} ${nextTheme}`);
+            currentThemeToggle.setAttribute('title', `${isEnglish ? 'Enable' : 'Ativar'} ${nextTheme}`);
+        }
+
+        const resumeLink = document.querySelector('.btn-curriculo');
+        if (resumeLink) {
+            resumeLink.href = isEnglish ? 'assets/pdf/CV_Kaua_Tojal_EN.pdf' : 'assets/pdf/CV_Kauã_Tojal.pdf';
+            resumeLink.download = isEnglish ? 'Kaua_Tojal_Resume_English.pdf' : 'Curriculo_Kaua_Tojal.pdf';
+        }
+
+        const typingText = document.getElementById('typing-text');
+        if (typingText) typingText.textContent = '';
+        window.portfolioTypingTexts = isEnglish
+            ? ['Software Developer', 'Full-Stack Developer', 'Web Designer', 'University Student', 'Flamengo Fan', 'Gamer', 'E-Sports Enthusiast']
+            : ['Desenvolvedor de Software', 'Desenvolvedor Full-Stack', 'Web Designer', 'Universitário', 'Flamenguista', 'Gamer', 'Entusiasta dos E-Sports'];
+        window.dispatchEvent(new CustomEvent('portfolio-language-change'));
+    }
+
+    const savedLanguage = localStorage.getItem('portfolio-language') || 'pt';
+    applyLanguage(savedLanguage);
+    languageSelect?.addEventListener('change', (event) => applyLanguage(event.target.value));
+
+    // ============================================
     // TEMA CLARO / ESCURO
     // ============================================
     const themeToggle = document.querySelector('#theme-toggle');
@@ -17,9 +130,13 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (themeToggle) {
-            const nextTheme = isLight ? 'escuro' : 'claro';
-            themeToggle.setAttribute('aria-label', `Ativar modo ${nextTheme}`);
-            themeToggle.setAttribute('title', `Ativar modo ${nextTheme}`);
+            const currentLanguage = document.documentElement.dataset.language || 'pt';
+            const nextTheme = isLight
+                ? (currentLanguage === 'en' ? 'dark mode' : 'modo escuro')
+                : (currentLanguage === 'en' ? 'light mode' : 'modo claro');
+            const actionText = currentLanguage === 'en' ? 'Enable' : 'Ativar';
+            themeToggle.setAttribute('aria-label', `${actionText} ${nextTheme}`);
+            themeToggle.setAttribute('title', `${actionText} ${nextTheme}`);
         }
     }
 
@@ -196,18 +313,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // ANIMAÇÃO DE TEXTO DIGITANDO
     // ============================================
     const textElement = document.getElementById('typing-text');
-    const texts = [
-        "Desenvolvedor de Software", 
-        "Desenvolvedor Full-Stack", 
-        "Web Designer", 
-        "Universitário", 
-        "Flamenguista", 
-        "Gamer", 
-        "Entusiasta dos E-Sports"
+    let texts = window.portfolioTypingTexts || [
+        'Desenvolvedor de Software',
+        'Desenvolvedor Full-Stack',
+        'Web Designer',
+        'Universitário',
+        'Flamenguista',
+        'Gamer',
+        'Entusiasta dos E-Sports'
     ];
     let currentTextIndex = 0;
     let index = 0;
     let isTyping = true;
+
+    window.addEventListener('portfolio-language-change', () => {
+        texts = window.portfolioTypingTexts || texts;
+        currentTextIndex = 0;
+        index = 0;
+        isTyping = true;
+        if (textElement) textElement.textContent = '';
+    });
 
     function typeAndErase() {
         const currentText = texts[currentTextIndex];

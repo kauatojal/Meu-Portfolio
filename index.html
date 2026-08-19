@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-language="pt">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kauã Tojal - Portfólio</title>
+    <title data-i18n="meta.title">Kauã Tojal - Portfólio</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -18,12 +18,20 @@
       <a href="#" class="logo">Kauã Tojal</a>
       <i class="bx bx-menu" id="menu" style="color: #ffffff"></i>
       <nav class="navbar">
-        <a href="#home" style="--vlr: 1" class="active">Home</a>
-        <a href="#about" style="--vlr: 2">Sobre Mim</a>
-        <a href="#projects" style="--vlr: 3">Projetos</a>
-        <a href="#skills" style="--vlr: 4">Skills</a>
-        <a href="#contact" style="--vlr: 5">Fale Comigo</a>
+        <a href="#home" style="--vlr: 1" class="active" data-i18n="nav.home">Home</a>
+        <a href="#about" style="--vlr: 2" data-i18n="nav.about">Sobre Mim</a>
+        <a href="#projects" style="--vlr: 3" data-i18n="nav.projects">Projetos</a>
+        <a href="#skills" style="--vlr: 4" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" style="--vlr: 5" data-i18n="nav.contact">Fale Comigo</a>
       </nav>
+      <div class="language-switcher">
+        <label for="language-select" class="sr-only" id="language-label">Idioma</label>
+        <span class="language-flag" aria-hidden="true">🇧🇷</span>
+        <select id="language-select" aria-labelledby="language-label">
+          <option value="pt">🇧🇷 PT</option>
+          <option value="en">🇺🇸 EN</option>
+        </select>
+      </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Ativar modo claro" title="Alternar tema">
         <i class="bx bx-sun" aria-hidden="true"></i>
       </button>
@@ -38,7 +46,7 @@
           width="150"
         />
         <div class="text-content">
-          <h1>Olá, me chamo <span class="highlight">Kauã Tojal</span>!</h1>
+          <h1><span data-i18n="hero.greeting">Olá, me chamo</span> <span class="highlight">Kauã Tojal</span>!</h1>
           <div class="text-animation">
             <h2 id="typing-text"></h2>
           </div>
@@ -48,7 +56,7 @@
               class="btn-curriculo"
               download="Curriculo_Kaua_Tojal.pdf"
             >
-              Download CV
+              <span data-i18n="actions.downloadCv">Download CV</span>
             </a>
             <a
               href="https://www.youtube.com/channel/UCkxO16npYlydEMZZPHEclvw/community?pvf=CAI%253D"
@@ -74,29 +82,29 @@
 
     <!-- *************************About Section************************* -->
     <section class="about" id="about">
-      <h2 class="title">Sobre <span>Mim</span></h2>
+      <h2 class="title"><span data-i18n="sections.aboutPrefix">Sobre</span> <span data-i18n="sections.aboutSuffix">Mim</span></h2>
       <img
         src="assets/imagens/WhatsApp Image 2024-09-16 at 15.36.23.jpeg"
         alt=""
         class="aboutImg"
       />
       <div class="text-content2">
-        <p>
+        <p data-i18n="about.paragraph1">
           Converto requisitos em aplicações web robustas e entregues com rapidez. Tenho mais de quatro anos desenvolvendo soluções Full Stack, criando aplicações escaláveis, integrações e interfaces modernas.
         </p>
-        <p>
+        <p data-i18n="about.paragraph2">
           Meu trabalho começa entendendo o problema, projetando a melhor solução e entregando código limpo, performático e preparado para crescer. Ao longo da minha experiência, desenvolvi aplicações React, APIs com Spring Boot, sistemas de gerenciamento e integrações REST que melhoraram a produtividade, reduziram tempo de processamento e aumentaram a geração de resultados.
         </p>
         <p>
-          Tenho paixão por arquitetura, experiência do usuário e boas práticas de desenvolvimento, sempre buscando entregar software confiável e de alta qualidade. Se quiser transformar uma ideia em um produto moderno e bem desenvolvido, entre em
-          <a href="#contact" class="highlighted-link">contato</a>.
+          <span data-i18n="about.paragraph3Prefix">Tenho paixão por arquitetura, experiência do usuário e boas práticas de desenvolvimento, sempre buscando entregar software confiável e de alta qualidade. Se quiser transformar uma ideia em um produto moderno e bem desenvolvido, entre em</span>
+          <a href="#contact" class="highlighted-link" data-i18n="about.contactLink">contato</a>.
         </p>
       </div>
     </section>
 
     <!-- *************************Project Section************************* -->
     <section class="projects" id="projects">
-      <h2 class="title">Meus <span>Projetos</span></h2>
+      <h2 class="title"><span data-i18n="sections.projectsPrefix">Meus</span> <span data-i18n="sections.projectsSuffix">Projetos</span></h2>
       <div class="carousel-container">
         <div class="carousel" id="carousel">
           <!-- Projeto 1 - Flap -->
@@ -108,8 +116,8 @@
                 class="project-img"
               />
               <div class="project-description">
-                <h3>Flap - Gerenciamento de Tarefas</h3>
-                <p>
+                <h3 data-i18n="projects.flap.title">Flap - Gerenciamento de Tarefas</h3>
+                <p data-i18n="projects.flap.description">
                   Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles, e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.
                 </p>
                 <p class="technologies">
@@ -146,7 +154,7 @@
                     src="assets/imagens/github.png"
                     alt="GitHub"
                     class="github-logo-small"
-                  />Front-end
+                  /><span data-i18n="actions.frontend">Front-end</span>
                 </a>
                 <a
                   href="https://github.com/kauatojal/RIV-flap-backend"
@@ -158,7 +166,7 @@
                     src="assets/imagens/github.png"
                     alt="GitHub"
                     class="github-logo-small"
-                  />Back-end
+                  /><span data-i18n="actions.backend">Back-end</span>
                 </a>
                 <a
                   href="https://residencia4-flap.vercel.app"
@@ -169,7 +177,7 @@
                     src="assets/imagens/www.png"
                     alt="Website"
                     class="www-logo-small"
-                  />Ver Site
+                  /><span data-i18n="actions.viewSite">Ver Site</span>
                 </a>
               </div>
             </div>
@@ -184,8 +192,8 @@
                 class="project-img"
               />
               <div class="project-description">
-                <h3>Inove Imobiliária</h3>
-                <p>
+                <h3 data-i18n="projects.inove.title">Inove Imobiliária</h3>
+                <p data-i18n="projects.inove.description">
                   Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.
                 </p>
                 <p class="technologies">
@@ -236,7 +244,7 @@
                     src="assets/imagens/github.png"
                     alt="GitHub"
                     class="github-logo-small"
-                  />Ver Repositório
+                  /><span data-i18n="actions.viewRepository">Ver Repositório</span>
                 </a>
 
                 <a
@@ -248,7 +256,7 @@
                     src="assets/imagens/www.png"
                     alt="Website"
                     class="www-logo-small"
-                  />Ver Site
+                  /><span data-i18n="actions.viewSite">Ver Site</span>
                 </a>
               </div>
             </div>
@@ -263,8 +271,8 @@
                 class="project-img"
               />
               <div class="project-description">
-                <h3>Fundação de Saúde Parreiras Horta</h3>
-                <p>
+                <h3 data-i18n="projects.fsph.title">Fundação de Saúde Parreiras Horta</h3>
+                <p data-i18n="projects.fsph.description">
                   Desenvolvi um sistema de gerenciamento de não conformidades
                   para a Fundação de Saúde Parreiras Horta, utilizando Java com
                   Spring Boot e Hibernate, visando automatizar o acompanhamento
@@ -303,7 +311,7 @@
                   src="assets/imagens/github.png"
                   alt="GitHub"
                   class="github-logo-small"
-                />Ver Repositório
+                /><span data-i18n="actions.viewRepository">Ver Repositório</span>
               </a>
             </div>
           </div>
@@ -317,8 +325,8 @@
                 class="project-img"
               />
               <div class="project-description">
-                <h3>Quonsumo: O Jogo Energético</h3>
-                <p>
+                <h3 data-i18n="projects.quonsumo.title">Quonsumo: O Jogo Energético</h3>
+                <p data-i18n="projects.quonsumo.description">
                   Desenvolvi um modelo de machine learning para classificar
                   consumidores de energia como residenciais ou comerciais a cada
                   2 horas, utilizando Python e scikit-learn. O projeto visa
@@ -358,7 +366,7 @@
                     src="assets/imagens/github.png"
                     alt="GitHub"
                     class="github-logo-small"
-                  />Ver Repositório
+                  /><span data-i18n="actions.viewRepository">Ver Repositório</span>
                 </a>
                 <a
                   href="https://www.youtube.com/watch?v=J5uuDdYlczE"
@@ -369,7 +377,7 @@
                     src="assets/imagens/YouTube.png"
                     alt="YouTube"
                     class="youtube-logo-small"
-                  />Ver Funcionamento
+                  /><span data-i18n="actions.watchDemo">Ver Funcionamento</span>
                 </a>
               </div>
             </div>
@@ -384,8 +392,8 @@
                 class="project-img"
               />
               <div class="project-description">
-                <h3>Meu Portfólio</h3>
-                <p>
+                <h3 data-i18n="projects.portfolio.title">Meu Portfólio</h3>
+                <p data-i18n="projects.portfolio.description">
                   Desenvolvi meu currículo e portfólio na forma de um site,
                   utilizando HTML, CSS e JavaScript, para apresentar de maneira
                   interativa minhas experiências, projetos, habilidades e
@@ -420,13 +428,13 @@
                   src="assets/imagens/github.png"
                   alt="GitHub"
                   class="github-logo-small"
-                />Ver Repositório
+                /><span data-i18n="actions.viewRepository">Ver Repositório</span>
               </a>
             </div>
           </div>
         </div>
 
-        <div class="navigation" aria-label="Navegação dos projetos">
+        <div class="navigation" aria-label="Navegação dos projetos" data-i18n-aria="projects.navigationLabel">
           <button type="button" onclick="moveToSlide(0)" aria-label="Ir para o projeto 1">1</button>
           <button type="button" onclick="moveToSlide(1)" aria-label="Ir para o projeto 2">2</button>
           <button type="button" onclick="moveToSlide(2)" aria-label="Ir para o projeto 3">3</button>
@@ -438,12 +446,12 @@
 
     <!-- *************************Skills Section************************* -->
     <section class="skills" id="skills">
-      <h2 class="title">Minhas <span>Skills</span></h2>
+      <h2 class="title"><span data-i18n="sections.skillsPrefix">Minhas</span> <span data-i18n="sections.skillsSuffix">Skills</span></h2>
       
       <div class="skills-container">
         <!-- HARD SKILLS -->
         <div class="skills-category">
-          <h3 class="category-title">HARD SKILLS</h3>
+          <h3 class="category-title" data-i18n="skills.hardTitle">HARD SKILLS</h3>
           <div class="skills-grid">
             <div class="skill-card">
               <img src="assets/imagens/HTML.png" alt="HTML" class="skill-icon" />
@@ -489,46 +497,46 @@
 
         <!-- SOFT SKILLS -->
         <div class="skills-category">
-          <h3 class="category-title">SOFT SKILLS</h3>
+          <h3 class="category-title" data-i18n="skills.softTitle">SOFT SKILLS</h3>
           <div class="skills-grid">
             <div class="skill-card soft-skill">
               <i class='bx bx-group'></i>
-              <h4>Trabalho em Equipe</h4>
+              <h4 data-i18n="skills.teamwork">Trabalho em Equipe</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-brain'></i>
-              <h4>Resolução de Problemas</h4>
+              <h4 data-i18n="skills.problemSolving">Resolução de Problemas</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-message-rounded-dots'></i>
-              <h4>Comunicação</h4>
+              <h4 data-i18n="skills.communication">Comunicação</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-time-five'></i>
-              <h4>Gestão de Tempo</h4>
+              <h4 data-i18n="skills.timeManagement">Gestão de Tempo</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-trending-up'></i>
-              <h4>Adaptabilidade</h4>
+              <h4 data-i18n="skills.adaptability">Adaptabilidade</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-bulb'></i>
-              <h4>Criatividade</h4>
+              <h4 data-i18n="skills.creativity">Criatividade</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-target-lock'></i>
-              <h4>Foco em Resultados</h4>
+              <h4 data-i18n="skills.resultsFocus">Foco em Resultados</h4>
             </div>
             
             <div class="skill-card soft-skill">
               <i class='bx bx-book-open'></i>
-              <h4>Aprendizado Contínuo</h4>
+              <h4 data-i18n="skills.continuousLearning">Aprendizado Contínuo</h4>
             </div>
           </div>
         </div>
@@ -537,7 +545,7 @@
     
     <!-- *************************Contact Section************************* -->
     <section class="contact" id="contact">
-      <h2 class="title">Fale <span>Comigo</span></h2>
+      <h2 class="title"><span data-i18n="sections.contactPrefix">Fale</span> <span data-i18n="sections.contactSuffix">Comigo</span></h2>
       <form id="contactForm" class="start-animation">
         <div class="input-box">
           <input
@@ -545,32 +553,34 @@
             id="user_name"
             required
             placeholder="Nome Completo"
+            data-i18n-placeholder="contact.name"
           />
-          <input type="email" id="user_email" required placeholder="Email" />
+          <input type="email" id="user_email" required placeholder="Email" data-i18n-placeholder="contact.email" />
         </div>
         <div class="input-box">
-          <input type="text" id="user_subject" required placeholder="Assunto" />
+          <input type="text" id="user_subject" required placeholder="Assunto" data-i18n-placeholder="contact.subject" />
         </div>
         <textarea
           id="contact__message"
           cols="30"
           rows="10"
           placeholder="Descrição"
+          data-i18n-placeholder="contact.message"
           required
         ></textarea>
-        <button type="submit" class="btn">Enviar Mensagem</button>
+        <button type="submit" class="btn" data-i18n="contact.submit">Enviar Mensagem</button>
       </form>
       <div id="successMessage" style="display: none">
-        <i class="bx bx-check-circle"></i> Mensagem enviada com sucesso!
+        <i class="bx bx-check-circle"></i> <span data-i18n="contact.success">Mensagem enviada com sucesso!</span>
       </div>
       <div id="errorMessage" style="display: none; color: red">
-        Ocorreu um erro ao enviar seu formulário. Tente novamente mais tarde.
+        <span data-i18n="contact.error">Ocorreu um erro ao enviar seu formulário. Tente novamente mais tarde.</span>
       </div>
     </section>
 
     <footer>
       <div class="text">
-        <p>Copyright @ 2025 by Kauã Tojal</p>
+        <p data-i18n="footer.copyright">Copyright @ 2025 by Kauã Tojal</p>
       </div>
     </footer>
 
