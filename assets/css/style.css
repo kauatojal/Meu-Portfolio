@@ -2189,3 +2189,87 @@ body[data-theme="light"] textarea::placeholder {
 .about img {
   background: transparent;
 }
+
+
+/* ============================================
+   CONTATO COMPACTO E EQUILIBRADO
+   ============================================ */
+section.contact {
+  min-height: 0;
+  max-width: 76rem;
+  margin: 0 auto;
+  padding: 8.5rem 4% 7rem;
+}
+
+.contact .title {
+  margin-bottom: 2.8rem;
+  font-size: clamp(3.6rem, 5vw, 5rem);
+}
+
+.contact form {
+  width: min(100%, 60rem);
+  margin-inline: auto;
+}
+
+.contact .input-box {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.9rem;
+  width: 100%;
+  max-width: none;
+  margin: 0 auto 0.9rem;
+}
+
+.contact .input-box input,
+.contact textarea {
+  width: 100%;
+  max-width: none;
+  min-height: 4.8rem;
+  margin: 0;
+  padding: 1.15rem 1.35rem;
+  border-radius: 0.9rem;
+}
+
+.contact textarea {
+  display: block;
+  height: 14rem;
+  min-height: 14rem;
+  margin-top: 0.9rem;
+  line-height: 1.5;
+}
+
+.contact .btn {
+  margin-top: 0.7rem;
+  padding: 1.15rem 2.2rem;
+}
+
+.contact #successMessage {
+  margin-top: 1.2rem;
+}
+
+@media (max-width: 640px) {
+  section.contact {
+    padding: 7rem 5% 6rem;
+  }
+
+  .contact .title {
+    margin-bottom: 2.1rem;
+  }
+
+  .contact .input-box {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .contact .input-box input,
+  .contact textarea {
+    min-height: 4.6rem;
+  }
+
+  .contact textarea {
+    height: 12rem;
+    min-height: 12rem;
+    margin-top: 0.8rem;
+  }
+}
