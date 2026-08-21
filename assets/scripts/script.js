@@ -186,6 +186,15 @@ document.addEventListener('DOMContentLoaded', function () {
         document.body.dataset.theme = theme;
         localStorage.setItem('portfolio-theme', theme);
 
+        // Define o contraste dos títulos diretamente para evitar que regras legadas
+        // com !important deixem prefixo e sufixo com a mesma cor.
+        document.querySelectorAll('.title .title-prefix').forEach((element) => {
+            element.style.setProperty('color', isLight ? '#075e63' : '#ffffff', 'important');
+        });
+        document.querySelectorAll('.title .title-suffix').forEach((element) => {
+            element.style.setProperty('color', isLight ? '#0f9fa6' : '#ff2600', 'important');
+        });
+
         if (themeIcon) {
             themeIcon.className = `bx ${isLight ? 'bx-moon' : 'bx-sun'}`;
         }

@@ -3500,3 +3500,120 @@ body[data-theme="light"] .footer-bottom {
     text-align: center;
   }
 }
+
+
+/* Final visual correction: keep the brand asset transparent and split section-title colors. */
+.brand-logo {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+body[data-theme="light"] .brand-logo {
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.title .title-prefix {
+  color: #ffffff !important;
+}
+
+.title .title-suffix {
+  color: #ff2600 !important;
+}
+
+body[data-theme="light"] .title .title-prefix {
+  color: #075e63 !important;
+}
+
+body[data-theme="light"] .title .title-suffix {
+  color: #0f9fa6 !important;
+}
+
+
+/* Fine polish: typography rhythm and breathing room across the main sections. */
+section > .title {
+  letter-spacing: -0.045em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+.skills > .title {
+  margin-bottom: clamp(3.2rem, 5vw, 5.2rem);
+}
+
+.skills-container {
+  gap: clamp(3.8rem, 5vw, 6rem);
+}
+
+.skills-category {
+  width: min(100%, 1400px);
+}
+
+.category-title {
+  letter-spacing: 0.11em;
+  line-height: 1.2;
+  margin-bottom: clamp(1.8rem, 2.4vw, 2.8rem);
+}
+
+.contact > .title {
+  margin-bottom: clamp(2.4rem, 4vw, 3.8rem);
+}
+
+.contact-heading {
+  letter-spacing: -0.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.contact-copy {
+  max-width: 52rem;
+  line-height: 1.62;
+}
+
+.contact-channel {
+  min-height: 6rem;
+}
+
+.contact-form-shell {
+  padding: clamp(2rem, 3vw, 3rem);
+}
+
+.contact-form {
+  gap: clamp(1.4rem, 2vw, 1.9rem);
+}
+
+@media (max-width: 768px) {
+  section > .title {
+    letter-spacing: -0.035em;
+  }
+
+  .skills > .title,
+  .contact > .title {
+    margin-bottom: 2.6rem;
+  }
+
+  .skills-container {
+    gap: 3.6rem;
+  }
+
+  .contact-heading {
+    line-height: 1.1;
+  }
+
+  .contact-copy {
+    line-height: 1.55;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-channel {
+    min-height: 5.7rem;
+  }
+
+  .contact-form-shell {
+    padding: 1.5rem;
+  }
+}
