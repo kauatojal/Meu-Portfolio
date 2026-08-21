@@ -134,6 +134,12 @@ document.addEventListener('DOMContentLoaded', function () {
         document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
             element.setAttribute('aria-label', getTranslation(selectedLanguage, element.dataset.i18nAria));
         });
+        document.querySelectorAll('[data-i18n-title]').forEach((element) => {
+            element.setAttribute('title', getTranslation(selectedLanguage, element.dataset.i18nTitle));
+        });
+        document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+            element.setAttribute('alt', getTranslation(selectedLanguage, element.dataset.i18nAlt));
+        });
         document.querySelectorAll('[data-i18n-content]').forEach((element) => {
             element.setAttribute('content', getTranslation(selectedLanguage, element.dataset.i18nContent));
         });
@@ -505,139 +511,218 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(typeAndErase, 120);
 
     // ============================================
-    // CARROSSEL COM DRAG - IMPLEMENTAÇÃO LIMPA
+    // CARROSSEL INFINITO — PADRÃO KOVA STUDIO
     // ============================================
-    
-    const carousel = document.getElementById('carousel');
-    
-    // Estado do carrossel
-    let slideAtual = 0;
-    const totalDeSlides = 5;
-    
-    // Controle de drag
-    let estouArrastando = false;
-    let posicaoInicialDoMouse = 0;
-    let movimentoAtual = 0;
-    
-    // Estilo inicial
-    carousel.style.cursor = 'grab';
-    carousel.style.willChange = 'transform';
-    
-    // ========== PREVENIR COMPORTAMENTOS INDESEJADOS ==========
-    carousel.addEventListener('dragstart', e => e.preventDefault());
-    carousel.addEventListener('selectstart', e => e.preventDefault());
-    
-    // ========== MOUSE: COMEÇAR A ARRASTAR ==========
-    carousel.addEventListener('mousedown', function(evento) {
-        estouArrastando = true;
-        posicaoInicialDoMouse = evento.clientX;
-        carousel.style.cursor = 'grabbing';
-        carousel.style.transition = 'none';
-    });
-    
-    // ========== MOUSE: ARRASTAR (SÓ SE ESTIVER PRESSIONADO) ==========
-    window.addEventListener('mousemove', function(evento) {
-        // SÓ EXECUTA SE ESTIVER REALMENTE ARRASTANDO!
-        if (!estouArrastando) return;
-        
-        const posicaoAtualDoMouse = evento.clientX;
-        const diferencaDeMovimento = posicaoAtualDoMouse - posicaoInicialDoMouse;
-        
-        const larguraDoSlide = carousel.offsetWidth;
-        const posicaoBaseDoSlide = -slideAtual * larguraDoSlide;
-        movimentoAtual = posicaoBaseDoSlide + diferencaDeMovimento;
-        
-        carousel.style.transform = `translateX(${movimentoAtual}px)`;
-    });
-    
-    // ========== MOUSE: SOLTAR ==========
-    window.addEventListener('mouseup', function(evento) {
-        // SÓ EXECUTA SE ESTAVA ARRASTANDO!
-        if (!estouArrastando) return;
-        
-        estouArrastando = false;
-        carousel.style.cursor = 'grab';
-        
-        const posicaoFinalDoMouse = evento.clientX;
-        const diferencaTotal = posicaoFinalDoMouse - posicaoInicialDoMouse;
-        const larguraDoSlide = carousel.offsetWidth;
-        
-        // Mudou mais de 25% da tela? Então muda de slide
-        if (diferencaTotal < -(larguraDoSlide * 0.25) && slideAtual < totalDeSlides - 1) {
-            slideAtual++;
-        } else if (diferencaTotal > (larguraDoSlide * 0.25) && slideAtual > 0) {
-            slideAtual--;
-        }
-        
-        irParaSlide(slideAtual);
-    });
-    
-    // ========== TOUCH (MOBILE): COMEÇAR ==========
-    carousel.addEventListener('touchstart', function(evento) {
-        estouArrastando = true;
-        posicaoInicialDoMouse = evento.touches[0].clientX;
-        carousel.style.transition = 'none';
-    });
-    
-    // ========== TOUCH (MOBILE): ARRASTAR ==========
-    window.addEventListener('touchmove', function(evento) {
-        if (!estouArrastando) return;
-        
-        const posicaoAtualDoMouse = evento.touches[0].clientX;
-        const diferencaDeMovimento = posicaoAtualDoMouse - posicaoInicialDoMouse;
-        
-        const larguraDoSlide = carousel.offsetWidth;
-        const posicaoBaseDoSlide = -slideAtual * larguraDoSlide;
-        movimentoAtual = posicaoBaseDoSlide + diferencaDeMovimento;
-        
-        carousel.style.transform = `translateX(${movimentoAtual}px)`;
-    });
-    
-    // ========== TOUCH (MOBILE): SOLTAR ==========
-    window.addEventListener('touchend', function(evento) {
-        if (!estouArrastando) return;
-        
-        estouArrastando = false;
-        
-        const larguraDoSlide = carousel.offsetWidth;
-        const posicaoEsperada = -slideAtual * larguraDoSlide;
-        const diferenca = movimentoAtual - posicaoEsperada;
-        
-        if (diferenca < -(larguraDoSlide * 0.25) && slideAtual < totalDeSlides - 1) {
-            slideAtual++;
-        } else if (diferenca > (larguraDoSlide * 0.25) && slideAtual > 0) {
-            slideAtual--;
-        }
-        
-        irParaSlide(slideAtual);
-    });
-    
-    // ========== FUNÇÃO PARA IR A UM SLIDE ESPECÍFICO ==========
-    function irParaSlide(numeroDoSlide) {
-        slideAtual = numeroDoSlide;
-        const larguraDoSlide = carousel.offsetWidth;
-        movimentoAtual = -slideAtual * larguraDoSlide;
-        
-        carousel.style.transition = 'transform 0.62s cubic-bezier(0.22, 1, 0.36, 1)';
-        carousel.style.transform = `translate3d(${movimentoAtual}px, 0, 0)`;
 
-        document.querySelectorAll('.navigation button').forEach((button, indice) => {
-            const active = indice === slideAtual;
-            button.classList.toggle('active', active);
-            button.setAttribute('aria-current', active ? 'true' : 'false');
+    const carousel = document.getElementById('carousel');
+    const carouselContainer = document.querySelector('.carousel-container');
+
+    if (carousel && carouselContainer) {
+        const originalSlides = Array.from(carousel.children);
+        const totalDeSlides = originalSlides.length;
+        const navigationButtons = Array.from(document.querySelectorAll('.navigation button'));
+        const animationDuration = 35000;
+        let slideStride = 0;
+        let setWidth = 0;
+        let offset = 0;
+        let transitionTimer = null;
+        let resumeTimer = null;
+        let estouArrastando = false;
+        let posicaoInicialDoMouse = 0;
+        let offsetInicialDoMouse = 0;
+        let pointerMoved = false;
+        let isPaused = false;
+
+        // Duplica os cards sem remover nenhum original. Assim, a animação de -50%
+        // retorna ao mesmo conteúdo e mantém a passagem contínua, como no Kova Studio.
+        originalSlides.forEach((slide) => {
+            const clone = slide.cloneNode(true);
+            clone.setAttribute('aria-hidden', 'true');
+            clone.querySelectorAll('a, button, input, textarea, select').forEach((element) => {
+                element.setAttribute('tabindex', '-1');
+            });
+            carousel.appendChild(clone);
         });
+
+        carousel.classList.add('is-infinite', 'animate-infinite-scroll');
+        carousel.style.cursor = 'grab';
+        carousel.style.willChange = 'transform';
+        carousel.addEventListener('dragstart', (event) => event.preventDefault());
+        carousel.addEventListener('selectstart', (event) => event.preventDefault());
+
+        function normalizeOffset(value) {
+            if (!setWidth) return value;
+            let normalized = value % setWidth;
+            if (normalized > 0) normalized -= setWidth;
+            return normalized;
+        }
+
+        function readTransformOffset() {
+            const transform = window.getComputedStyle(carousel).transform;
+            if (!transform || transform === 'none') return offset;
+            const matrix3d = transform.match(/^matrix3d\((.+)\)$/);
+            if (matrix3d) return parseFloat(matrix3d[1].split(',')[13]) || 0;
+            const matrix = transform.match(/^matrix\((.+)\)$/);
+            if (matrix) return parseFloat(matrix[1].split(',')[4]) || 0;
+            return offset;
+        }
+
+        function currentOffset() {
+            return normalizeOffset(readTransformOffset());
+        }
+
+        function setAnimationPhase(value) {
+            offset = normalizeOffset(value);
+            const progress = setWidth ? Math.min(Math.max((-offset) / setWidth, 0), 1) : 0;
+            carousel.style.animationDelay = `${-progress * animationDuration}ms`;
+            carousel.style.transform = '';
+        }
+
+        function updateNavigation() {
+            if (!slideStride || !totalDeSlides) return;
+            const activeIndex = ((Math.round(-currentOffset() / slideStride) % totalDeSlides) + totalDeSlides) % totalDeSlides;
+            navigationButtons.forEach((button, index) => {
+                const active = index === activeIndex;
+                button.classList.toggle('active', active);
+                button.setAttribute('aria-current', active ? 'true' : 'false');
+            });
+        }
+
+        function pauseAutoplay() {
+            isPaused = true;
+            carousel.classList.add('is-paused');
+            if (resumeTimer) window.clearTimeout(resumeTimer);
+        }
+
+        function resumeAutoplay(delay = 0) {
+            if (resumeTimer) window.clearTimeout(resumeTimer);
+            if (delay > 0) {
+                resumeTimer = window.setTimeout(() => {
+                    isPaused = false;
+                    carousel.classList.remove('is-paused');
+                }, delay);
+            } else {
+                isPaused = false;
+                carousel.classList.remove('is-paused');
+            }
+        }
+
+        function freezeAnimation() {
+            const frozenOffset = currentOffset();
+            carousel.classList.remove('animate-infinite-scroll');
+            carousel.style.animationDelay = '0ms';
+            carousel.style.transition = 'none';
+            offset = frozenOffset;
+            carousel.style.transform = `translate3d(${offset}px, 0, 0)`;
+            return offset;
+        }
+
+        function restartAnimation(value = offset) {
+            setAnimationPhase(value);
+            carousel.classList.remove('animate-infinite-scroll');
+            void carousel.offsetWidth;
+            carousel.classList.add('animate-infinite-scroll');
+            if (isPaused) carousel.classList.add('is-paused');
+            updateNavigation();
+        }
+
+        function measureCarousel() {
+            const firstSlide = carousel.querySelector('.project');
+            if (!firstSlide || !totalDeSlides) return;
+            const previousOffset = carousel.classList.contains('animate-infinite-scroll') ? currentOffset() : offset;
+            const styles = window.getComputedStyle(carousel);
+            const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+            slideStride = firstSlide.getBoundingClientRect().width + gap;
+            setWidth = slideStride * totalDeSlides;
+            restartAnimation(previousOffset);
+        }
+
+        function animateTo(targetOffset, duration = 680) {
+            if (transitionTimer) window.clearTimeout(transitionTimer);
+            const startOffset = freezeAnimation();
+            const distance = targetOffset - startOffset;
+            carousel.style.transition = `transform ${duration}ms cubic-bezier(0.22, 1, 0.36, 1)`;
+            requestAnimationFrame(() => {
+                offset = startOffset + distance;
+                carousel.style.transform = `translate3d(${offset}px, 0, 0)`;
+            });
+            transitionTimer = window.setTimeout(() => {
+                carousel.style.transition = 'none';
+                offset = normalizeOffset(offset);
+                restartAnimation(offset);
+                transitionTimer = null;
+                resumeAutoplay(2400);
+            }, duration + 40);
+        }
+
+        function irParaSlide(numeroDoSlide) {
+            if (!totalDeSlides || !slideStride || !setWidth) return;
+            const index = ((numeroDoSlide % totalDeSlides) + totalDeSlides) % totalDeSlides;
+            pauseAutoplay();
+            const startOffset = currentOffset();
+            let targetOffset = -index * slideStride;
+            while (targetOffset - startOffset > setWidth / 2) targetOffset -= setWidth;
+            while (targetOffset - startOffset < -setWidth / 2) targetOffset += setWidth;
+            animateTo(targetOffset);
+        }
+
+        function handlePointerDown(event) {
+            if (transitionTimer) window.clearTimeout(transitionTimer);
+            pauseAutoplay();
+            freezeAnimation();
+            estouArrastando = true;
+            pointerMoved = false;
+            posicaoInicialDoMouse = event.clientX;
+            offsetInicialDoMouse = offset;
+            carousel.style.cursor = 'grabbing';
+            carousel.setPointerCapture?.(event.pointerId);
+        }
+
+        function handlePointerMove(event) {
+            if (!estouArrastando) return;
+            const difference = event.clientX - posicaoInicialDoMouse;
+            if (Math.abs(difference) > 4) pointerMoved = true;
+            offset = normalizeOffset(offsetInicialDoMouse + difference);
+            carousel.style.transform = `translate3d(${offset}px, 0, 0)`;
+            updateNavigation();
+        }
+
+        function handlePointerUp(event) {
+            if (!estouArrastando) return;
+            estouArrastando = false;
+            carousel.style.cursor = 'grab';
+            carousel.releasePointerCapture?.(event.pointerId);
+            const difference = event.clientX - posicaoInicialDoMouse;
+            const threshold = Math.max(42, slideStride * 0.16);
+            const currentIndex = Math.round(-offset / slideStride);
+            const nextIndex = difference < -threshold ? currentIndex + 1 : difference > threshold ? currentIndex - 1 : currentIndex;
+            irParaSlide(nextIndex);
+        }
+
+        carousel.addEventListener('pointerdown', handlePointerDown);
+        carousel.addEventListener('pointermove', handlePointerMove);
+        carousel.addEventListener('pointerup', handlePointerUp);
+        carousel.addEventListener('pointercancel', handlePointerUp);
+        carousel.addEventListener('click', (event) => {
+            if (pointerMoved) {
+                event.preventDefault();
+                event.stopPropagation();
+                pointerMoved = false;
+            }
+        }, true);
+        carouselContainer.addEventListener('mouseenter', () => pauseAutoplay());
+        carouselContainer.addEventListener('mouseleave', () => {
+            if (!estouArrastando && !transitionTimer) resumeAutoplay();
+        });
+        carouselContainer.addEventListener('focusin', () => pauseAutoplay());
+        carouselContainer.addEventListener('focusout', (event) => {
+            if (!carouselContainer.contains(event.relatedTarget)) resumeAutoplay();
+        });
+
+        window.moveToSlide = irParaSlide;
+        measureCarousel();
+        window.addEventListener('resize', measureCarousel);
+        window.setInterval(updateNavigation, 250);
+        updateNavigation();
     }
-    
-    // ========== FUNÇÃO GLOBAL PARA OS BOTÕES NUMÉRICOS ==========
-    window.moveToSlide = function(indice) {
-        irParaSlide(indice);
-    }
-    
-    // ========== ATUALIZAR AO REDIMENSIONAR JANELA ==========
-    window.addEventListener('resize', function() {
-        irParaSlide(slideAtual);
-    });
-    
-    // ========== INICIALIZAR NA POSIÇÃO CORRETA ==========
-    irParaSlide(0);
 });
