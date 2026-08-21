@@ -696,14 +696,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function resumeAutoplay(delay = 0) {
             if (resumeTimer) window.clearTimeout(resumeTimer);
-            if (delay > 0) {
-                resumeTimer = window.setTimeout(() => {
-                    isPaused = false;
-                    carousel.classList.remove('is-paused');
-                }, delay);
-            } else {
+
+            const continueAnimation = () => {
                 isPaused = false;
                 carousel.classList.remove('is-paused');
+
+                // freezeAnimation() removes the CSS animation while dragging.
+                // Rebuild the animation phase before resuming so opening or
+                // closing a modal can never leave the track permanently frozen.
+                if (setWidth && !carousel.classList.contains('animate-infinite-scroll')) {
+                    restartAnimation(offset);
+                }
+            };
+
+            if (delay > 0) {
+                resumeTimer = window.setTimeout(continueAnimation, delay);
+            } else {
+                continueAnimation();
             }
         }
 
