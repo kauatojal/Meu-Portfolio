@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kauã Tojal - Portfólio</title>
     <meta name="description" content="Portfólio de Kauã Tojal, desenvolvedor Full Stack especializado em aplicações web, APIs e interfaces modernas." data-i18n-content="meta.description" />
-    <link rel="stylesheet" href="assets/css/style.css?v=20260821-2" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20260821-3" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="shortcut icon" type="icon" href="assets/favicon/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/img/brand/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="assets/img/brand/favicon-32x32.png" />
   </head>
 
   <body>
@@ -18,7 +20,7 @@
     <header class="header">
       <div class="header-brand-group">
         <a href="#" class="brand-lockup" aria-label="Kauã Tojal — página inicial">
-          <img class="brand-logo" src="assets/img/brand/kaua-tojal-logo-final.webp" alt="" width="42" height="42" aria-hidden="true">
+          <img class="brand-logo" src="assets/img/brand/logo.webp" alt="" width="42" height="42" aria-hidden="true">
           <span class="logo">Kauã Tojal</span>
         </a>
         <i class="bx bx-menu" id="menu" role="button" tabindex="0" aria-label="Abrir menu" data-i18n-aria="accessibility.menu" style="color: #ffffff"></i>
@@ -626,9 +628,36 @@
       </div>
     </section>
 
-    <footer>
-      <div class="text">
-        <p>Copyright @ 2025 by Kauã Tojal</p>
+    <footer class="site-footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-main">
+          <a class="footer-brand-link" href="#home" aria-label="Kauã Tojal — página inicial">
+            <img class="footer-logo" src="assets/img/brand/logo.webp" alt="" width="38" height="38" aria-hidden="true" />
+            <span class="footer-brand-name">Kauã Tojal</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Desenvolvedor Full Stack criando experiências digitais modernas.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navegação do rodapé" data-i18n-aria="footer.navAria">
+          <a href="#home" data-i18n="footer.home">Início</a>
+          <a href="#about" data-i18n="footer.about">Sobre Mim</a>
+          <a href="#projects" data-i18n="footer.projects">Projetos</a>
+          <a href="#contact" data-i18n="footer.contact">Contato</a>
+        </nav>
+
+        <div class="footer-socials" aria-label="Redes sociais" data-i18n-aria="footer.socialAria">
+          <a href="https://github.com/kauatojal" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub">
+            <i class="bx bxl-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/kauã-tojal-702a98299/" target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn">
+            <i class="bx bxl-linkedin" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear">2026</span> Kauã Tojal. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
+        <p data-i18n="footer.built">Construído com HTML, CSS e JavaScript.</p>
       </div>
     </footer>
 
@@ -638,6 +667,6 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="assets/scripts/script.js?v=20260821-2"></script>
+    <script src="assets/scripts/script.js?v=20260821-3"></script>
   </body>
 </html>

@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorFallback: 'Falar comigo pelo WhatsApp',
                 emailFallback: 'Tentar pelo e-mail'
             },
-            footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
+            footer: { tagline: 'Desenvolvedor Full Stack criando experiências digitais modernas.', navAria: 'Navegação do rodapé', socialAria: 'Redes sociais', home: 'Início', about: 'Sobre Mim', projects: 'Projetos', contact: 'Contato', rights: 'Todos os direitos reservados.', built: 'Construído com HTML, CSS e JavaScript.' }
         },
         en: {
             meta: {
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 errorFallback: 'Talk to me on WhatsApp',
                 emailFallback: 'Try by email'
             },
-            footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
+            footer: { tagline: 'Full Stack developer creating modern digital experiences.', navAria: 'Footer navigation', socialAria: 'Social media', home: 'Home', about: 'About Me', projects: 'Projects', contact: 'Contact', rights: 'All rights reserved.', built: 'Built with HTML, CSS, and JavaScript.' }
         }
     };
 
@@ -139,6 +139,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         document.title = getTranslation(selectedLanguage, 'meta.title');
+        const currentYear = document.querySelector('#currentYear');
+        if (currentYear) currentYear.textContent = new Date().getFullYear();
         if (languageSelect) languageSelect.value = selectedLanguage;
         if (languageFlag) languageFlag.textContent = isEnglish ? '🇺🇸' : '🇧🇷';
         if (languageLabel) languageLabel.textContent = getTranslation(selectedLanguage, 'language.label');
