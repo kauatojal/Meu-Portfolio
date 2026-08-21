@@ -54,7 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 submit: 'Enviar mensagem',
                 success: 'Mensagem enviada com sucesso!',
                 error: 'O serviço de e-mail está temporariamente indisponível. Tente novamente ou use o WhatsApp.',
-                errorFallback: 'Falar comigo pelo WhatsApp'
+                errorFallback: 'Falar comigo pelo WhatsApp',
+                emailFallback: 'Tentar pelo e-mail'
             },
             footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
         },
@@ -106,7 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 submit: 'Send message',
                 success: 'Message sent successfully!',
                 error: 'The email service is temporarily unavailable. Please try again or use WhatsApp.',
-                errorFallback: 'Talk to me on WhatsApp'
+                errorFallback: 'Talk to me on WhatsApp',
+                emailFallback: 'Try by email'
             },
             footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
         }
@@ -349,20 +351,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
     const fallbackLink = document.getElementById('contactFallback');
+    const fallbackEmailLink = document.getElementById('contactEmailFallback');
     const submitButton = form ? form.querySelector('button[type="submit"]') : null;
 
     function setFormMessage(element, isVisible) {
         if (!element) return;
         element.hidden = !isVisible;
         element.style.display = isVisible ? 'block' : 'none';
-        if (element === errorMessage && fallbackLink) {
-            fallbackLink.hidden = !isVisible;
+        if (element === errorMessage) {
+            [fallbackLink, fallbackEmailLink].forEach((link) => {
+                if (link) link.hidden = !isVisible;
+            });
         }
     }
 
     function validateEmail(email) {
         const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailPattern.test(email);
+    }
+
+    function updateFallbackLinks(userName, userEmail, userSubject, userMessage) {
+        const fallbackMessage = `Olá Kauã! Tentei enviar uma mensagem pelo seu portfólio.\n\nNome: ${userName}\nE-mail: ${userEmail}\nAssunto: ${userSubject}\nMensagem: ${userMessage}`;
+        if (fallbackLink) {
+            fallbackLink.href = `https://wa.me/5579981369704?text=${encodeURIComponent(fallbackMessage)}`;
+        }
+        if (fallbackEmailLink) {
+            const emailSubject = encodeURIComponent(userSubject || 'Contato via portfólio');
+            const emailBody = encodeURIComponent(`Nome: ${userName}\nE-mail para resposta: ${userEmail}\n\n${userMessage}`);
+            fallbackEmailLink.href = `mailto:kauatojal0@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+        }
     }
 
     if (form) {
@@ -387,6 +404,8 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            updateFallbackLinks(userName, userEmail, userSubject, userMessage);
+
             if (!emailJsReady) {
                 setFormMessage(errorMessage, true);
                 return;
@@ -397,11 +416,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 submitButton.setAttribute('aria-busy', 'true');
                 submitButton.dataset.originalText = submitButton.textContent;
                 submitButton.textContent = document.documentElement.lang === 'en' ? 'Sending...' : 'Enviando...';
-            }
-
-            if (fallbackLink) {
-                const fallbackMessage = `Olá Kauã! Tentei enviar uma mensagem pelo seu portfólio.\n\nNome: ${userName}\nE-mail: ${userEmail}\nAssunto: ${userSubject}\nMensagem: ${userMessage}`;
-                fallbackLink.href = `https://wa.me/5579981369704?text=${encodeURIComponent(fallbackMessage)}`;
             }
 
             window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {

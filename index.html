@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kauã Tojal - Portfólio</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <meta name="description" content="Portfólio de Kauã Tojal, desenvolvedor Full Stack especializado em aplicações web, APIs e interfaces modernas." data-i18n-content="meta.description" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20260821-2" />
     <link
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
       rel="stylesheet"
@@ -26,8 +27,8 @@
       </nav>
       <div class="language-switcher" aria-label="Idioma" data-i18n-aria="language.label">
         <span class="language-flag" aria-hidden="true">🇧🇷</span>
-        <label class="sr-only" for="language-select" data-i18n="language.label">Idioma</label>
-        <select id="language-select" aria-label="Idioma">
+        <label id="language-label" class="sr-only" for="language-select" data-i18n="language.label">Idioma</label>
+        <select id="language-select" aria-labelledby="language-label">
           <option value="pt">PT</option>
           <option value="en">EN</option>
         </select>
@@ -611,7 +612,10 @@
           </div>
           <div id="errorMessage" role="alert" aria-live="assertive" hidden>
             <i class="bx bx-error-circle" aria-hidden="true"></i> <span data-i18n="contact.error">O serviço de e-mail está temporariamente indisponível. Tente novamente ou use o WhatsApp.</span>
-            <a id="contactFallback" class="contact-fallback" href="https://wa.me/5579981369704" target="_blank" rel="noopener noreferrer" hidden data-i18n="contact.errorFallback">Falar comigo pelo WhatsApp</a>
+            <div class="contact-fallback-actions">
+              <a id="contactFallback" class="contact-fallback" href="https://wa.me/5579981369704" target="_blank" rel="noopener noreferrer" hidden data-i18n="contact.errorFallback">Falar comigo pelo WhatsApp</a>
+              <a id="contactEmailFallback" class="contact-fallback contact-fallback-email" href="mailto:kauatojal0@gmail.com" hidden data-i18n="contact.emailFallback">Tentar pelo e-mail</a>
+            </div>
           </div>
         </div>
       </div>
@@ -629,6 +633,6 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="assets/scripts/script.js"></script>
+    <script src="assets/scripts/script.js?v=20260821-2"></script>
   </body>
 </html>
