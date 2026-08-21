@@ -125,352 +125,168 @@
 
     <!-- *************************Project Section************************* -->
     <section class="projects" id="projects">
-      <h2 class="title"><span class="title-prefix" data-i18n="sections.projectsPrefix">Meus</span> <span class="title-suffix" data-i18n="sections.projectsSuffix">Projetos</span></h2>
-      <div class="carousel-container">
-        <div class="carousel" id="carousel">
-          <!-- Projeto 1 - Flap -->
-          <div class="project">
-            <div class="project-box">
-              <img
-                src="assets/imagens/Logo_flap.png"
-                alt="Flap - Gerenciamento de Tarefas"
-                data-i18n-alt="projects.flap.title"
-                class="project-img"
-              />
-              <div class="project-description">
-                <h3 data-i18n="projects.flap.title">Flap - Gerenciamento de Tarefas</h3>
-                <p data-i18n="projects.flap.description">
-                  Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles, e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.
-                </p>
-                <p class="technologies">
-                  <img
-                    src="assets/imagens/React_logo.png"
-                    alt="React"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/JS.png"
-                    alt="JavaScript"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Java.png"
-                    alt="Java"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Spring_Boot.png"
-                    alt="Spring Boot"
-                    class="tech-logo"
-                  />
-                </p>
-              </div>
-              <div class="project-buttons">
-                <a
-                  href="https://github.com/kauatojal/Residencia4-Flap"
-                  class="github-button"
-                  target="_blank"
-                  title="Repositório Front-end"
-                  data-i18n-title="actions.frontend"
-                >
-                  <img
-                    src="assets/imagens/github.png"
-                    alt="GitHub"
-                    class="github-logo-small"
-                  /><span data-i18n="actions.frontend">Front-end</span>
-                </a>
-                <a
-                  href="https://github.com/kauatojal/RIV-flap-backend"
-                  class="github-button"
-                  target="_blank"
-                  title="Repositório Back-end"
-                  data-i18n-title="actions.backend"
-                >
-                  <img
-                    src="assets/imagens/github.png"
-                    alt="GitHub"
-                    class="github-logo-small"
-                  /><span data-i18n="actions.backend">Back-end</span>
-                </a>
-                <a
-                  href="https://residencia4-flap.vercel.app"
-                  class="site-button"
-                  target="_blank"
-                >
-                  <img
-                    src="assets/imagens/www.png"
-                    alt="Website"
-                    class="www-logo-small"
-                  /><span data-i18n="actions.viewSite">Ver Site</span>
-                </a>
-              </div>
-            </div>
-          </div>
+      <div class="projects-heading">
+        <p class="section-eyebrow" data-i18n="projects.eyebrow">Projetos em destaque</p>
+        <h2 class="title"><span class="title-prefix" data-i18n="sections.projectsPrefix">Meus</span> <span class="title-suffix" data-i18n="sections.projectsSuffix">Projetos</span></h2>
+        <p class="projects-subtitle" data-i18n="projects.clickToView">Clique em qualquer projeto para ver os detalhes</p>
+      </div>
 
-          <!-- Projeto 2 - Inove Imobiliária -->
-          <div class="project">
-            <div class="project-box">
-              <img
-                src="assets/imagens/inove.png"
-                alt="Inove Imobiliária"
-                data-i18n-alt="projects.inove.title"
-                class="project-img"
-              />
-              <div class="project-description">
-                <h3 data-i18n="projects.inove.title">Inove Imobiliária</h3>
-                <p data-i18n="projects.inove.description">
-                  Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.
-                </p>
-                <p class="technologies">
-                  <img
-                    src="assets/imagens/HTML.png"
-                    alt="HTML"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/CSS.png"
-                    alt="CSS"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/JS.png"
-                    alt="JavaScript"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Java.png"
-                    alt="Java"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Spring_Boot.png"
-                    alt="Spring Boot"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Hibernate.png"
-                    alt="Hibernate"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/MySQL.png"
-                    alt="MySQL"
-                    class="tech-logo"
-                  />
-                </p>
-              </div>
-              <div class="project-buttons">
-                <a
-                  href="https://github.com/inove-imobiliaria"
-                  class="github-button"
-                  target="_blank"
-                >
-                  <img
-                    src="assets/imagens/github.png"
-                    alt="GitHub"
-                    class="github-logo-small"
-                  /><span data-i18n="actions.viewRepository">Ver Repositório</span>
-                </a>
+      <div class="carousel-container" aria-label="Navegação dos projetos" data-i18n-aria="projects.navigationLabel">
+        <div class="carousel" id="carousel" role="list">
+          <button class="project project-card" type="button" role="listitem" data-project-id="flap" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/Logo_flap.png" alt="Flap - Gerenciamento de Tarefas" data-i18n-alt="projects.flap.title" class="project-img" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.flap.title">Flap - Gerenciamento de Tarefas</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
 
-                <a
-                  href="https://inove.com.pt/"
-                  class="site-button"
-                  target="_blank"
-                >
-                  <img
-                    src="assets/imagens/www.png"
-                    alt="Website"
-                    class="www-logo-small"
-                  /><span data-i18n="actions.viewSite">Ver Site</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <button class="project project-card" type="button" role="listitem" data-project-id="inove" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/inove.png" alt="Inove Imobiliária" data-i18n-alt="projects.inove.title" class="project-img" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.inove.title">Inove Imobiliária</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
 
-          <!-- Projeto 3 - Fundação de Saúde Parreiras Horta -->
-          <div class="project">
-            <div class="project-box">
-              <img
-                src="assets/imagens/fsph_logo.png"
-                alt="Fundação de Saúde Parreiras Horta"
-                data-i18n-alt="projects.fsph.title"
-                class="project-img"
-              />
-              <div class="project-description">
-                <h3 data-i18n="projects.fsph.title">Fundação de Saúde Parreiras Horta</h3>
-                <p data-i18n="projects.fsph.description">
-                  Desenvolvi um sistema de gerenciamento de não conformidades
-                  para a Fundação de Saúde Parreiras Horta, utilizando Java com
-                  Spring Boot e Hibernate, visando automatizar o acompanhamento
-                  e a resolução de problemas, garantindo maior eficiência e
-                  conformidade nos processos internos.
-                </p>
-                <p class="technologies">
-                  <img
-                    src="assets/imagens/Java.png"
-                    alt="Java"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Spring_Boot.png"
-                    alt="Spring Boot"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Hibernate.png"
-                    alt="Hibernate"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/MySQL.png"
-                    alt="MySQL"
-                    class="tech-logo"
-                  />
-                </p>
-              </div>
-              <a
-                href="https://github.com/joaovmo/projeto_Parreiras"
-                class="github-button"
-                target="_blank"
-              >
-                <img
-                  src="assets/imagens/github.png"
-                  alt="GitHub"
-                  class="github-logo-small"
-                /><span data-i18n="actions.viewRepository">Ver Repositório</span>
-              </a>
-            </div>
-          </div>
+          <button class="project project-card" type="button" role="listitem" data-project-id="fsph" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/fsph_logo.png" alt="Fundação de Saúde Parreiras Horta" data-i18n-alt="projects.fsph.title" class="project-img" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.fsph.title">Fundação de Saúde Parreiras Horta</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
 
-          <!-- Projeto 4 - Jogo com IA: Quonsumo -->
-          <div class="project">
-            <div class="project-box">
-              <img
-                src="assets/imagens/QUONSUMO O JOGO ENERGÉTICO.png"
-                alt="Quonsumo: O Jogo Energético"
-                data-i18n-alt="projects.quonsumo.title"
-                class="project-img"
-              />
-              <div class="project-description">
-                <h3 data-i18n="projects.quonsumo.title">Quonsumo: O Jogo Energético</h3>
-                <p data-i18n="projects.quonsumo.description">
-                  Desenvolvi um modelo de machine learning para classificar
-                  consumidores de energia como residenciais ou comerciais a cada
-                  2 horas, utilizando Python e scikit-learn. O projeto visa
-                  otimizar a distribuição de energia com base em padrões de
-                  consumo.
-                </p>
-                <p class="technologies">
-                  <img
-                    src="assets/imagens/Python.png"
-                    alt="Java"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Scikit-Learn.png"
-                    alt="Spring Boot"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/Pandas.png"
-                    alt="Hibernate"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/SQLite.png"
-                    alt="MySQL"
-                    class="tech-logo"
-                  />
-                </p>
-              </div>
-              <div class="project-buttons">
-                <a
-                  href="https://github.com/kauatojal/IA-Project"
-                  class="github-button"
-                  target="_blank"
-                >
-                  <img
-                    src="assets/imagens/github.png"
-                    alt="GitHub"
-                    class="github-logo-small"
-                  /><span data-i18n="actions.viewRepository">Ver Repositório</span>
-                </a>
-                <a
-                  href="https://www.youtube.com/watch?v=J5uuDdYlczE"
-                  class="youtube-button"
-                  target="_blank"
-                >
-                  <img
-                    src="assets/imagens/YouTube.png"
-                    alt="YouTube"
-                    class="youtube-logo-small"
-                  /><span data-i18n="actions.watchDemo">Ver Funcionamento</span>
-                </a>
-              </div>
-            </div>
-          </div>
+          <button class="project project-card" type="button" role="listitem" data-project-id="quonsumo" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/QUONSUMO O JOGO ENERGÉTICO.png" alt="Quonsumo: O Jogo Energético" data-i18n-alt="projects.quonsumo.title" class="project-img" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.quonsumo.title">Quonsumo: O Jogo Energético</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
 
-          <!-- Projeto 5 - Meu Currículo -->
-          <div class="project">
-            <div class="project-box">
-              <img
-                src="assets/imagens/Foto de perfil.png"
-                alt="Meu Portfólio"
-                data-i18n-alt="projects.portfolio.title"
-                class="project-img"
-              />
-              <div class="project-description">
-                <h3 data-i18n="projects.portfolio.title">Meu Portfólio</h3>
-                <p data-i18n="projects.portfolio.description">
-                  Desenvolvi meu currículo e portfólio na forma de um site,
-                  utilizando HTML, CSS e JavaScript, para apresentar de maneira
-                  interativa minhas experiências, projetos, habilidades e
-                  contatos. O projeto visa facilitar o acesso às minhas
-                  informações profissionais e promover minha visibilidade no
-                  mercado.
-                </p>
-                <p class="technologies">
-                  <img
-                    src="assets/imagens/HTML.png"
-                    alt="Java"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/CSS.png"
-                    alt="Spring Boot"
-                    class="tech-logo"
-                  />
-                  <img
-                    src="assets/imagens/JS.png"
-                    alt="Hibernate"
-                    class="tech-logo"
-                  />
-                </p>
-              </div>
-              <a
-                href="https://github.com/kauatojal/Meu-Portfolio"
-                class="github-button"
-                target="_blank"
-              >
-                <img
-                  src="assets/imagens/github.png"
-                  alt="GitHub"
-                  class="github-logo-small"
-                /><span data-i18n="actions.viewRepository">Ver Repositório</span>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div class="navigation">
-          <button onclick="moveToSlide(0)">1</button>
-          <button onclick="moveToSlide(1)">2</button>
-          <button onclick="moveToSlide(2)">3</button>
-          <button onclick="moveToSlide(3)">4</button>
-          <button onclick="moveToSlide(4)">5</button>
+          <button class="project project-card" type="button" role="listitem" data-project-id="portfolio" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/Foto de perfil.png" alt="Meu Portfólio" data-i18n-alt="projects.portfolio.title" class="project-img" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.portfolio.title">Meu Portfólio</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
         </div>
       </div>
     </section>
+
+    <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description" hidden>
+      <div class="project-modal__backdrop" data-modal-close></div>
+      <div class="project-modal__panel" role="document">
+        <button id="project-modal-close" class="project-modal__close" type="button" aria-label="Fechar detalhes do projeto" data-i18n-aria="accessibility.closeModal" data-modal-close>
+          <i class="bx bx-x" aria-hidden="true"></i>
+        </button>
+        <div id="modal-content" class="project-modal__content"></div>
+      </div>
+    </div>
+
+    <template id="project-template-flap">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/Logo_flap.png" alt="Flap - Gerenciamento de Tarefas" data-i18n-alt="projects.flap.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.flap.category">Aplicação Full Stack</p>
+          <h2 id="project-modal-title" data-i18n="projects.flap.title">Flap - Gerenciamento de Tarefas</h2>
+          <p id="project-modal-description" data-i18n="projects.flap.description">Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/React_logo.png" alt="React" />
+            <img src="assets/imagens/JS.png" alt="JavaScript" />
+            <img src="assets/imagens/Java.png" alt="Java" />
+            <img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/kauatojal/Residencia4-Flap" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.frontend">Front-end</span></a>
+            <a href="https://github.com/kauatojal/RIV-flap-backend" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.backend">Back-end</span></a>
+            <a href="https://residencia4-flap.vercel.app" class="site-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/www.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewSite">Ver Site</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-inove">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/inove.png" alt="Inove Imobiliária" data-i18n-alt="projects.inove.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.inove.category">Produto digital imobiliário</p>
+          <h2 id="project-modal-title" data-i18n="projects.inove.title">Inove Imobiliária</h2>
+          <p id="project-modal-description" data-i18n="projects.inove.description">Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/HTML.png" alt="HTML" /><img src="assets/imagens/CSS.png" alt="CSS" /><img src="assets/imagens/JS.png" alt="JavaScript" /><img src="assets/imagens/Java.png" alt="Java" /><img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" /><img src="assets/imagens/Hibernate.png" alt="Hibernate" /><img src="assets/imagens/MySQL.png" alt="MySQL" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/inove-imobiliaria" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+            <a href="https://inove.com.pt/" class="site-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/www.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewSite">Ver Site</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-fsph">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/fsph_logo.png" alt="Fundação de Saúde Parreiras Horta" data-i18n-alt="projects.fsph.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.fsph.category">Sistema corporativo</p>
+          <h2 id="project-modal-title" data-i18n="projects.fsph.title">Fundação de Saúde Parreiras Horta</h2>
+          <p id="project-modal-description" data-i18n="projects.fsph.description">Desenvolvi um sistema de gerenciamento de não conformidades para a Fundação de Saúde Parreiras Horta, utilizando Java com Spring Boot e Hibernate, visando automatizar o acompanhamento e a resolução de problemas, garantindo maior eficiência e conformidade nos processos internos.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/Java.png" alt="Java" /><img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" /><img src="assets/imagens/Hibernate.png" alt="Hibernate" /><img src="assets/imagens/MySQL.png" alt="MySQL" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/joaovmo/projeto_Parreiras" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-quonsumo">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/QUONSUMO O JOGO ENERGÉTICO.png" alt="Quonsumo: O Jogo Energético" data-i18n-alt="projects.quonsumo.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.quonsumo.category">Machine learning aplicado</p>
+          <h2 id="project-modal-title" data-i18n="projects.quonsumo.title">Quonsumo: O Jogo Energético</h2>
+          <p id="project-modal-description" data-i18n="projects.quonsumo.description">Desenvolvi um modelo de machine learning para classificar consumidores de energia como residenciais ou comerciais a cada 2 horas, utilizando Python e scikit-learn. O projeto visa otimizar a distribuição de energia com base em padrões de consumo.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/Python.png" alt="Python" /><img src="assets/imagens/Scikit-Learn.png" alt="Scikit-learn" /><img src="assets/imagens/Pandas.png" alt="Pandas" /><img src="assets/imagens/SQLite.png" alt="SQLite" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/kauatojal/IA-Project" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+            <a href="https://www.youtube.com/watch?v=J5uuDdYlczE" class="youtube-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/YouTube.png" alt="" aria-hidden="true" /><span data-i18n="actions.watchDemo">Ver Funcionamento</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-portfolio">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/Foto de perfil.png" alt="Meu Portfólio" data-i18n-alt="projects.portfolio.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.portfolio.category">Marca pessoal e portfólio</p>
+          <h2 id="project-modal-title" data-i18n="projects.portfolio.title">Meu Portfólio</h2>
+          <p id="project-modal-description" data-i18n="projects.portfolio.description">Desenvolvi meu currículo e portfólio na forma de um site, utilizando HTML, CSS e JavaScript, para apresentar de maneira interativa minhas experiências, projetos, habilidades e contatos. O projeto visa facilitar o acesso às minhas informações profissionais e promover minha visibilidade no mercado.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/HTML.png" alt="HTML" /><img src="assets/imagens/CSS.png" alt="CSS" /><img src="assets/imagens/JS.png" alt="JavaScript" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/kauatojal/Meu-Portfolio" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
 
     <!-- *************************Skills Section************************* -->
     <section class="skills" id="skills">

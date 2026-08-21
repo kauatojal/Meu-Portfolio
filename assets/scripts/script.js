@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 title: 'Kauã Tojal - Portfólio',
                 description: 'Portfólio de Kauã Tojal, desenvolvedor Full Stack especializado em aplicações web, APIs e interfaces modernas.'
             },
-            accessibility: { youtube: 'Abrir YouTube', github: 'Abrir GitHub', linkedin: 'Abrir LinkedIn', backToTop: 'Voltar ao topo' },
+            accessibility: { youtube: 'Abrir YouTube', github: 'Abrir GitHub', linkedin: 'Abrir LinkedIn', backToTop: 'Voltar ao topo', closeModal: 'Fechar detalhes do projeto', techStack: 'Tecnologias utilizadas' },
             language: { label: 'Idioma' },
             nav: { home: 'Home', about: 'Sobre Mim', projects: 'Projetos', skills: 'Skills', contact: 'Fale Comigo' },
             hero: { greeting: 'Olá, me chamo' },
@@ -24,11 +24,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 contactLink: 'contato'
             },
             projects: {
-                flap: { title: 'Flap - Gerenciamento de Tarefas', description: 'Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.' },
-                inove: { title: 'Inove Imobiliária', description: 'Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.' },
-                fsph: { title: 'Fundação de Saúde Parreiras Horta', description: 'Desenvolvi um sistema de gerenciamento de não conformidades para a Fundação de Saúde Parreiras Horta, utilizando Java com Spring Boot e Hibernate, visando automatizar o acompanhamento e a resolução de problemas, garantindo maior eficiência e conformidade nos processos internos.' },
-                quonsumo: { title: 'Quonsumo: O Jogo Energético', description: 'Desenvolvi um modelo de machine learning para classificar consumidores de energia como residenciais ou comerciais a cada 2 horas, utilizando Python e scikit-learn. O projeto visa otimizar a distribuição de energia com base em padrões de consumo.' },
-                portfolio: { title: 'Meu Portfólio', description: 'Desenvolvi meu currículo e portfólio na forma de um site, utilizando HTML, CSS e JavaScript, para apresentar de maneira interativa minhas experiências, projetos, habilidades e contatos. O projeto visa facilitar o acesso às minhas informações profissionais e promover minha visibilidade no mercado.' },
+                flap: { title: 'Flap - Gerenciamento de Tarefas', category: 'Aplicação Full Stack', description: 'Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.' },
+                inove: { title: 'Inove Imobiliária', category: 'Produto digital imobiliário', description: 'Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.' },
+                fsph: { title: 'Fundação de Saúde Parreiras Horta', category: 'Sistema corporativo', description: 'Desenvolvi um sistema de gerenciamento de não conformidades para a Fundação de Saúde Parreiras Horta, utilizando Java com Spring Boot e Hibernate, visando automatizar o acompanhamento e a resolução de problemas, garantindo maior eficiência e conformidade nos processos internos.' },
+                quonsumo: { title: 'Quonsumo: O Jogo Energético', category: 'Machine learning aplicado', description: 'Desenvolvi um modelo de machine learning para classificar consumidores de energia como residenciais ou comerciais a cada 2 horas, utilizando Python e scikit-learn. O projeto visa otimizar a distribuição de energia com base em padrões de consumo.' },
+                portfolio: { title: 'Meu Portfólio', category: 'Marca pessoal e portfólio', description: 'Desenvolvi meu currículo e portfólio na forma de um site, utilizando HTML, CSS e JavaScript, para apresentar de maneira interativa minhas experiências, projetos, habilidades e contatos. O projeto visa facilitar o acesso às minhas informações profissionais e promover minha visibilidade no mercado.' },
+                eyebrow: 'Projetos em destaque',
+                clickToView: 'Clique para ver detalhes do projeto',
                 navigationLabel: 'Navegação dos projetos'
             },
             skills: { hardTitle: 'HARD SKILLS', softTitle: 'SOFT SKILLS', teamwork: 'Trabalho em Equipe', problemSolving: 'Resolução de Problemas', communication: 'Comunicação', timeManagement: 'Gestão de Tempo', adaptability: 'Adaptabilidade', creativity: 'Criatividade', resultsFocus: 'Foco em Resultados', continuousLearning: 'Aprendizado Contínuo' },
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 title: 'Kauã Tojal - Portfolio',
                 description: 'Kauã Tojal portfolio, Full Stack developer focused on web applications, APIs, and modern user interfaces.'
             },
-            accessibility: { youtube: 'Open YouTube', github: 'Open GitHub', linkedin: 'Open LinkedIn', backToTop: 'Back to top' },
+            accessibility: { youtube: 'Open YouTube', github: 'Open GitHub', linkedin: 'Open LinkedIn', backToTop: 'Back to top', closeModal: 'Close project details', techStack: 'Technologies used' },
             language: { label: 'Language' },
             nav: { home: 'Home', about: 'About Me', projects: 'Projects', skills: 'Skills', contact: 'Contact Me' },
             hero: { greeting: 'Hi, I am' },
@@ -77,11 +79,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 contactLink: 'touch'
             },
             projects: {
-                flap: { title: 'Flap - Task Management', description: 'I developed a Trello-style task management application using React and JavaScript, with drag-and-drop (@hello-pangea/dnd), JWT authentication, role-based access control, and integration with a Spring Boot REST API. I implemented complex components including modals, filters, an annual calendar, client management, and priorities using Context API and React Router.' },
-                inove: { title: 'Inove Real Estate', description: 'I developed the institutional website and a complete property management system for the international real estate company Inove in Portugal, using HTML, CSS, JavaScript, Axios, Java with Spring Boot, and Hibernate. I created a RESTful API for real-time data integration, implemented responsive design with advanced search filters, property registration, editing and viewing, and used MySQL to ensure performance and scalability.' },
-                fsph: { title: 'Parreiras Horta Health Foundation', description: 'I developed a non-compliance management system for the Parreiras Horta Health Foundation using Java, Spring Boot, and Hibernate. The solution automated issue tracking and resolution, improving efficiency and compliance across internal processes.' },
-                quonsumo: { title: 'Quonsumo: The Energy Game', description: 'I developed a machine learning model to classify energy consumers as residential or commercial every two hours using Python and scikit-learn. The project aims to optimize energy distribution based on consumption patterns.' },
-                portfolio: { title: 'My Portfolio', description: 'I developed my resume and portfolio as a website using HTML, CSS, and JavaScript to present my experience, projects, skills, and contact information interactively. The project makes my professional information easier to access and strengthens my visibility in the market.' },
+                flap: { title: 'Flap - Task Management', category: 'Full Stack application', description: 'I developed a Trello-style task management application using React and JavaScript, with drag-and-drop (@hello-pangea/dnd), JWT authentication, role-based access control, and integration with a Spring Boot REST API. I implemented complex components including modals, filters, an annual calendar, client management, and priorities using Context API and React Router.' },
+                inove: { title: 'Inove Real Estate', category: 'Real estate digital product', description: 'I developed the institutional website and a complete property management system for the international real estate company Inove in Portugal, using HTML, CSS, JavaScript, Axios, Java with Spring Boot, and Hibernate. I created a RESTful API for real-time data integration, implemented responsive design with advanced search filters, property registration, editing and viewing, and used MySQL to ensure performance and scalability.' },
+                fsph: { title: 'Parreiras Horta Health Foundation', category: 'Enterprise system', description: 'I developed a non-compliance management system for the Parreiras Horta Health Foundation using Java, Spring Boot, and Hibernate. The solution automated issue tracking and resolution, improving efficiency and compliance across internal processes.' },
+                quonsumo: { title: 'Quonsumo: The Energy Game', category: 'Applied machine learning', description: 'I developed a machine learning model to classify energy consumers as residential or commercial every two hours using Python and scikit-learn. The project aims to optimize energy distribution based on consumption patterns.' },
+                portfolio: { title: 'My Portfolio', category: 'Personal brand and portfolio', description: 'I developed my resume and portfolio as a website using HTML, CSS, and JavaScript to present my experience, projects, skills, and contact information interactively. The project makes my professional information easier to access and strengthens my visibility in the market.' },
+                eyebrow: 'Featured projects',
+                clickToView: 'Click to view project details',
                 navigationLabel: 'Project navigation'
             },
             skills: { hardTitle: 'HARD SKILLS', softTitle: 'SOFT SKILLS', teamwork: 'Teamwork', problemSolving: 'Problem Solving', communication: 'Communication', timeManagement: 'Time Management', adaptability: 'Adaptability', creativity: 'Creativity', resultsFocus: 'Results Focus', continuousLearning: 'Continuous Learning' },
@@ -511,17 +515,65 @@ document.addEventListener('DOMContentLoaded', function () {
     setInterval(typeAndErase, 120);
 
     // ============================================
-    // CARROSSEL INFINITO — PADRÃO KOVA STUDIO
+    // CARROSSEL INFINITO + MODAL DE PROJETOS — PADRÃO KOVA STUDIO
     // ============================================
 
     const carousel = document.getElementById('carousel');
     const carouselContainer = document.querySelector('.carousel-container');
+    const projectModal = document.getElementById('project-modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalClose = document.getElementById('project-modal-close');
+    let lastFocusedProject = null;
+
+    function applyModalLanguage() {
+        const selectedLanguage = document.documentElement.dataset.language || 'pt';
+        if (!modalContent) return;
+        modalContent.querySelectorAll('[data-i18n]').forEach((element) => {
+            element.textContent = getTranslation(selectedLanguage, element.dataset.i18n);
+        });
+        modalContent.querySelectorAll('[data-i18n-alt]').forEach((element) => {
+            element.setAttribute('alt', getTranslation(selectedLanguage, element.dataset.i18nAlt));
+        });
+    }
+
+    function openProjectModal(projectId, trigger = null) {
+        if (!projectModal || !modalContent) return;
+        const template = document.getElementById(`project-template-${projectId}`);
+        if (!template) return;
+
+        lastFocusedProject = trigger || document.activeElement;
+        modalContent.replaceChildren(template.content.cloneNode(true));
+        applyModalLanguage();
+        projectModal.hidden = false;
+        document.body.classList.add('modal-open');
+        modalClose?.focus();
+    }
+
+    function closeProjectModal() {
+        if (!projectModal || projectModal.hidden) return;
+        projectModal.hidden = true;
+        document.body.classList.remove('modal-open');
+        modalContent?.replaceChildren();
+        if (lastFocusedProject && document.contains(lastFocusedProject)) lastFocusedProject.focus();
+        lastFocusedProject = null;
+    }
+
+    window.openProjectModal = openProjectModal;
+    window.closeProjectModal = closeProjectModal;
+
+    document.querySelectorAll('[data-modal-close]').forEach((element) => {
+        element.addEventListener('click', closeProjectModal);
+    });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && projectModal && !projectModal.hidden) closeProjectModal();
+    });
 
     if (carousel && carouselContainer) {
-        const originalSlides = Array.from(carousel.children);
+        const originalSlides = Array.from(carousel.querySelectorAll(':scope > .project-card'));
         const totalDeSlides = originalSlides.length;
-        const navigationButtons = Array.from(document.querySelectorAll('.navigation button'));
         const animationDuration = 35000;
+        let primaryGroup = null;
+        let duplicateGroup = null;
         let slideStride = 0;
         let setWidth = 0;
         let offset = 0;
@@ -533,17 +585,23 @@ document.addEventListener('DOMContentLoaded', function () {
         let pointerMoved = false;
         let isPaused = false;
 
-        // Duplica os cards sem remover nenhum original. Assim, a animação de -50%
-        // retorna ao mesmo conteúdo e mantém a passagem contínua, como no Kova Studio.
-        originalSlides.forEach((slide) => {
-            const clone = slide.cloneNode(true);
-            clone.setAttribute('aria-hidden', 'true');
-            clone.querySelectorAll('a, button, input, textarea, select').forEach((element) => {
-                element.setAttribute('tabindex', '-1');
-            });
-            carousel.appendChild(clone);
-        });
+        function createProjectGroup(slides, hidden = false) {
+            const group = document.createElement('div');
+            group.className = 'carousel-group';
+            group.setAttribute('role', 'presentation');
+            if (hidden) group.setAttribute('aria-hidden', 'true');
+            slides.forEach((slide) => group.appendChild(slide));
+            if (hidden) {
+                group.querySelectorAll('a, button, input, textarea, select').forEach((element) => {
+                    element.setAttribute('tabindex', '-1');
+                });
+            }
+            return group;
+        }
 
+        primaryGroup = createProjectGroup(originalSlides);
+        duplicateGroup = createProjectGroup(originalSlides.map((slide) => slide.cloneNode(true)), true);
+        carousel.replaceChildren(primaryGroup, duplicateGroup);
         carousel.classList.add('is-infinite', 'animate-infinite-scroll');
         carousel.style.cursor = 'grab';
         carousel.style.willChange = 'transform';
@@ -561,7 +619,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const transform = window.getComputedStyle(carousel).transform;
             if (!transform || transform === 'none') return offset;
             const matrix3d = transform.match(/^matrix3d\((.+)\)$/);
-            if (matrix3d) return parseFloat(matrix3d[1].split(',')[13]) || 0;
+            if (matrix3d) return parseFloat(matrix3d[1].split(',')[12]) || 0;
             const matrix = transform.match(/^matrix\((.+)\)$/);
             if (matrix) return parseFloat(matrix[1].split(',')[4]) || 0;
             return offset;
@@ -576,16 +634,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const progress = setWidth ? Math.min(Math.max((-offset) / setWidth, 0), 1) : 0;
             carousel.style.animationDelay = `${-progress * animationDuration}ms`;
             carousel.style.transform = '';
-        }
-
-        function updateNavigation() {
-            if (!slideStride || !totalDeSlides) return;
-            const activeIndex = ((Math.round(-currentOffset() / slideStride) % totalDeSlides) + totalDeSlides) % totalDeSlides;
-            navigationButtons.forEach((button, index) => {
-                const active = index === activeIndex;
-                button.classList.toggle('active', active);
-                button.setAttribute('aria-current', active ? 'true' : 'false');
-            });
         }
 
         function pauseAutoplay() {
@@ -623,17 +671,16 @@ document.addEventListener('DOMContentLoaded', function () {
             void carousel.offsetWidth;
             carousel.classList.add('animate-infinite-scroll');
             if (isPaused) carousel.classList.add('is-paused');
-            updateNavigation();
         }
 
         function measureCarousel() {
-            const firstSlide = carousel.querySelector('.project');
-            if (!firstSlide || !totalDeSlides) return;
+            if (!primaryGroup || !totalDeSlides) return;
             const previousOffset = carousel.classList.contains('animate-infinite-scroll') ? currentOffset() : offset;
-            const styles = window.getComputedStyle(carousel);
-            const gap = parseFloat(styles.columnGap || styles.gap || '0') || 0;
-            slideStride = firstSlide.getBoundingClientRect().width + gap;
-            setWidth = slideStride * totalDeSlides;
+            const firstSlide = primaryGroup.querySelector('.project-card');
+            if (!firstSlide) return;
+            slideStride = firstSlide.getBoundingClientRect().width + parseFloat(getComputedStyle(primaryGroup).gap || '0');
+            setWidth = primaryGroup.getBoundingClientRect().width;
+            if (!setWidth) return;
             restartAnimation(previousOffset);
         }
 
@@ -651,13 +698,13 @@ document.addEventListener('DOMContentLoaded', function () {
                 offset = normalizeOffset(offset);
                 restartAnimation(offset);
                 transitionTimer = null;
-                resumeAutoplay(2400);
+                resumeAutoplay(1800);
             }, duration + 40);
         }
 
-        function irParaSlide(numeroDoSlide) {
+        function moveToProject(projectIndex) {
             if (!totalDeSlides || !slideStride || !setWidth) return;
-            const index = ((numeroDoSlide % totalDeSlides) + totalDeSlides) % totalDeSlides;
+            const index = ((projectIndex % totalDeSlides) + totalDeSlides) % totalDeSlides;
             pauseAutoplay();
             const startOffset = currentOffset();
             let targetOffset = -index * slideStride;
@@ -667,6 +714,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function handlePointerDown(event) {
+            if (event.button !== undefined && event.button !== 0) return;
             if (transitionTimer) window.clearTimeout(transitionTimer);
             pauseAutoplay();
             freezeAnimation();
@@ -681,10 +729,9 @@ document.addEventListener('DOMContentLoaded', function () {
         function handlePointerMove(event) {
             if (!estouArrastando) return;
             const difference = event.clientX - posicaoInicialDoMouse;
-            if (Math.abs(difference) > 4) pointerMoved = true;
-            offset = normalizeOffset(offsetInicialDoMouse + difference);
+            if (Math.abs(difference) > 5) pointerMoved = true;
+            offset = offsetInicialDoMouse + difference;
             carousel.style.transform = `translate3d(${offset}px, 0, 0)`;
-            updateNavigation();
         }
 
         function handlePointerUp(event) {
@@ -694,9 +741,9 @@ document.addEventListener('DOMContentLoaded', function () {
             carousel.releasePointerCapture?.(event.pointerId);
             const difference = event.clientX - posicaoInicialDoMouse;
             const threshold = Math.max(42, slideStride * 0.16);
-            const currentIndex = Math.round(-offset / slideStride);
+            const currentIndex = Math.round(-normalizeOffset(offset) / slideStride);
             const nextIndex = difference < -threshold ? currentIndex + 1 : difference > threshold ? currentIndex - 1 : currentIndex;
-            irParaSlide(nextIndex);
+            moveToProject(nextIndex);
         }
 
         carousel.addEventListener('pointerdown', handlePointerDown);
@@ -704,25 +751,30 @@ document.addEventListener('DOMContentLoaded', function () {
         carousel.addEventListener('pointerup', handlePointerUp);
         carousel.addEventListener('pointercancel', handlePointerUp);
         carousel.addEventListener('click', (event) => {
+            const projectCard = event.target.closest('.project-card');
+            if (!projectCard || !carousel.contains(projectCard)) return;
             if (pointerMoved) {
                 event.preventDefault();
                 event.stopPropagation();
                 pointerMoved = false;
+                return;
             }
-        }, true);
+            openProjectModal(projectCard.dataset.projectId, projectCard);
+        });
         carouselContainer.addEventListener('mouseenter', () => pauseAutoplay());
         carouselContainer.addEventListener('mouseleave', () => {
-            if (!estouArrastando && !transitionTimer) resumeAutoplay();
+            if (!estouArrastando && !transitionTimer && (!projectModal || projectModal.hidden)) resumeAutoplay();
         });
         carouselContainer.addEventListener('focusin', () => pauseAutoplay());
         carouselContainer.addEventListener('focusout', (event) => {
             if (!carouselContainer.contains(event.relatedTarget)) resumeAutoplay();
         });
 
-        window.moveToSlide = irParaSlide;
+        window.moveToSlide = moveToProject;
         measureCarousel();
-        window.addEventListener('resize', measureCarousel);
-        window.setInterval(updateNavigation, 250);
-        updateNavigation();
+        window.addEventListener('resize', () => window.requestAnimationFrame(measureCarousel));
     }
+
+    window.addEventListener('portfolio-language-change', applyModalLanguage);
+
 });

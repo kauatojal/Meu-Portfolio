@@ -4021,3 +4021,553 @@ button:focus-visible {
 .animate-infinite-scroll.is-paused {
   animation-play-state: paused;
 }
+
+
+/* ============================================
+   PROJECTS — CARDS COMPACTOS + MODAL KOVA
+   ============================================ */
+.projects {
+  padding-top: clamp(10rem, 12vw, 15rem);
+  padding-bottom: clamp(9rem, 12vw, 14rem);
+  scroll-margin-top: 7rem;
+}
+
+.projects-heading {
+  width: min(100%, 78rem);
+  margin: 0 auto clamp(3.8rem, 5vw, 6rem);
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+
+.projects-heading .section-eyebrow {
+  margin: 0 0 1.2rem;
+  color: var(--accent);
+  font-size: clamp(1.1rem, 1.15vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.projects-heading .title {
+  margin-bottom: 0;
+}
+
+.projects-subtitle {
+  max-width: 58rem;
+  margin: 1.6rem auto 0;
+  color: var(--text-muted, rgba(255, 255, 255, 0.68));
+  font-size: clamp(1.35rem, 1.35vw, 1.65rem);
+  line-height: 1.65;
+}
+
+.carousel-container {
+  width: min(100%, 140rem);
+  max-width: none;
+  margin-inline: auto;
+  padding-inline: clamp(2rem, 6vw, 9rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.carousel.is-infinite {
+  --project-gap: clamp(1.4rem, 2.2vw, 2.8rem);
+  display: flex;
+  width: max-content;
+  gap: 0;
+  padding-block: 1rem 4rem;
+  cursor: grab;
+  touch-action: pan-y;
+  will-change: transform;
+}
+
+.carousel.is-infinite:active,
+.carousel.is-infinite.is-paused {
+  cursor: grabbing;
+}
+
+.carousel-group {
+  display: flex;
+  flex: 0 0 auto;
+  gap: var(--project-gap);
+  padding-inline-end: var(--project-gap);
+}
+
+.project.project-card {
+  position: relative;
+  display: flex;
+  flex: 0 0 clamp(24rem, 26vw, 34rem);
+  flex-direction: column;
+  align-items: stretch;
+  min-width: clamp(24rem, 26vw, 34rem);
+  min-height: 0;
+  height: clamp(27rem, 30vw, 36rem);
+  padding: clamp(1.2rem, 1.6vw, 1.8rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1.8rem;
+  background: linear-gradient(145deg, rgba(255, 38, 0, 0.98), rgba(135, 18, 6, 0.98));
+  box-shadow: 0 1.7rem 4rem rgba(0, 0, 0, 0.25), 0 0 2.5rem rgba(255, 38, 0, 0.1);
+  color: #fff;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transform: translateZ(0);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.45s ease, border-color 0.45s ease;
+}
+
+.project.project-card::after {
+  position: absolute;
+  right: -25%;
+  bottom: -35%;
+  width: 70%;
+  height: 70%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.14), transparent 68%);
+  content: "";
+  pointer-events: none;
+}
+
+.project.project-card:hover,
+.project.project-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.48);
+  box-shadow: 0 2.4rem 5rem rgba(0, 0, 0, 0.34), 0 0 3.2rem rgba(255, 38, 0, 0.2);
+  outline: none;
+  transform: translateY(-0.7rem);
+}
+
+.project-card__media {
+  position: relative;
+  z-index: 1;
+  display: block;
+  height: clamp(14rem, 15vw, 18rem);
+  overflow: hidden;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 1rem 2.4rem rgba(0, 0, 0, 0.2);
+}
+
+.project-card .project-img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  padding: 1rem;
+  object-fit: contain;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.project.project-card:hover .project-img,
+.project.project-card:focus-visible .project-img {
+  transform: scale(1.045);
+}
+
+.project-card__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.4rem;
+  padding: clamp(1.7rem, 2vw, 2.4rem) 0.4rem 0.4rem;
+}
+
+.project-card__title {
+  display: block;
+  max-width: 27rem;
+  font-size: clamp(1.65rem, 1.8vw, 2.2rem);
+  font-weight: 800;
+  line-height: 1.22;
+}
+
+.project-card__hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.3rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: clamp(1.15rem, 1.15vw, 1.35rem);
+  font-weight: 700;
+}
+
+.project-card__hint::after {
+  color: currentColor;
+  content: "→";
+  font-size: 1.8rem;
+  line-height: 1;
+}
+
+body[data-theme="light"] .project.project-card {
+  background: linear-gradient(145deg, #008b8b, #006666);
+  border-color: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 1.7rem 4rem rgba(0, 102, 102, 0.2), 0 0 2.5rem rgba(0, 206, 209, 0.12);
+}
+
+body[data-theme="light"] .project.project-card:hover,
+body[data-theme="light"] .project.project-card:focus-visible {
+  border-color: rgba(255, 255, 255, 0.72);
+  box-shadow: 0 2.4rem 5rem rgba(0, 102, 102, 0.26), 0 0 3.2rem rgba(0, 206, 209, 0.2);
+}
+
+/* Modal inspirado no Kova: uma segunda camada com todos os detalhes */
+.project-modal[hidden] {
+  display: none;
+}
+
+.project-modal {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.2rem, 3vw, 3.2rem);
+  background: rgba(3, 4, 8, 0.82);
+  backdrop-filter: blur(0.9rem);
+  -webkit-backdrop-filter: blur(0.9rem);
+}
+
+.project-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.project-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 88rem);
+  max-height: min(82vh, 66rem);
+  overflow-y: auto;
+  padding: clamp(2rem, 4vw, 4.2rem);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 2rem;
+  background: linear-gradient(145deg, rgba(23, 25, 31, 0.98), rgba(11, 13, 18, 0.98));
+  box-shadow: 0 2.5rem 8rem rgba(0, 0, 0, 0.52), 0 0 4rem rgba(255, 38, 0, 0.12);
+  animation: projectModalIn 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.project-modal__close {
+  position: absolute;
+  top: 1.4rem;
+  right: 1.4rem;
+  z-index: 2;
+  display: grid;
+  width: 3.8rem;
+  height: 3.8rem;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  font-size: 2.4rem;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+}
+
+.project-modal__close:hover,
+.project-modal__close:focus-visible {
+  background: var(--accent);
+  outline: none;
+  transform: rotate(90deg);
+}
+
+.project-modal__grid {
+  display: grid;
+  grid-template-columns: minmax(20rem, 0.92fr) minmax(0, 1.08fr);
+  align-items: center;
+  gap: clamp(2.4rem, 5vw, 5.2rem);
+}
+
+.project-modal__visual {
+  display: grid;
+  min-height: 27rem;
+  place-items: center;
+  padding: clamp(1rem, 2vw, 1.8rem);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.6rem;
+  background: rgba(255, 255, 255, 0.96);
+}
+
+.project-modal__visual img {
+  display: block;
+  width: 100%;
+  max-width: 42rem;
+  height: clamp(21rem, 28vw, 30rem);
+  object-fit: contain;
+}
+
+.project-modal__details {
+  min-width: 0;
+  padding-right: clamp(0rem, 2vw, 1.5rem);
+}
+
+.project-modal__eyebrow {
+  margin: 0 0 1.1rem;
+  color: var(--accent-soft, #ff6a4d);
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.project-modal__details h2 {
+  margin: 0 0 1.6rem;
+  color: #fff;
+  font-size: clamp(2.4rem, 3.3vw, 4rem);
+  line-height: 1.1;
+}
+
+.project-modal__details > p:not(.project-modal__eyebrow) {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1.35rem, 1.4vw, 1.6rem);
+  line-height: 1.75;
+}
+
+.project-modal__techs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2.4rem;
+}
+
+.project-modal__techs img {
+  width: 4.3rem;
+  height: 4.3rem;
+  padding: 0.65rem;
+  border-radius: 0.85rem;
+  background: #fff;
+  object-fit: contain;
+}
+
+.project-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 2.5rem;
+  padding-top: 1.8rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.project-modal__actions > a {
+  display: inline-flex;
+  flex: 1 1 14rem;
+  align-items: center;
+  justify-content: center;
+  min-height: 4.5rem;
+  gap: 0.8rem;
+  padding: 1rem 1.4rem;
+  border-radius: 0.9rem;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.project-modal__actions img {
+  width: 1.8rem;
+  height: 1.8rem;
+  object-fit: contain;
+}
+
+body[data-theme="light"] .project-modal__panel {
+  border-color: rgba(0, 102, 102, 0.18);
+  background: linear-gradient(145deg, rgba(248, 253, 253, 0.99), rgba(231, 246, 246, 0.99));
+  box-shadow: 0 2.5rem 8rem rgba(0, 102, 102, 0.22), 0 0 4rem rgba(0, 139, 139, 0.12);
+}
+
+body[data-theme="light"] .project-modal__details h2 {
+  color: #073e42;
+}
+
+body[data-theme="light"] .project-modal__details > p:not(.project-modal__eyebrow) {
+  color: #315b5e;
+}
+
+body[data-theme="light"] .project-modal__close {
+  border-color: rgba(0, 102, 102, 0.18);
+  background: rgba(0, 102, 102, 0.08);
+  color: #073e42;
+}
+
+@keyframes projectModalIn {
+  from { opacity: 0; transform: translateY(1.2rem) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Mais respiro entre blocos principais sem alterar o conteúdo */
+.about,
+.skills,
+.contact {
+  scroll-margin-top: 7rem;
+}
+
+.about,
+.skills,
+.contact {
+  padding-top: clamp(9rem, 11vw, 13rem);
+  padding-bottom: clamp(8rem, 10vw, 12rem);
+}
+
+@media (max-width: 900px) {
+  .project-modal__grid {
+    grid-template-columns: 1fr;
+    gap: 2.2rem;
+  }
+
+  .project-modal__visual {
+    min-height: 20rem;
+  }
+
+  .project-modal__visual img {
+    height: clamp(16rem, 42vw, 24rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-heading {
+    margin-bottom: 3rem;
+  }
+
+  .carousel-container {
+    padding-inline: 1.6rem;
+  }
+
+  .carousel.is-infinite {
+    --project-gap: 1.3rem;
+    padding-bottom: 2.4rem;
+  }
+
+  .project.project-card {
+    flex-basis: min(76vw, 31rem);
+    min-width: min(76vw, 31rem);
+    height: 29rem;
+    padding: 1.2rem;
+  }
+
+  .project-card__media {
+    height: 15rem;
+  }
+
+  .project-modal {
+    padding: 1rem;
+  }
+
+  .project-modal__panel {
+    max-height: 88vh;
+    padding: 3.8rem 1.8rem 2rem;
+    border-radius: 1.5rem;
+  }
+
+  .project-modal__close {
+    top: 0.9rem;
+    right: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project.project-card {
+    flex-basis: 80vw;
+    min-width: 80vw;
+    height: 27rem;
+  }
+
+  .project-card__media {
+    height: 13.5rem;
+  }
+
+  .project-card__body {
+    padding-top: 1.4rem;
+  }
+
+  .project-card__title {
+    font-size: 1.6rem;
+  }
+
+  .project-modal__details h2 {
+    font-size: 2.55rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-modal__panel {
+    animation: none;
+  }
+}
+
+
+/* Ajustes finais de contraste e proporção */
+.project-card__title,
+.project-card__hint {
+  color: #fff;
+}
+
+.project-card__title {
+  margin: 0;
+}
+
+.project-modal__panel {
+  width: min(100%, 72rem);
+  max-height: min(78vh, 60rem);
+  padding: clamp(1.8rem, 3vw, 3.2rem);
+}
+
+.project-modal__grid {
+  gap: clamp(2rem, 3.5vw, 3.8rem);
+}
+
+.project-modal__visual {
+  min-height: 22rem;
+}
+
+.project-modal__visual img {
+  height: clamp(18rem, 24vw, 25rem);
+}
+
+@media (max-width: 900px) {
+  .project-modal__panel {
+    max-height: 84vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-modal__panel {
+    max-height: 88vh;
+    padding: 3.8rem 1.8rem 2rem;
+  }
+}
+
+
+/* Sobrescreve explicitamente o bloco legado do carrossel anterior */
+.carousel.is-infinite .project.project-card {
+  flex: 0 0 clamp(24rem, 26vw, 34rem);
+  min-width: clamp(24rem, 26vw, 34rem);
+  width: clamp(24rem, 26vw, 34rem);
+  height: clamp(27rem, 30vw, 36rem);
+  min-height: 0;
+  padding: clamp(1.2rem, 1.6vw, 1.8rem);
+}
+
+@media (max-width: 768px) {
+  .carousel.is-infinite .project.project-card {
+    flex-basis: min(76vw, 31rem);
+    min-width: min(76vw, 31rem);
+    width: min(76vw, 31rem);
+    height: 29rem;
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel.is-infinite .project.project-card {
+    flex-basis: 80vw;
+    min-width: 80vw;
+    width: 80vw;
+    height: 27rem;
+  }
+}
