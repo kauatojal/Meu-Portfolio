@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 title: 'Kauã Tojal - Portfólio',
                 description: 'Portfólio de Kauã Tojal, desenvolvedor Full Stack especializado em aplicações web, APIs e interfaces modernas.'
             },
-            accessibility: { youtube: 'Abrir YouTube', github: 'Abrir GitHub', linkedin: 'Abrir LinkedIn', backToTop: 'Voltar ao topo', closeModal: 'Fechar detalhes do projeto', techStack: 'Tecnologias utilizadas' },
+            accessibility: { youtube: 'Abrir YouTube', github: 'Abrir GitHub', linkedin: 'Abrir LinkedIn', backToTop: 'Voltar ao topo', closeModal: 'Fechar detalhes do projeto', techStack: 'Tecnologias utilizadas', menu: 'Abrir menu', primaryNav: 'Navegação principal', brandHome: 'Kauã Tojal — página inicial' },
             language: { label: 'Idioma' },
             nav: { home: 'Home', about: 'Sobre Mim', projects: 'Projetos', skills: 'Skills', contact: 'Fale Comigo' },
             hero: { greeting: 'Olá, me chamo' },
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 title: 'Kauã Tojal - Portfolio',
                 description: 'Kauã Tojal portfolio, Full Stack developer focused on web applications, APIs, and modern user interfaces.'
             },
-            accessibility: { youtube: 'Open YouTube', github: 'Open GitHub', linkedin: 'Open LinkedIn', backToTop: 'Back to top', closeModal: 'Close project details', techStack: 'Technologies used' },
+            accessibility: { youtube: 'Open YouTube', github: 'Open GitHub', linkedin: 'Open LinkedIn', backToTop: 'Back to top', closeModal: 'Close project details', techStack: 'Technologies used', menu: 'Open menu', primaryNav: 'Primary navigation', brandHome: 'Kauã Tojal — home page' },
             language: { label: 'Language' },
             nav: { home: 'Home', about: 'About Me', projects: 'Projects', skills: 'Skills', contact: 'Contact Me' },
             hero: { greeting: 'Hi, I am' },

@@ -19,17 +19,17 @@
     <!-- *************************Navbar************************* -->
     <header class="header">
       <div class="header-brand-group">
-        <a href="#" class="brand-lockup" aria-label="Kauã Tojal — página inicial">
+        <a href="#" class="brand-lockup" aria-label="Kauã Tojal — página inicial" data-i18n-aria="accessibility.brandHome">
           <img class="brand-logo" src="assets/img/brand/logo.webp" alt="" width="64" height="64" aria-hidden="true">
         </a>
         <i class="bx bx-menu" id="menu" role="button" tabindex="0" aria-label="Abrir menu" data-i18n-aria="accessibility.menu" style="color: #ffffff"></i>
       </div>
-      <nav class="navbar">
-        <a href="#home" style="--vlr: 1" class="active">Home</a>
-        <a href="#about" style="--vlr: 2">Sobre Mim</a>
-        <a href="#projects" style="--vlr: 3">Projetos</a>
-        <a href="#skills" style="--vlr: 4">Skills</a>
-        <a href="#contact" style="--vlr: 5">Fale Comigo</a>
+      <nav class="navbar" aria-label="Navegação principal" data-i18n-aria="accessibility.primaryNav">
+        <a href="#home" style="--vlr: 1" class="active" data-i18n="nav.home">Home</a>
+        <a href="#about" style="--vlr: 2" data-i18n="nav.about">Sobre Mim</a>
+        <a href="#projects" style="--vlr: 3" data-i18n="nav.projects">Projetos</a>
+        <a href="#skills" style="--vlr: 4" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" style="--vlr: 5" data-i18n="nav.contact">Fale Comigo</a>
       </nav>
       <div class="language-switcher" aria-label="Idioma" data-i18n-aria="language.label">
         <span class="language-flag" aria-hidden="true">🇧🇷</span>
@@ -53,7 +53,7 @@
           width="150"
         />
         <div class="text-content">
-          <h1>Olá, me chamo <span class="highlight">Kauã Tojal</span>!</h1>
+          <h1><span data-i18n="hero.greeting">Olá, me chamo</span> <span class="highlight">Kauã Tojal</span>!</h1>
           <div class="text-animation">
             <h2 id="typing-text"></h2>
           </div>
@@ -489,6 +489,6 @@
 
     <!-- Scripts -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="assets/scripts/script.js?v=20260821-6"></script>
+    <script src="assets/scripts/script.js?v=20260821-7"></script>
   </body>
 </html>
