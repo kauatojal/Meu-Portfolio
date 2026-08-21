@@ -599,6 +599,8 @@ document.addEventListener('DOMContentLoaded', function () {
         let posicaoInicialDoMouse = 0;
         let offsetInicialDoMouse = 0;
         let pointerMoved = false;
+        let pressedProjectCard = null;
+        let skipNextProjectClick = false;
         let isPaused = false;
 
         function createProjectGroup(slides, hidden = false) {
@@ -736,6 +738,7 @@ document.addEventListener('DOMContentLoaded', function () {
             freezeAnimation();
             estouArrastando = true;
             pointerMoved = false;
+            pressedProjectCard = event.target.closest?.('.project-card') || null;
             posicaoInicialDoMouse = event.clientX;
             offsetInicialDoMouse = offset;
             carousel.style.cursor = 'grabbing';
@@ -752,11 +755,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function handlePointerUp(event) {
             if (!estouArrastando) return;
+            const activatedCard = pressedProjectCard;
+            const wasMoved = pointerMoved;
             estouArrastando = false;
             carousel.style.cursor = 'grab';
             carousel.releasePointerCapture?.(event.pointerId);
+            pressedProjectCard = null;
+            pointerMoved = false;
+
             const difference = event.clientX - posicaoInicialDoMouse;
             const threshold = Math.max(42, slideStride * 0.16);
+
+            if (!wasMoved && activatedCard?.isConnected) {
+                skipNextProjectClick = true;
+                window.setTimeout(() => {
+                    skipNextProjectClick = false;
+                }, 0);
+                openProjectModal(activatedCard.dataset.projectId, activatedCard);
+                return;
+            }
+
             const currentIndex = Math.round(-normalizeOffset(offset) / slideStride);
             const nextIndex = difference < -threshold ? currentIndex + 1 : difference > threshold ? currentIndex - 1 : currentIndex;
             moveToProject(nextIndex);
@@ -766,13 +784,13 @@ document.addEventListener('DOMContentLoaded', function () {
         carousel.addEventListener('pointermove', handlePointerMove);
         carousel.addEventListener('pointerup', handlePointerUp);
         carousel.addEventListener('pointercancel', handlePointerUp);
+        window.addEventListener('pointerup', handlePointerUp);
+        window.addEventListener('pointercancel', handlePointerUp);
         carousel.addEventListener('click', (event) => {
             const projectCard = event.target.closest('.project-card');
             if (!projectCard || !carousel.contains(projectCard)) return;
-            if (pointerMoved) {
-                event.preventDefault();
-                event.stopPropagation();
-                pointerMoved = false;
+            if (skipNextProjectClick) {
+                skipNextProjectClick = false;
                 return;
             }
             openProjectModal(projectCard.dataset.projectId, projectCard);
