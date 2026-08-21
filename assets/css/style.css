@@ -4017,9 +4017,13 @@ button:focus-visible {
   animation: infiniteScroll 35s linear infinite;
 }
 
-.animate-infinite-scroll:hover,
-.animate-infinite-scroll.is-paused {
+.animate-infinite-scroll:hover {
   animation-play-state: paused;
+}
+
+.animate-infinite-scroll.is-paused {
+  /* O carrossel agora NUNCA pausa automaticamente em segundo plano (modal aberto) */
+  animation-play-state: running !important;
 }
 
 

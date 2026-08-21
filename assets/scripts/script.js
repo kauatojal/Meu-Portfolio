@@ -689,6 +689,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         function pauseAutoplay() {
+            if (projectModal && !projectModal.hidden) return;
             isPaused = true;
             carousel.classList.add('is-paused');
             if (resumeTimer) window.clearTimeout(resumeTimer);
