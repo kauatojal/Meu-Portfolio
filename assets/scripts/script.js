@@ -7,7 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const languageLabel = document.querySelector('#language-label');
     const translations = {
         pt: {
-            meta: { title: 'Kauã Tojal - Portfólio' },
+            meta: {
+                title: 'Kauã Tojal - Portfólio',
+                description: 'Portfólio de Kauã Tojal, desenvolvedor Full Stack especializado em aplicações web, APIs e interfaces modernas.'
+            },
+            accessibility: { youtube: 'Abrir YouTube', github: 'Abrir GitHub', linkedin: 'Abrir LinkedIn', backToTop: 'Voltar ao topo' },
             language: { label: 'Idioma' },
             nav: { home: 'Home', about: 'Sobre Mim', projects: 'Projetos', skills: 'Skills', contact: 'Fale Comigo' },
             hero: { greeting: 'Olá, me chamo' },
@@ -28,11 +32,38 @@ document.addEventListener('DOMContentLoaded', function () {
                 navigationLabel: 'Navegação dos projetos'
             },
             skills: { hardTitle: 'HARD SKILLS', softTitle: 'SOFT SKILLS', teamwork: 'Trabalho em Equipe', problemSolving: 'Resolução de Problemas', communication: 'Comunicação', timeManagement: 'Gestão de Tempo', adaptability: 'Adaptabilidade', creativity: 'Criatividade', resultsFocus: 'Foco em Resultados', continuousLearning: 'Aprendizado Contínuo' },
-            contact: { name: 'Nome Completo', email: 'Email', subject: 'Assunto', message: 'Descrição', submit: 'Enviar Mensagem', success: 'Mensagem enviada com sucesso!', error: 'Ocorreu um erro ao enviar seu formulário. Tente novamente mais tarde.' },
+            contact: {
+                eyebrow: 'Entre em contato',
+                heading: 'Pronto para transformar uma ideia em produto?',
+                copy: 'Seja para uma nova aplicação, uma parceria ou uma oportunidade profissional, vamos conversar.',
+                channelsAria: 'Canais de contato',
+                emailLabel: 'E-mail direto',
+                emailCta: 'Enviar uma mensagem',
+                emailAria: 'Enviar um e-mail para Kauã Tojal',
+                whatsappLabel: 'WhatsApp / Chat instantâneo',
+                whatsappCta: 'Iniciar conversa',
+                whatsappAria: 'Abrir conversa no WhatsApp com Kauã Tojal',
+                nameLabel: 'Seu nome',
+                emailFieldLabel: 'Seu e-mail',
+                subjectLabel: 'Tipo de projeto ou assunto',
+                messageLabel: 'Mensagem',
+                name: 'Nome Completo',
+                email: 'Email',
+                subject: 'Assunto',
+                message: 'Descrição',
+                submit: 'Enviar mensagem',
+                success: 'Mensagem enviada com sucesso!',
+                error: 'O serviço de e-mail está temporariamente indisponível. Tente novamente ou use o WhatsApp.',
+                errorFallback: 'Falar comigo pelo WhatsApp'
+            },
             footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
         },
         en: {
-            meta: { title: 'Kauã Tojal - Portfolio' },
+            meta: {
+                title: 'Kauã Tojal - Portfolio',
+                description: 'Kauã Tojal portfolio, Full Stack developer focused on web applications, APIs, and modern user interfaces.'
+            },
+            accessibility: { youtube: 'Open YouTube', github: 'Open GitHub', linkedin: 'Open LinkedIn', backToTop: 'Back to top' },
             language: { label: 'Language' },
             nav: { home: 'Home', about: 'About Me', projects: 'Projects', skills: 'Skills', contact: 'Contact Me' },
             hero: { greeting: 'Hi, I am' },
@@ -53,7 +84,30 @@ document.addEventListener('DOMContentLoaded', function () {
                 navigationLabel: 'Project navigation'
             },
             skills: { hardTitle: 'HARD SKILLS', softTitle: 'SOFT SKILLS', teamwork: 'Teamwork', problemSolving: 'Problem Solving', communication: 'Communication', timeManagement: 'Time Management', adaptability: 'Adaptability', creativity: 'Creativity', resultsFocus: 'Results Focus', continuousLearning: 'Continuous Learning' },
-            contact: { name: 'Full Name', email: 'Email', subject: 'Subject', message: 'Message', submit: 'Send Message', success: 'Message sent successfully!', error: 'There was an error sending your message. Please try again later.' },
+            contact: {
+                eyebrow: 'Get in touch',
+                heading: 'Ready to turn an idea into a product?',
+                copy: 'Whether it is a new application, a partnership, or a professional opportunity, let’s talk.',
+                channelsAria: 'Contact channels',
+                emailLabel: 'Direct email',
+                emailCta: 'Send a message',
+                emailAria: 'Send an email to Kauã Tojal',
+                whatsappLabel: 'WhatsApp / Instant chat',
+                whatsappCta: 'Start a conversation',
+                whatsappAria: 'Open a WhatsApp conversation with Kauã Tojal',
+                nameLabel: 'Your name',
+                emailFieldLabel: 'Your email',
+                subjectLabel: 'Project type or subject',
+                messageLabel: 'Message',
+                name: 'Full Name',
+                email: 'Email',
+                subject: 'Subject',
+                message: 'Message',
+                submit: 'Send message',
+                success: 'Message sent successfully!',
+                error: 'The email service is temporarily unavailable. Please try again or use WhatsApp.',
+                errorFallback: 'Talk to me on WhatsApp'
+            },
             footer: { copyright: 'Copyright @ 2025 by Kauã Tojal' }
         }
     };
@@ -77,6 +131,9 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
             element.setAttribute('aria-label', getTranslation(selectedLanguage, element.dataset.i18nAria));
+        });
+        document.querySelectorAll('[data-i18n-content]').forEach((element) => {
+            element.setAttribute('content', getTranslation(selectedLanguage, element.dataset.i18nContent));
         });
 
         document.title = getTranslation(selectedLanguage, 'meta.title');
@@ -221,7 +278,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // MICROINTERAÇÃO RIPPLE
     // ============================================
-    const rippleTargets = document.querySelectorAll('button, .btn, .btn-curriculo, .github-button, .site-button, .youtube-button, .social-media a');
+    const rippleTargets = document.querySelectorAll('button, .btn, .btn-curriculo, .github-button, .site-button, .youtube-button, .social-media a, .contact-channel');
 
     rippleTargets.forEach((target) => {
         target.addEventListener('pointerdown', (event) => {
@@ -232,6 +289,13 @@ document.addEventListener('DOMContentLoaded', function () {
             ripple.style.top = `${event.clientY - rect.top}px`;
             target.appendChild(ripple);
             ripple.addEventListener('animationend', () => ripple.remove(), { once: true });
+        });
+    });
+
+    document.querySelectorAll('.contact-channel').forEach((channel) => {
+        channel.addEventListener('click', () => {
+            channel.classList.add('is-opening');
+            window.setTimeout(() => channel.classList.remove('is-opening'), 620);
         });
     });
 
@@ -264,50 +328,109 @@ document.addEventListener('DOMContentLoaded', function () {
     // ============================================
     // EMAILJS - FORMULÁRIO DE CONTATO
     // ============================================
-    emailjs.init("etN9nKcU-6xqOc7nd");
+    const EMAILJS_PUBLIC_KEY = 'etN9nKcU-6xqOc7nd';
+    const EMAILJS_SERVICE_ID = 'service_ixngxn3';
+    const EMAILJS_TEMPLATE_ID = 'template_bovu75u';
+    const emailJsAvailable = Boolean(window.emailjs && typeof window.emailjs.init === 'function' && typeof window.emailjs.send === 'function');
+    let emailJsReady = false;
+
+    if (emailJsAvailable) {
+        try {
+            window.emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
+            emailJsReady = true;
+        } catch (initializationError) {
+            console.error('Não foi possível inicializar o EmailJS:', initializationError);
+        }
+    } else {
+        console.error('EmailJS não foi carregado. Verifique a conexão com o CDN do EmailJS.');
+    }
 
     const form = document.getElementById('contactForm');
     const successMessage = document.getElementById('successMessage');
     const errorMessage = document.getElementById('errorMessage');
+    const fallbackLink = document.getElementById('contactFallback');
+    const submitButton = form ? form.querySelector('button[type="submit"]') : null;
+
+    function setFormMessage(element, isVisible) {
+        if (!element) return;
+        element.hidden = !isVisible;
+        element.style.display = isVisible ? 'block' : 'none';
+        if (element === errorMessage && fallbackLink) {
+            fallbackLink.hidden = !isVisible;
+        }
+    }
 
     function validateEmail(email) {
-        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z0-9]{2,6}$/;
+        const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         return emailPattern.test(email);
     }
 
-    form.addEventListener('submit', function (event) {
-        event.preventDefault();
+    if (form) {
+        form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            setFormMessage(successMessage, false);
+            setFormMessage(errorMessage, false);
 
-        const userName = document.getElementById('user_name').value;
-        const userEmail = document.getElementById('user_email').value;
-        const userSubject = document.getElementById('user_subject').value;
-        const userMessage = document.getElementById('contact__message').value;
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
 
-        if (!validateEmail(userEmail)) {
-            alert("Por favor, insira um email válido.");
-            return;
-        }
+            const userName = document.getElementById('user_name').value.trim();
+            const userEmail = document.getElementById('user_email').value.trim();
+            const userSubject = document.getElementById('user_subject').value.trim();
+            const userMessage = document.getElementById('contact__message').value.trim();
 
-        emailjs.send('service_ixngxn3', 'template_bovu75u', {
-            from_name: userName,
-            from_email: userEmail,
-            subject: userSubject,
-            message: userMessage
-        })
-            .then(function (response) {
-                console.log('Success!', response);
-                successMessage.style.display = 'block';
-                errorMessage.style.display = 'none';
-                form.reset();
-                setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
+            if (!validateEmail(userEmail)) {
+                document.getElementById('user_email').focus();
+                setFormMessage(errorMessage, true);
+                return;
+            }
+
+            if (!emailJsReady) {
+                setFormMessage(errorMessage, true);
+                return;
+            }
+
+            if (submitButton) {
+                submitButton.disabled = true;
+                submitButton.setAttribute('aria-busy', 'true');
+                submitButton.dataset.originalText = submitButton.textContent;
+                submitButton.textContent = document.documentElement.lang === 'en' ? 'Sending...' : 'Enviando...';
+            }
+
+            if (fallbackLink) {
+                const fallbackMessage = `Olá Kauã! Tentei enviar uma mensagem pelo seu portfólio.\n\nNome: ${userName}\nE-mail: ${userEmail}\nAssunto: ${userSubject}\nMensagem: ${userMessage}`;
+                fallbackLink.href = `https://wa.me/5579981369704?text=${encodeURIComponent(fallbackMessage)}`;
+            }
+
+            window.emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                from_name: userName,
+                from_email: userEmail,
+                reply_to: userEmail,
+                subject: userSubject,
+                message: userMessage
             })
-            .catch(function (error) {
-                console.error('Error:', error);
-                errorMessage.style.display = 'block';
-                successMessage.style.display = 'none';
-                setTimeout(() => { errorMessage.style.display = 'none'; }, 5000);
-            });
-    });
+                .then(function (response) {
+                    console.log('EmailJS enviado com sucesso:', response);
+                    setFormMessage(successMessage, true);
+                    form.reset();
+                    window.setTimeout(() => setFormMessage(successMessage, false), 6000);
+                })
+                .catch(function (error) {
+                    console.error('Falha no envio pelo EmailJS:', error);
+                    setFormMessage(errorMessage, true);
+                    window.setTimeout(() => setFormMessage(errorMessage, false), 8000);
+                })
+                .finally(function () {
+                    if (submitButton) {
+                        submitButton.disabled = false;
+                        submitButton.removeAttribute('aria-busy');
+                        submitButton.textContent = submitButton.dataset.originalText || 'Enviar mensagem';
+                    }
+                });
+        });
+    }
 
     // ============================================
     // ANIMAÇÃO DE TEXTO DIGITANDO
