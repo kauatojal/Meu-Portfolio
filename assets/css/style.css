@@ -4143,7 +4143,9 @@ button:focus-visible {
 .project-card__media {
   position: relative;
   z-index: 1;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: clamp(14rem, 15vw, 18rem);
   overflow: hidden;
   border-radius: 1.2rem;
@@ -4154,10 +4156,10 @@ button:focus-visible {
 .project-card .project-img {
   display: block;
   width: 100%;
-  max-width: none;
   height: 100%;
-  padding: 1rem;
+  padding: 1.2rem;
   object-fit: contain;
+  object-position: center;
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
