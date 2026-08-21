@@ -4571,3 +4571,95 @@ body.modal-open {
     height: 27rem;
   }
 }
+
+
+/* ============================================
+   HERO — TEXTO DIGITADO ESTÁVEL
+   Reserva espaço constante para impedir que a
+   troca das frases mova o restante da página.
+   ============================================ */
+.text-animation {
+  display: flex;
+  width: min(100%, 46rem);
+  min-height: clamp(4.4rem, 5vw, 6rem);
+  margin-top: clamp(1.6rem, 2vw, 2.4rem);
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+
+.text-animation h2,
+#typing-text {
+  display: inline-flex;
+  min-width: 0;
+  min-height: 1.25em;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent, #ff2600) !important;
+  background: none !important;
+  background-position: initial !important;
+  -webkit-text-fill-color: currentColor !important;
+  -webkit-text-stroke: 0 !important;
+  line-height: 1.25;
+  transform: none !important;
+  opacity: 1 !important;
+  animation: none !important;
+  white-space: nowrap;
+}
+
+.text-animation::before {
+  display: none;
+}
+
+#typing-text {
+  border-right: 2px solid currentColor;
+  padding-right: 0.55rem;
+  overflow: visible;
+  text-align: center;
+  animation: typingCursorPulse 0.9s steps(1, end) infinite !important;
+}
+
+@keyframes typingCursorPulse {
+  0%, 48% { border-right-color: currentColor; }
+  49%, 100% { border-right-color: transparent; }
+}
+
+body[data-theme="dark"] #typing-text,
+body:not([data-theme="light"]) #typing-text {
+  color: #ff2600 !important;
+}
+
+body[data-theme="light"] #typing-text {
+  color: var(--accent) !important;
+}
+
+@media (max-width: 768px) {
+  .text-animation {
+    width: min(100%, 34rem);
+    min-height: 4.2rem;
+  }
+
+  #typing-text {
+    max-width: 100%;
+    font-size: 2.4rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .text-animation {
+    width: min(100%, 29rem);
+    min-height: 3.6rem;
+  }
+
+  #typing-text {
+    font-size: 1.8rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #typing-text {
+    animation: none !important;
+    border-right-color: currentColor;
+  }
+}

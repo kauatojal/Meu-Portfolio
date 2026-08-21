@@ -130,22 +130,34 @@ document.addEventListener('DOMContentLoaded', function () {
         localStorage.setItem('portfolio-language', selectedLanguage);
 
         document.querySelectorAll('[data-i18n]').forEach((element) => {
-            element.textContent = getTranslation(selectedLanguage, element.dataset.i18n);
+            const key = element.dataset.i18n;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.textContent = translated;
         });
         document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
-            element.setAttribute('placeholder', getTranslation(selectedLanguage, element.dataset.i18nPlaceholder));
+            const key = element.dataset.i18nPlaceholder;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.setAttribute('placeholder', translated);
         });
         document.querySelectorAll('[data-i18n-aria]').forEach((element) => {
-            element.setAttribute('aria-label', getTranslation(selectedLanguage, element.dataset.i18nAria));
+            const key = element.dataset.i18nAria;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.setAttribute('aria-label', translated);
         });
         document.querySelectorAll('[data-i18n-title]').forEach((element) => {
-            element.setAttribute('title', getTranslation(selectedLanguage, element.dataset.i18nTitle));
+            const key = element.dataset.i18nTitle;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.setAttribute('title', translated);
         });
         document.querySelectorAll('[data-i18n-alt]').forEach((element) => {
-            element.setAttribute('alt', getTranslation(selectedLanguage, element.dataset.i18nAlt));
+            const key = element.dataset.i18nAlt;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.setAttribute('alt', translated);
         });
         document.querySelectorAll('[data-i18n-content]').forEach((element) => {
-            element.setAttribute('content', getTranslation(selectedLanguage, element.dataset.i18nContent));
+            const key = element.dataset.i18nContent;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.setAttribute('content', translated);
         });
 
         document.title = getTranslation(selectedLanguage, 'meta.title');
@@ -529,10 +541,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const selectedLanguage = document.documentElement.dataset.language || 'pt';
         if (!modalContent) return;
         modalContent.querySelectorAll('[data-i18n]').forEach((element) => {
-            element.textContent = getTranslation(selectedLanguage, element.dataset.i18n);
+            const key = element.dataset.i18n;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.textContent = translated;
         });
         modalContent.querySelectorAll('[data-i18n-alt]').forEach((element) => {
-            element.setAttribute('alt', getTranslation(selectedLanguage, element.dataset.i18nAlt));
+            const key = element.dataset.i18nAlt;
+            const translated = getTranslation(selectedLanguage, key);
+            if (translated !== key) element.setAttribute('alt', translated);
         });
     }
 
