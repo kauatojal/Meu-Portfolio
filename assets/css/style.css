@@ -4397,6 +4397,10 @@ body[data-theme="light"] .project-modal__close {
 }
 
 body.modal-open {
+  position: fixed;
+  left: 0;
+  right: 0;
+  width: 100%;
   overflow: hidden;
 }
 
@@ -5041,6 +5045,74 @@ body[data-theme="light"] .project-modal__visual {
 @media (prefers-reduced-motion: reduce) {
   .project-modal,
   .project-modal__panel {
+    transition: none;
+  }
+}
+
+
+/* ============================================
+   MODAL — INTEGRAÇÃO COM O TEMA NOTURNO
+   O painel usa a mesma família vinho/vermelha do
+   portfólio em vez de um preto independente.
+   ============================================ */
+body[data-theme="dark"] .project-modal {
+  background: rgba(37, 1, 1, 0.86);
+}
+
+body[data-theme="dark"] .project-modal__panel {
+  border-color: rgba(255, 102, 74, 0.34);
+  background: linear-gradient(145deg, #2b0507 0%, #430a0d 100%);
+  color: #fff8f5;
+  box-shadow: 0 2.5rem 8rem rgba(28, 0, 0, 0.72), 0 0 4rem rgba(255, 38, 0, 0.2);
+}
+
+body[data-theme="dark"] .project-modal__details h2 {
+  color: #fff8f5;
+}
+
+body[data-theme="dark"] .project-modal__details > p:not(.project-modal__eyebrow) {
+  color: rgba(255, 242, 237, 0.86);
+}
+
+body[data-theme="dark"] .project-modal__eyebrow {
+  color: #ff967c;
+}
+
+body[data-theme="dark"] .project-modal__actions {
+  border-top-color: rgba(255, 151, 124, 0.26);
+}
+
+body[data-theme="dark"] .project-modal__close {
+  border-color: rgba(255, 151, 124, 0.34);
+  background: rgba(255, 38, 0, 0.16);
+  color: #fff8f5;
+}
+
+body[data-theme="dark"] .project-modal__visual {
+  border-color: rgba(255, 151, 124, 0.2);
+  box-shadow: 0 1rem 2.5rem rgba(28, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] .project-modal__actions .github-button {
+  background: rgba(255, 248, 245, 0.12) !important;
+  border-color: rgba(255, 248, 245, 0.3) !important;
+  color: #fff8f5 !important;
+}
+
+body[data-theme="dark"] .project-modal__actions .site-button,
+body[data-theme="dark"] .project-modal__actions .youtube-button {
+  background: #ff2600 !important;
+  border-color: #ff5638 !important;
+  color: #ffffff !important;
+}
+
+body[data-theme="dark"] .project-modal__actions a:hover,
+body[data-theme="dark"] .project-modal__actions a:focus-visible {
+  filter: brightness(1.12) saturate(1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body[data-theme="dark"] .project-modal__panel {
     transition: none;
   }
 }

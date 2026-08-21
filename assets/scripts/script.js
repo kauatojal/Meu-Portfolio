@@ -536,6 +536,32 @@ document.addEventListener('DOMContentLoaded', function () {
     const modalContent = document.getElementById('modal-content');
     const modalClose = document.getElementById('project-modal-close');
     let lastFocusedProject = null;
+    let modalScrollY = 0;
+    let resumeProjectCarousel = null;
+
+    function restoreModalScrollPosition(scrollY = modalScrollY) {
+        const root = document.documentElement;
+        const previousBehavior = root.style.scrollBehavior;
+        root.style.scrollBehavior = 'auto';
+        window.scrollTo(0, scrollY);
+        root.style.scrollBehavior = previousBehavior;
+        window.requestAnimationFrame(() => window.scrollTo(0, scrollY));
+    }
+
+    function lockModalScroll(scrollY) {
+        const body = document.body;
+        body.style.setProperty('--modal-scroll-y', `${scrollY}px`);
+        body.style.top = `-${scrollY}px`;
+        body.classList.add('modal-open');
+    }
+
+    function unlockModalScroll() {
+        const body = document.body;
+        body.classList.remove('modal-open');
+        body.style.removeProperty('top');
+        body.style.removeProperty('--modal-scroll-y');
+        restoreModalScrollPosition();
+    }
 
     function applyModalLanguage() {
         const selectedLanguage = document.documentElement.dataset.language || 'pt';
@@ -557,20 +583,28 @@ document.addEventListener('DOMContentLoaded', function () {
         const template = document.getElementById(`project-template-${projectId}`);
         if (!template) return;
 
+        modalScrollY = window.scrollY;
         lastFocusedProject = trigger || document.activeElement;
         modalContent.replaceChildren(template.content.cloneNode(true));
         applyModalLanguage();
         projectModal.hidden = false;
-        document.body.classList.add('modal-open');
-        modalClose?.focus();
+        lockModalScroll(modalScrollY);
+        modalClose?.focus({ preventScroll: true });
+        restoreModalScrollPosition(modalScrollY);
+        resumeProjectCarousel?.();
     }
 
     function closeProjectModal() {
         if (!projectModal || projectModal.hidden) return;
+        const returnScrollY = modalScrollY;
         projectModal.hidden = true;
-        document.body.classList.remove('modal-open');
         modalContent?.replaceChildren();
-        if (lastFocusedProject && document.contains(lastFocusedProject)) lastFocusedProject.focus();
+        if (lastFocusedProject && document.contains(lastFocusedProject)) {
+            lastFocusedProject.focus({ preventScroll: true });
+        }
+        unlockModalScroll();
+        restoreModalScrollPosition(returnScrollY);
+        resumeProjectCarousel?.();
         lastFocusedProject = null;
     }
 
@@ -691,6 +725,10 @@ document.addEventListener('DOMContentLoaded', function () {
             if (isPaused) carousel.classList.add('is-paused');
         }
 
+        resumeProjectCarousel = () => {
+            if (!estouArrastando && !transitionTimer) resumeAutoplay();
+        };
+
         function measureCarousel() {
             if (!primaryGroup || !totalDeSlides) return;
             const previousOffset = carousel.classList.contains('animate-infinite-scroll') ? currentOffset() : offset;
@@ -733,7 +771,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         function handlePointerDown(event) {
             if (event.button !== undefined && event.button !== 0) return;
-            if (transitionTimer) window.clearTimeout(transitionTimer);
+            if (transitionTimer) {
+                window.clearTimeout(transitionTimer);
+                transitionTimer = null;
+            }
             pauseAutoplay();
             freezeAnimation();
             estouArrastando = true;
@@ -771,6 +812,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 window.setTimeout(() => {
                     skipNextProjectClick = false;
                 }, 0);
+                resumeAutoplay();
                 openProjectModal(activatedCard.dataset.projectId, activatedCard);
                 return;
             }
