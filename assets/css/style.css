@@ -4946,3 +4946,101 @@ body[data-theme="light"] .project-modal__actions .site-button {
     animation: none;
   }
 }
+
+
+/* ============================================
+   MODAL TEMÁTICO — CLARO E ESCURO
+   O painel acompanha o tema ativo do documento,
+   mantendo contraste sem depender de hover.
+   ============================================ */
+.project-modal {
+  background: color-mix(in srgb, var(--theme-bg) 78%, #000 22%);
+  background: rgba(3, 4, 8, 0.82);
+  transition: background-color 0.35s ease;
+}
+
+.project-modal__panel {
+  border-color: var(--theme-border);
+  background: linear-gradient(145deg, #11141c, #171b25);
+  color: var(--theme-text);
+  box-shadow: 0 2.5rem 8rem rgba(0, 0, 0, 0.52), 0 0 4rem rgba(255, 38, 0, 0.12);
+  transition: background 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease, color 0.35s ease;
+}
+
+.project-modal__details h2 {
+  color: var(--theme-text);
+}
+
+.project-modal__details > p:not(.project-modal__eyebrow) {
+  color: var(--theme-muted);
+}
+
+.project-modal__eyebrow {
+  color: var(--accent-soft);
+}
+
+.project-modal__actions {
+  border-top-color: var(--theme-border);
+}
+
+.project-modal__close {
+  border-color: var(--theme-border);
+  background: var(--theme-surface-soft);
+  color: var(--theme-text);
+}
+
+body[data-theme="light"] .project-modal {
+  background: rgba(216, 239, 240, 0.78);
+}
+
+body[data-theme="light"] .project-modal__panel {
+  border-color: rgba(0, 102, 102, 0.2);
+  background: linear-gradient(145deg, #ffffff 0%, #e9f7f7 100%);
+  color: #123b3f;
+  box-shadow: 0 2.5rem 8rem rgba(0, 102, 102, 0.2), 0 0 4rem rgba(0, 139, 139, 0.12);
+}
+
+body[data-theme="light"] .project-modal__details h2 {
+  color: #123b3f;
+}
+
+body[data-theme="light"] .project-modal__details > p:not(.project-modal__eyebrow) {
+  color: #315b5e;
+}
+
+body[data-theme="light"] .project-modal__eyebrow {
+  color: #00777b;
+}
+
+body[data-theme="light"] .project-modal__actions {
+  border-top-color: rgba(0, 102, 102, 0.18);
+}
+
+body[data-theme="light"] .project-modal__close {
+  border-color: rgba(0, 102, 102, 0.2);
+  background: rgba(0, 139, 139, 0.09);
+  color: #123b3f;
+}
+
+body[data-theme="light"] .project-modal__close:hover,
+body[data-theme="light"] .project-modal__close:focus-visible {
+  color: #ffffff;
+}
+
+body[data-theme="light"] .project-modal__visual {
+  border-color: rgba(0, 102, 102, 0.14);
+  box-shadow: 0 1rem 2.5rem rgba(0, 102, 102, 0.1);
+}
+
+@supports not (background: color-mix(in srgb, black, white)) {
+  .project-modal {
+    background: rgba(3, 4, 8, 0.82);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-modal,
+  .project-modal__panel {
+    transition: none;
+  }
+}
