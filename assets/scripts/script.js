@@ -873,3 +873,32 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('portfolio-language-change', applyModalLanguage);
 
 });
+
+
+/* Camada de animação progressiva: opcional, sem bloquear a navegação original. */
+(function setupPremiumMotion(){
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const orbit = document.querySelector('.hero-orbit');
+    const photo = document.querySelector('.content-wrapper > img');
+    const codePanel = document.querySelector('.code-panel');
+    const projectCards = document.querySelectorAll('.project-card');
+    if (reduced) return;
+
+    const revealFallback = () => {
+        document.querySelectorAll('.code-panel, .tech-marquee, .project-card').forEach((element) => element.classList.add('premium-visible'));
+    };
+    if (!window.gsap || !window.ScrollTrigger) { revealFallback(); return; }
+    window.gsap.registerPlugin(window.ScrollTrigger);
+    const context = window.gsap.context(() => {
+        if (codePanel) window.gsap.fromTo(codePanel, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: .7, delay: .25, ease: 'power2.out' });
+        if (photo) window.gsap.fromTo(photo, { autoAlpha: 0, scale: .92 }, { autoAlpha: 1, scale: 1, duration: .8, delay: .1, ease: 'power2.out' });
+        if (orbit) {
+            window.gsap.to(orbit, { x: -120, y: 260, scale: .72, rotation: 95, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: 1.2 } });
+            window.gsap.to(orbit, { x: 65, y: 590, scale: .5, rotation: 180, ease: 'none', scrollTrigger: { trigger: '.projects', start: 'top bottom', end: 'bottom top', scrub: 1.4 } });
+        }
+        if (photo) window.gsap.to(photo, { y: -24, rotate: 2, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: 1.5 } });
+        if (codePanel) window.gsap.to(codePanel, { y: -35, ease: 'none', scrollTrigger: { trigger: '.about', start: 'top bottom', end: 'bottom top', scrub: 1.4 } });
+        if (projectCards.length) window.gsap.from(projectCards, { y: 22, autoAlpha: 0, duration: .55, stagger: .09, ease: 'power2.out', scrollTrigger: { trigger: '.projects', start: 'top 78%', once: true } });
+    }, document.body);
+    window.addEventListener('beforeunload', () => context.revert(), { once: true });
+})();
