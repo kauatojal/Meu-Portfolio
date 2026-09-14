@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function () {
+    const scrollProgress = document.getElementById('scrollProgress');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const updateScrollProgress = () => {
+        if (!scrollProgress) return;
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        scrollProgress.style.width = `${scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0}%`;
+    };
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
     // ============================================
     // IDIOMA PT-BR / EN
     // ============================================
