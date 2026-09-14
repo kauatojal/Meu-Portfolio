@@ -1,37 +1,40 @@
-# Meu Portfólio
+# Kauã Tojal — Portfólio React
 
-## Sobre o Projeto
+Aplicação React + Vite para o portfólio profissional de Kauã Tojal. A migração preserva a identidade vinho/vermelho, os assets existentes, os projetos reais, a moeda 3D, os temas, os idiomas e os links profissionais.
 
-Acesse aqui: [Portfólio](https://kauatojal.github.io/Meu-Portfolio/)
+## Desenvolvimento local
 
-Este projeto é um currículo interativo desenvolvido utilizando HTML, CSS e JavaScript. O objetivo é apresentar de forma dinâmica minhas habilidades, experiências profissionais e projetos desenvolvidos.
+```bash
+npm install
+npm run dev
+```
 
-## Objetivos
+O Vite usa a base `/Meu-Portfolio/` para manter compatibilidade com o GitHub Pages.
 
-* **Apresentação Profissional:** Disponibilizar informações sobre minha trajetória profissional e habilidades de forma clara e organizada.
-* **Interatividade:** Criar uma experiência de navegação intuitiva e responsiva para diferentes dispositivos.
-* **Demonstração de Habilidades:** Aplicar conceitos de desenvolvimento web para exibir competências técnicas.
+## Build e preview de produção
 
-## Estrutura do Projeto
+```bash
+npm run build
+npm run preview
+```
 
-* index.html - Página principal do currículo.
-* assets/css/style.css - Arquivo de estilos para a formatação visual.
-* assets/favicon & /favicon_io - Ícones de favoritos para diferentes dispositivos.
+O build é gerado em `dist/` e inclui os assets preservados em `public/assets`.
 
-## Tecnologias Utilizadas
+## Estrutura
 
-* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) - Estruturação do conteúdo.
-* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) - Estilização e responsividade.
-* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) - Interatividade e dinamicidade.
+- `src/App.jsx`: composição principal, tema, idioma e modal.
+- `src/components/Sections.jsx`: componentes de navegação, hero, moeda, código, marquees, processo, projetos, modal, skills e contato.
+- `src/data/portfolio.js`: dados reais de perfil, projetos, tecnologias, skills e traduções.
+- `src/styles.css`: identidade visual, temas, responsividade e animações leves.
+- `vite.config.js`: base e configuração do Vite para GitHub Pages.
+- `public/assets/`: cópia dos assets existentes, sem substituição por imagens inventadas.
 
-## Como Executar
+## Publicação
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   ```
-2. Abra o arquivo `index.html` em um navegador.
+A publicação deve ser feita somente após validar o build e o preview. Para GitHub Pages, o diretório de saída é `dist/` e a base configurada é `/Meu-Portfolio/`.
 
-## Contato
+A migração foi preparada de forma reversível. O site estático anterior permanece recuperável pelo histórico Git e pela branch local `backup/pre-react-migration`.
 
-Para mais informações, visite meu [LinkedIn](https://www.linkedin.com/in/kau%C3%A3-tojal-702a98299/).
+## Site atual
+
+[Portfólio publicado](https://kauatojal.github.io/Meu-Portfolio/)

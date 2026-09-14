@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kauã Tojal - Portfólio</title>
+    <meta name="description" content="Portfólio de Kauã Tojal, desenvolvedor Full Stack especializado em aplicações web, APIs e interfaces modernas." data-i18n-content="meta.description" />
+    <link rel="stylesheet" href="assets/css/style.css?v=20260821-7" />
+    <link rel="stylesheet" href="assets/css/incremental-enhancements.css?v=20260914-1" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/img/brand/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/brand/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="assets/img/brand/favicon-32x32.png" />
+  </head>
+
+  <body>
+    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <!-- *************************Navbar************************* -->
+    <header class="header">
+      <div class="header-brand-group">
+        <a href="#" class="brand-lockup" aria-label="Kauã Tojal — página inicial" data-i18n-aria="accessibility.brandHome">
+          <img class="brand-logo" src="assets/img/brand/logo.webp" alt="" width="64" height="64" aria-hidden="true">
+        </a>
+        <i class="bx bx-menu" id="menu" role="button" tabindex="0" aria-label="Abrir menu" data-i18n-aria="accessibility.menu" style="color: #ffffff"></i>
+      </div>
+      <nav class="navbar" aria-label="Navegação principal" data-i18n-aria="accessibility.primaryNav">
+        <a href="#home" style="--vlr: 1" class="active" data-i18n="nav.home">Home</a>
+        <a href="#about" style="--vlr: 2" data-i18n="nav.about">Sobre Mim</a>
+        <a href="#projects" style="--vlr: 3" data-i18n="nav.projects">Projetos</a>
+        <a href="#skills" style="--vlr: 4" data-i18n="nav.skills">Skills</a>
+        <a href="#contact" style="--vlr: 5" data-i18n="nav.contact">Fale Comigo</a>
+      </nav>
+      <div class="language-switcher" aria-label="Idioma" data-i18n-aria="language.label">
+        <span class="language-flag" aria-hidden="true">🇧🇷</span>
+        <label id="language-label" class="sr-only" for="language-select" data-i18n="language.label">Idioma</label>
+        <select id="language-select" aria-labelledby="language-label">
+          <option value="pt">PT</option>
+          <option value="en">EN</option>
+        </select>
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Ativar modo claro" title="Ativar modo claro">
+          <i class="bx bx-sun" aria-hidden="true"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- *************************Home Section************************* -->
+    <section class="home" id="home">
+      <div class="content-wrapper">
+        <div class="profile-coin" id="profileCoin" role="button" tabindex="0" aria-pressed="false" aria-label="Virar cartão profissional de Kauã Tojal">
+          <div class="profile-coin-inner">
+            <div class="profile-coin-face profile-coin-front">
+              <img src="assets/imagens/Foto de perfil.png" alt="Foto de perfil de Kauã Tojal" width="150" />
+              <span class="profile-coin-hint" data-coin-hint>Clique para virar</span>
+            </div>
+            <div class="profile-coin-face profile-coin-back" aria-hidden="true">
+              <span class="profile-coin-logo">KT</span>
+              <h2>Kauã Tojal</h2>
+              <p>Full Stack Developer</p>
+              <span>Java · Spring Boot · React</span>
+              <span>REST APIs · PostgreSQL</span>
+              <small>Aracaju, SE</small>
+              <em>Transformando ideias em soluções digitais.</em>
+              <span class="profile-coin-hint">Clique para voltar</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-content">
+          <h1><span data-i18n="hero.greeting">Olá, me chamo</span> <span class="highlight">Kauã Tojal</span>!</h1>
+          <div class="text-animation">
+            <h2 id="typing-text"></h2>
+          </div>
+          <div class="social-media">
+            <a
+              href="assets/pdf/CV_Kauã_Tojal.pdf"
+              class="btn-curriculo"
+              download="Curriculo_Kaua_Tojal.pdf"
+            >
+              Download CV
+            </a>
+            <a
+              href="https://www.youtube.com/channel/UCkxO16npYlydEMZZPHEclvw/community?pvf=CAI%253D"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir YouTube"
+              data-i18n-aria="accessibility.youtube"
+            >
+              <i class="bx bxl-youtube" style="--vlr: 7"></i>
+            </a>
+
+            <a href="https://github.com/kauatojal" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub" data-i18n-aria="accessibility.github">
+              <i class="bx bxl-github" style="--vlr: 8"></i>
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/kauã-tojal-702a98299/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir LinkedIn"
+              data-i18n-aria="accessibility.linkedin"
+            >
+              <i class="bx bxl-linkedin" style="--vlr: 9"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="hero-orbit" aria-hidden="true">
+        <span class="hero-orbit__ring hero-orbit__ring--outer"></span>
+        <span class="hero-orbit__ring hero-orbit__ring--inner"></span>
+        <span class="hero-orbit__core"></span>
+        <span class="hero-orbit__label">Java · React · APIs</span>
+      </div>
+      <aside class="code-panel" aria-label="Resumo profissional em código">
+        <div class="code-panel__bar"><span></span><span></span><span></span><small>kaua-tojal.java</small></div>
+        <pre><code><span class="code-keyword">public class</span> <span class="code-class">KauaTojal</span> {
+  <span class="code-type">String</span> role = <span class="code-string">"Full Stack Developer"</span>;
+  <span class="code-type">String</span> location = <span class="code-string">"Aracaju, SE"</span>;
+  <span class="code-type">String[]</span> skills = {
+    <span class="code-string">"Java"</span>, <span class="code-string">"Spring Boot"</span>,
+    <span class="code-string">"React"</span>, <span class="code-string">"REST APIs"</span>
+  };
+}</code></pre>
+      </aside>
+    </section>
+
+    <section class="tech-marquee" aria-label="Tecnologias utilizadas">
+      <div class="tech-marquee__track" aria-hidden="true"><span>Java</span><i>◆</i><span>Spring Boot</span><i>◆</i><span>JavaScript</span><i>◆</i><span>React</span><i>◆</i><span>HTML5</span><i>◆</i><span>CSS3</span><i>◆</i><span>REST APIs</span><i>◆</i><span>SQL</span><i>◆</i><span>Git &amp; GitHub</span><i>◆</i><span>Docker</span><i>◆</i><span>Backend</span><i>◆</i><span>Frontend</span><i>◆</i></div>
+      <p class="sr-only">Java, Spring Boot, JavaScript, React, HTML5, CSS3, REST APIs, SQL, Git, GitHub, Docker, Backend e Frontend.</p>
+    </section>
+
+    <!-- *************************About Section************************* -->
+    <section class="about" id="about">
+      <h2 class="title"><span class="title-prefix" data-i18n="sections.aboutPrefix">Sobre</span> <span class="title-suffix" data-i18n="sections.aboutSuffix">Mim</span></h2>
+      <img
+        src="assets/imagens/WhatsApp Image 2024-09-16 at 15.36.23.jpeg"
+        alt=""
+        class="aboutImg"
+      />
+      <div class="text-content2">
+        <p>
+          Olá! Eu sou Kauã Tojal, um desenvolvedor versátil com experiência em
+          front-end, back-end e soluções de inteligência artificial. Com um
+          histórico de criação de sistemas eficientes e impactantes, tenho uma
+          paixão por transformar ideias em soluções tecnológicas de alta
+          qualidade. Atualmente, estou expandindo minha experiência em
+          desenvolvimento web e automação, com habilidades avançadas em HTML,
+          CSS, JavaScript, Vue.js, Python, Java e Spring Boot. No meu trabalho,
+          busco sempre otimizar processos, integrar tecnologias e criar
+          experiências de usuário inovadoras. Além de minha experiência técnica,
+          sou um profissional proativo, com capacidade de trabalhar bem em
+          equipe, liderança e foco na entrega de resultados. Acredito que a
+          colaboração é a chave para o sucesso de qualquer projeto, e sempre
+          estou pronto para enfrentar novos desafios. Se você está procurando
+          por um desenvolvedor dedicado e criativo para o seu próximo projeto,
+          fique à vontade para entrar em
+          <a href="#contact" class="highlighted-link">contato</a>!
+        </p>
+      </div>
+    </section>
+
+    <!-- *************************Project Section************************* -->
+    <section class="projects" id="projects">
+      <div class="projects-heading">
+        <p class="section-eyebrow" data-i18n="projects.eyebrow">Projetos em destaque</p>
+        <h2 class="title"><span class="title-prefix" data-i18n="sections.projectsPrefix">Meus</span> <span class="title-suffix" data-i18n="sections.projectsSuffix">Projetos</span></h2>
+        <p class="projects-subtitle" data-i18n="projects.clickToView">Clique em qualquer projeto para ver os detalhes</p>
+      </div>
+
+      <div class="carousel-container" aria-label="Navegação dos projetos" data-i18n-aria="projects.navigationLabel">
+        <div class="carousel" id="carousel" role="list">
+          <button class="project project-card" type="button" role="listitem" data-project-id="flap" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/Logo_flap.png" alt="Flap - Gerenciamento de Tarefas" data-i18n-alt="projects.flap.title" class="project-img" loading="lazy" decoding="async" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.flap.title">Flap - Gerenciamento de Tarefas</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
+
+          <button class="project project-card" type="button" role="listitem" data-project-id="inove" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/inove.png" alt="Inove Imobiliária" data-i18n-alt="projects.inove.title" class="project-img" loading="lazy" decoding="async" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.inove.title">Inove Imobiliária</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
+
+          <button class="project project-card" type="button" role="listitem" data-project-id="fsph" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/fsph_logo.png" alt="Fundação de Saúde Parreiras Horta" data-i18n-alt="projects.fsph.title" class="project-img" loading="lazy" decoding="async" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.fsph.title">Fundação de Saúde Parreiras Horta</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
+
+          <button class="project project-card" type="button" role="listitem" data-project-id="quonsumo" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/QUONSUMO O JOGO ENERGÉTICO.png" alt="Quonsumo: O Jogo Energético" data-i18n-alt="projects.quonsumo.title" class="project-img" loading="lazy" decoding="async" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.quonsumo.title">Quonsumo: O Jogo Energético</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
+
+          <button class="project project-card" type="button" role="listitem" data-project-id="portfolio" aria-haspopup="dialog" aria-controls="project-modal">
+            <span class="project-card__media">
+              <img src="assets/imagens/Foto de perfil.png" alt="Meu Portfólio" data-i18n-alt="projects.portfolio.title" class="project-img" loading="lazy" decoding="async" />
+            </span>
+            <span class="project-card__body">
+              <span class="project-card__title" data-i18n="projects.portfolio.title">Meu Portfólio</span>
+              <span class="project-card__hint" data-i18n="projects.clickToView">Ver detalhes do projeto</span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <div id="project-modal" class="project-modal" role="dialog" aria-modal="true" aria-labelledby="project-modal-title" aria-describedby="project-modal-description" hidden>
+      <div class="project-modal__backdrop" data-modal-close></div>
+      <div class="project-modal__panel" role="document">
+        <button id="project-modal-close" class="project-modal__close" type="button" aria-label="Fechar detalhes do projeto" data-i18n-aria="accessibility.closeModal" data-modal-close>
+          <i class="bx bx-x" aria-hidden="true"></i>
+        </button>
+        <div id="modal-content" class="project-modal__content"></div>
+      </div>
+    </div>
+
+    <template id="project-template-flap">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/Logo_flap.png" alt="Flap - Gerenciamento de Tarefas" data-i18n-alt="projects.flap.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.flap.category">Aplicação Full Stack</p>
+          <h2 id="project-modal-title" data-i18n="projects.flap.title">Flap - Gerenciamento de Tarefas</h2>
+          <p id="project-modal-description" data-i18n="projects.flap.description">Desenvolvi uma aplicação de gerenciamento de tarefas estilo Trello utilizando React e JavaScript, com sistema de drag-and-drop (@hello-pangea/dnd), autenticação JWT, controle de acesso baseado em roles e integração com API REST Spring Boot. Implementei componentes complexos incluindo modais, filtros, calendário anual, gestão de clientes e prioridades, utilizando Context API e React Router.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/React_logo.png" alt="React" />
+            <img src="assets/imagens/JS.png" alt="JavaScript" />
+            <img src="assets/imagens/Java.png" alt="Java" />
+            <img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/kauatojal/Residencia4-Flap" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.frontend">Front-end</span></a>
+            <a href="https://github.com/kauatojal/RIV-flap-backend" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.backend">Back-end</span></a>
+            <a href="https://residencia4-flap.vercel.app" class="site-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/www.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewSite">Ver Site</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-inove">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/inove.png" alt="Inove Imobiliária" data-i18n-alt="projects.inove.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.inove.category">Produto digital imobiliário</p>
+          <h2 id="project-modal-title" data-i18n="projects.inove.title">Inove Imobiliária</h2>
+          <p id="project-modal-description" data-i18n="projects.inove.description">Desenvolvi o site institucional e um sistema completo de gerenciamento de imóveis para a imobiliária internacional Inove, em Portugal, utilizando HTML, CSS, JavaScript, Axios, Java com Spring Boot e Hibernate. Criei uma API RESTful para integrar dados em tempo real, implementei um design responsivo com filtros de pesquisa avançados, sistema de cadastro, edição e visualização de propriedades, e utilizei MySQL para gerenciar o banco de dados, garantindo performance e escalabilidade.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/HTML.png" alt="HTML" /><img src="assets/imagens/CSS.png" alt="CSS" /><img src="assets/imagens/JS.png" alt="JavaScript" /><img src="assets/imagens/Java.png" alt="Java" /><img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" /><img src="assets/imagens/Hibernate.png" alt="Hibernate" /><img src="assets/imagens/MySQL.png" alt="MySQL" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/inove-imobiliaria" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+            <a href="https://inove.com.pt/" class="site-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/www.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewSite">Ver Site</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-fsph">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/fsph_logo.png" alt="Fundação de Saúde Parreiras Horta" data-i18n-alt="projects.fsph.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.fsph.category">Sistema corporativo</p>
+          <h2 id="project-modal-title" data-i18n="projects.fsph.title">Fundação de Saúde Parreiras Horta</h2>
+          <p id="project-modal-description" data-i18n="projects.fsph.description">Desenvolvi um sistema de gerenciamento de não conformidades para a Fundação de Saúde Parreiras Horta, utilizando Java com Spring Boot e Hibernate, visando automatizar o acompanhamento e a resolução de problemas, garantindo maior eficiência e conformidade nos processos internos.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/Java.png" alt="Java" /><img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" /><img src="assets/imagens/Hibernate.png" alt="Hibernate" /><img src="assets/imagens/MySQL.png" alt="MySQL" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/joaovmo/projeto_Parreiras" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-quonsumo">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/QUONSUMO O JOGO ENERGÉTICO.png" alt="Quonsumo: O Jogo Energético" data-i18n-alt="projects.quonsumo.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.quonsumo.category">Machine learning aplicado</p>
+          <h2 id="project-modal-title" data-i18n="projects.quonsumo.title">Quonsumo: O Jogo Energético</h2>
+          <p id="project-modal-description" data-i18n="projects.quonsumo.description">Desenvolvi um modelo de machine learning para classificar consumidores de energia como residenciais ou comerciais a cada 2 horas, utilizando Python e scikit-learn. O projeto visa otimizar a distribuição de energia com base em padrões de consumo.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/Python.png" alt="Python" /><img src="assets/imagens/Scikit-Learn.png" alt="Scikit-learn" /><img src="assets/imagens/Pandas.png" alt="Pandas" /><img src="assets/imagens/SQLite.png" alt="SQLite" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/kauatojal/IA-Project" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+            <a href="https://www.youtube.com/watch?v=J5uuDdYlczE" class="youtube-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/YouTube.png" alt="" aria-hidden="true" /><span data-i18n="actions.watchDemo">Ver Funcionamento</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <template id="project-template-portfolio">
+      <div class="project-modal__grid">
+        <div class="project-modal__visual"><img src="assets/imagens/Foto de perfil.png" alt="Meu Portfólio" data-i18n-alt="projects.portfolio.title" /></div>
+        <div class="project-modal__details">
+          <p class="project-modal__eyebrow" data-i18n="projects.portfolio.category">Marca pessoal e portfólio</p>
+          <h2 id="project-modal-title" data-i18n="projects.portfolio.title">Meu Portfólio</h2>
+          <p id="project-modal-description" data-i18n="projects.portfolio.description">Desenvolvi meu currículo e portfólio na forma de um site, utilizando HTML, CSS e JavaScript, para apresentar de maneira interativa minhas experiências, projetos, habilidades e contatos. O projeto visa facilitar o acesso às minhas informações profissionais e promover minha visibilidade no mercado.</p>
+          <div class="project-modal__techs" aria-label="Tecnologias utilizadas" data-i18n-aria="accessibility.techStack">
+            <img src="assets/imagens/HTML.png" alt="HTML" /><img src="assets/imagens/CSS.png" alt="CSS" /><img src="assets/imagens/JS.png" alt="JavaScript" />
+          </div>
+          <div class="project-modal__actions">
+            <a href="https://github.com/kauatojal/Meu-Portfolio" class="github-button" target="_blank" rel="noopener noreferrer"><img src="assets/imagens/github.png" alt="" aria-hidden="true" /><span data-i18n="actions.viewRepository">Ver Repositório</span></a>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <!-- *************************Skills Section************************* -->
+    <section class="skills" id="skills">
+      <h2 class="title"><span class="title-prefix" data-i18n="sections.skillsPrefix">Minhas</span> <span class="title-suffix" data-i18n="sections.skillsSuffix">Skills</span></h2>
+      
+      <div class="skills-container">
+        <!-- HARD SKILLS -->
+        <div class="skills-category">
+          <h3 class="category-title">HARD SKILLS</h3>
+          <div class="skills-grid">
+            <div class="skill-card">
+              <img src="assets/imagens/HTML.png" alt="HTML" class="skill-icon" />
+              <h4>HTML</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/CSS.png" alt="CSS" class="skill-icon" />
+              <h4>CSS</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/JS.png" alt="JavaScript" class="skill-icon" />
+              <h4>JavaScript</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/React_logo.png" alt="React" class="skill-icon" />
+              <h4>React</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/Java.png" alt="Java" class="skill-icon" />
+              <h4>Java</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/Spring_Boot.png" alt="Spring Boot" class="skill-icon" />
+              <h4>Spring Boot</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/Python.png" alt="Python" class="skill-icon" />
+              <h4>Python</h4>
+            </div>
+            
+            <div class="skill-card">
+              <img src="assets/imagens/MySQL.png" alt="MySQL" class="skill-icon" />
+              <h4>MySQL</h4>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOFT SKILLS -->
+        <div class="skills-category">
+          <h3 class="category-title">SOFT SKILLS</h3>
+          <div class="skills-grid">
+            <div class="skill-card soft-skill">
+              <i class='bx bx-group'></i>
+              <h4>Trabalho em Equipe</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-brain'></i>
+              <h4>Resolução de Problemas</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-message-rounded-dots'></i>
+              <h4>Comunicação</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-time-five'></i>
+              <h4>Gestão de Tempo</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-trending-up'></i>
+              <h4>Adaptabilidade</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-bulb'></i>
+              <h4>Criatividade</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-target-lock'></i>
+              <h4>Foco em Resultados</h4>
+            </div>
+            
+            <div class="skill-card soft-skill">
+              <i class='bx bx-book-open'></i>
+              <h4>Aprendizado Contínuo</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- *************************Contact Section************************* -->
+    <section class="contact" id="contact">
+      <h2 class="title"><span class="title-prefix" data-i18n="sections.contactPrefix">Fale</span> <span class="title-suffix" data-i18n="sections.contactSuffix">Comigo</span></h2>
+      <div class="contact-layout">
+        <div class="contact-intro">
+          <p class="contact-eyebrow" data-i18n="contact.eyebrow">Entre em contato</p>
+          <h3 class="contact-heading" data-i18n="contact.heading">Pronto para transformar uma ideia em produto?</h3>
+          <p class="contact-copy" data-i18n="contact.copy">Seja para uma nova aplicação, uma parceria ou uma oportunidade profissional, vamos conversar.</p>
+
+          <div class="contact-channels" role="group" aria-label="Canais de contato" data-i18n-aria="contact.channelsAria">
+            <a class="contact-channel" href="mailto:kauatojal0@gmail.com?subject=Contato%20via%20portfólio" data-contact-channel="email" data-i18n-aria="contact.emailAria">
+              <span class="contact-channel-icon" aria-hidden="true"><i class="bx bx-envelope"></i></span>
+              <span class="contact-channel-text">
+                <span class="contact-channel-label" data-i18n="contact.emailLabel">E-mail direto</span>
+                <strong data-i18n="contact.emailCta">Enviar uma mensagem</strong>
+              </span>
+              <i class="bx bx-right-arrow-alt contact-channel-arrow" aria-hidden="true"></i>
+            </a>
+            <a class="contact-channel" href="https://wa.me/5579981369704?text=Ol%C3%A1%20Kau%C3%A3%21%20Encontrei%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar." target="_blank" rel="noopener noreferrer" data-contact-channel="whatsapp" data-i18n-aria="contact.whatsappAria">
+              <span class="contact-channel-icon" aria-hidden="true"><i class="bx bxl-whatsapp"></i></span>
+              <span class="contact-channel-text">
+                <span class="contact-channel-label" data-i18n="contact.whatsappLabel">WhatsApp / Chat instantâneo</span>
+                <strong data-i18n="contact.whatsappCta">Iniciar conversa</strong>
+              </span>
+              <i class="bx bx-right-arrow-alt contact-channel-arrow" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-form-shell">
+          <form id="contactForm" class="contact-form" novalidate>
+            <div class="form-field">
+              <label for="user_name" data-i18n="contact.nameLabel">Seu nome</label>
+              <input type="text" id="user_name" name="from_name" required autocomplete="name" data-i18n-placeholder="contact.name" placeholder="Nome Completo" />
+            </div>
+            <div class="form-field">
+              <label for="user_email" data-i18n="contact.emailFieldLabel">Seu e-mail</label>
+              <input type="email" id="user_email" name="from_email" required autocomplete="email" data-i18n-placeholder="contact.email" placeholder="Email" />
+            </div>
+            <div class="form-field form-field-full">
+              <label for="user_subject" data-i18n="contact.subjectLabel">Tipo de projeto ou assunto</label>
+              <input type="text" id="user_subject" name="subject" required data-i18n-placeholder="contact.subject" placeholder="Assunto" />
+            </div>
+            <div class="form-field form-field-full">
+              <label for="contact__message" data-i18n="contact.messageLabel">Mensagem</label>
+              <textarea id="contact__message" name="message" required data-i18n-placeholder="contact.message" placeholder="Descrição"></textarea>
+            </div>
+            <button type="submit" class="btn contact-submit" data-i18n="contact.submit">Enviar mensagem</button>
+          </form>
+          <div id="successMessage" role="status" aria-live="polite" hidden>
+            <i class="bx bx-check-circle" aria-hidden="true"></i> <span data-i18n="contact.success">Mensagem enviada com sucesso!</span>
+          </div>
+          <div id="errorMessage" role="alert" aria-live="assertive" hidden>
+            <i class="bx bx-error-circle" aria-hidden="true"></i> <span data-i18n="contact.error">O serviço de e-mail está temporariamente indisponível. Tente novamente ou use o WhatsApp.</span>
+            <div class="contact-fallback-actions">
+              <a id="contactFallback" class="contact-fallback" href="https://wa.me/5579981369704" target="_blank" rel="noopener noreferrer" hidden data-i18n="contact.errorFallback">Falar comigo pelo WhatsApp</a>
+              <a id="contactEmailFallback" class="contact-fallback contact-fallback-email" href="mailto:kauatojal0@gmail.com" hidden data-i18n="contact.emailFallback">Tentar pelo e-mail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer" id="footer">
+      <div class="footer-container">
+        <div class="footer-main">
+          <a class="footer-brand-link" href="#home" aria-label="Kauã Tojal — página inicial">
+            <img class="footer-logo" src="assets/img/brand/logo.webp" alt="" width="38" height="38" aria-hidden="true" />
+            <span class="footer-brand-name">Kauã Tojal</span>
+          </a>
+          <p class="footer-tagline" data-i18n="footer.tagline">Desenvolvedor Full Stack criando experiências digitais modernas.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Navegação do rodapé" data-i18n-aria="footer.navAria">
+          <a href="#home" data-i18n="footer.home">Início</a>
+          <a href="#about" data-i18n="footer.about">Sobre Mim</a>
+          <a href="#projects" data-i18n="footer.projects">Projetos</a>
+          <a href="#contact" data-i18n="footer.contact">Contato</a>
+        </nav>
+
+        <div class="footer-socials" aria-label="Redes sociais" data-i18n-aria="footer.socialAria">
+          <a href="https://github.com/kauatojal" target="_blank" rel="noopener noreferrer" aria-label="Abrir GitHub">
+            <i class="bx bxl-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/kauã-tojal-702a98299/" target="_blank" rel="noopener noreferrer" aria-label="Abrir LinkedIn">
+            <i class="bx bxl-linkedin" aria-hidden="true"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© <span id="currentYear">2026</span> Kauã Tojal. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
+        <p data-i18n="footer.built">Construído com HTML, CSS e JavaScript.</p>
+      </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="backToTop" aria-label="Voltar ao topo" data-i18n-aria="accessibility.backToTop">
+      <i class="bx bx-up-arrow-alt" aria-hidden="true"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+    <script src="assets/scripts/script.js?v=20260914-2" defer></script>
+  </body>
+</html>
