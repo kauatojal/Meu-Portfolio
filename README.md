@@ -29,6 +29,10 @@ O build é gerado em `dist/` e inclui os assets preservados em `public/assets`.
 - `vite.config.js`: base e configuração do Vite para GitHub Pages.
 - `public/assets/`: cópia dos assets existentes, sem substituição por imagens inventadas.
 
+## Formulário de contato
+
+O formulário possui validação de nome, e-mail e mensagem, estados de carregamento, erro e sucesso visual, além de suporte aos temas e ao mobile. Como este repositório não possui um backend ou endpoint de e-mail configurado, o estado de sucesso informa explicitamente que a validação foi concluída; nenhuma mensagem é fingida como enviada. Para habilitar envio real, configure um endpoint HTTPS no backend ou em um serviço de formulários e conecte-o em `src/components/Sections.jsx`, sem expor chaves secretas no frontend.
+
 ## Publicação
 
 A publicação deve ser feita somente após validar o build e o preview. Para GitHub Pages, o diretório de saída é `dist/` e a base configurada é `/Meu-Portfolio/`.
