@@ -49,11 +49,24 @@
     <!-- *************************Home Section************************* -->
     <section class="home" id="home">
       <div class="content-wrapper">
-        <img
-          src="assets/imagens/Foto de perfil.png"
-          alt="Foto de perfil"
-          width="150"
-        />
+        <div class="profile-coin" id="profileCoin" role="button" tabindex="0" aria-pressed="false" aria-label="Virar cartão profissional de Kauã Tojal">
+          <div class="profile-coin-inner">
+            <div class="profile-coin-face profile-coin-front">
+              <img src="assets/imagens/Foto de perfil.png" alt="Foto de perfil de Kauã Tojal" width="150" />
+              <span class="profile-coin-hint" data-coin-hint>Clique para virar</span>
+            </div>
+            <div class="profile-coin-face profile-coin-back" aria-hidden="true">
+              <span class="profile-coin-logo">KT</span>
+              <h2>Kauã Tojal</h2>
+              <p>Full Stack Developer</p>
+              <span>Java · Spring Boot · React</span>
+              <span>REST APIs · PostgreSQL</span>
+              <small>Aracaju, SE</small>
+              <em>Transformando ideias em soluções digitais.</em>
+              <span class="profile-coin-hint">Clique para voltar</span>
+            </div>
+          </div>
+        </div>
         <div class="text-content">
           <h1><span data-i18n="hero.greeting">Olá, me chamo</span> <span class="highlight">Kauã Tojal</span>!</h1>
           <div class="text-animation">

@@ -879,7 +879,7 @@ document.addEventListener('DOMContentLoaded', function () {
 (function setupPremiumMotion(){
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const orbit = document.querySelector('.hero-orbit');
-    const photo = document.querySelector('.content-wrapper > img');
+    const photo = document.querySelector('.profile-coin');
     const codePanel = document.querySelector('.code-panel');
     const projectCards = document.querySelectorAll('.project-card');
     if (reduced) return;
@@ -901,4 +901,22 @@ document.addEventListener('DOMContentLoaded', function () {
         if (projectCards.length) window.gsap.from(projectCards, { y: 22, autoAlpha: 0, duration: .55, stagger: .09, ease: 'power2.out', scrollTrigger: { trigger: '.projects', start: 'top 78%', once: true } });
     }, document.body);
     window.addEventListener('beforeunload', () => context.revert(), { once: true });
+})();
+
+
+(function setupProfileCoin(){
+    const coin = document.getElementById('profileCoin');
+    if (!coin) return;
+    const hint = coin.querySelector('[data-coin-hint]');
+    const toggle = () => {
+        const flipped = coin.classList.toggle('is-flipped');
+        coin.setAttribute('aria-pressed', String(flipped));
+        coin.setAttribute('aria-label', flipped ? 'Voltar para a foto de Kauã Tojal' : 'Virar cartão profissional de Kauã Tojal');
+        coin.querySelector('.profile-coin-back')?.setAttribute('aria-hidden', String(!flipped));
+        if (hint) hint.textContent = flipped ? 'Clique para voltar' : 'Clique para virar';
+    };
+    coin.addEventListener('click', toggle);
+    coin.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); toggle(); }
+    });
 })();
