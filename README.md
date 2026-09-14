@@ -45,3 +45,8 @@ A migração foi preparada de forma reversível. O site estático anterior perma
 ## Site atual
 
 [Portfólio publicado](https://kauatojal.github.io/Meu-Portfolio/)
+
+
+## Integrações e animações
+
+O formulário de contato usa EmailJS com a configuração funcional que já existia no projeto anterior, enviando `from_name`, `from_email`, `reply_to`, `subject` e `message`. Em caso de falha, a interface oferece e-mail e WhatsApp como alternativas. As animações de scroll usam uma única camada GSAP + ScrollTrigger com cleanup via `gsap.context()`: o orbit acompanha a rolagem com parallax, a imagem de “Sobre Mim” gira de forma reversível e os projetos/cards entram progressivamente na viewport. O projeto Inove também possui o botão “Ver site” apontando para `https://inove.com.pt`.
