@@ -50,3 +50,10 @@ A migração foi preparada de forma reversível. O site estático anterior perma
 ## Integrações e animações
 
 O formulário de contato usa EmailJS com a configuração funcional que já existia no projeto anterior, enviando `from_name`, `from_email`, `reply_to`, `subject` e `message`. Em caso de falha, a interface oferece e-mail e WhatsApp como alternativas. As animações de scroll usam uma única camada GSAP + ScrollTrigger com cleanup via `gsap.context()`: o orbit acompanha a rolagem com parallax, a imagem de “Sobre Mim” gira de forma reversível e os projetos/cards entram progressivamente na viewport. O projeto Inove também possui o botão “Ver site” apontando para `https://inove.com.pt`.
+
+
+## Atualização GSAP e ScrollTrigger
+
+A experiência utiliza uma única camada GSAP + ScrollTrigger com `gsap.context()` e cleanup completo. A camada controla a entrada progressiva da hero, processo, Sobre Mim, projetos, skills, contato e rodapé; o orbit agora é `position: fixed` e acompanha a narrativa completa da página com `scrub`, sem ficar preso ao container da hero; a imagem de “Sobre Mim” usa rotação e opacidade reversíveis conforme a rolagem; e o modal de projetos possui entrada com escala, deslocamento e rotação 3D.
+
+Os textos principais de navegação, hero, processo, Sobre Mim, projetos, skills, contato, moeda, fluxo e rodapé possuem versões em português e inglês ligadas ao seletor de idioma.
