@@ -1,46 +1,37 @@
-# Kauã Tojal — Portfólio
+# Meu Portfólio
 
-Portfólio profissional estático de Kauã Tojal, desenvolvido com HTML semântico, CSS moderno e JavaScript vanilla. A página apresenta posicionamento profissional, especialidades, projetos reais e caminhos diretos de contato.
+## Sobre o Projeto
 
-## Rodar localmente
+Acesse aqui: [Portfólio](https://kauatojal.github.io/Meu-Portfolio/)
 
-Como o projeto usa apenas assets estáticos, basta servir a pasta por um servidor HTTP:
+Este projeto é um currículo interativo desenvolvido utilizando HTML, CSS e JavaScript. O objetivo é apresentar de forma dinâmica minhas habilidades, experiências profissionais e projetos desenvolvidos.
 
-```bash
-python3 -m http.server 8080
-```
+## Objetivos
 
-Depois, acesse `http://localhost:8080`.
+* **Apresentação Profissional:** Disponibilizar informações sobre minha trajetória profissional e habilidades de forma clara e organizada.
+* **Interatividade:** Criar uma experiência de navegação intuitiva e responsiva para diferentes dispositivos.
+* **Demonstração de Habilidades:** Aplicar conceitos de desenvolvimento web para exibir competências técnicas.
 
-## Publicar no GitHub Pages
+## Estrutura do Projeto
 
-O projeto está preparado para publicação direta a partir da branch `main`, sem etapa de build. No GitHub, abra **Settings → Pages**, selecione **Deploy from a branch**, escolha `main` e a pasta `/ (root)`. O endereço publicado é:
+* index.html - Página principal do currículo.
+* assets/css/style.css - Arquivo de estilos para a formatação visual.
+* assets/favicon & /favicon_io - Ícones de favoritos para diferentes dispositivos.
 
-<https://kauatojal.github.io/Meu-Portfolio/>
+## Tecnologias Utilizadas
 
-## Estrutura principal
+* ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) - Estruturação do conteúdo.
+* ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) - Estilização e responsividade.
+* ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) - Interatividade e dinamicidade.
 
-```text
-index.html                 # estrutura semântica e conteúdo
-assets/css/style.css       # identidade visual, responsividade e acessibilidade
-assets/scripts/script.js   # menu, reveal, progresso e microinterações
-assets/imagens/            # imagens dos projetos e tecnologias
-assets/pdf/                # currículo
-assets/img/brand/          # favicon e marca
-```
+## Como Executar
 
-## Dependências
+1. Clone o repositório:
+   ```bash
+   git clone https://github.com/seu-usuario/seu-repositorio.git
+   ```
+2. Abra o arquivo `index.html` em um navegador.
 
-Não há dependências de build. A animação de entrada usa GSAP 3.12.5 carregado com `defer` por CDN e possui fallback para IntersectionObserver e CSS caso a biblioteca não esteja disponível.
+## Contato
 
-## Decisões de performance e acessibilidade
-
-As imagens de projetos usam `loading="lazy"`, dimensões visuais reservadas por CSS e textos alternativos descritivos. O conteúdo permanece disponível em HTML mesmo sem JavaScript. O menu possui estado `aria-expanded`, a navegação usa landmarks semânticos e há suporte a `prefers-reduced-motion`. A cena visual é feita com CSS 3D leve, sem iframe ou biblioteca 3D pesada, e é reduzida no mobile.
-
-## Projetos apresentados
-
-- [Flap](https://github.com/kauatojal/Residencia4-Flap) — aplicação full stack com frontend, backend e demo.
-- [Inove Imobiliária](https://github.com/inove-imobiliaria) — aplicação web e site institucional.
-- [IA-Project](https://github.com/kauatojal/IA-Project) — análise de dados e classificação com Python.
-
-Links de contato e currículo permanecem baseados nos dados já existentes no portfólio.
+Para mais informações, visite meu [LinkedIn](https://www.linkedin.com/in/kau%C3%A3-tojal-702a98299/).
