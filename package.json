@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build:images": "node scripts/convert-images.mjs",
+    "build": "npm run build:images && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,5 +18,8 @@
     "react-dom": "latest",
     "react-icons": "^5.7.0",
     "vite": "latest"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.4"
   }
 }
