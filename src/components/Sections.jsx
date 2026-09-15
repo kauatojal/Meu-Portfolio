@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import gsap from 'gsap';
 import { profile, technologies, softSkills, hardSkills, projects, translations } from '../data/portfolio';
 import { MessageCircle, Users, BookOpen, Brain, ListChecks, ShieldCheck, RefreshCw, SearchCheck, Rocket, Target, Headphones, Handshake, Send, CheckCircle2, AlertCircle, Sun, Moon, Search, Workflow, Code2, Check, ArrowUpRight, Mail, MessageSquare, FolderOpen, ChevronDown, ChevronUp, SunMedium, MoonStar, Menu, X } from 'lucide-react';
 import { FaGithub, FaLinkedinIn, FaInstagram, FaYoutube, FaWhatsapp } from 'react-icons/fa6';
